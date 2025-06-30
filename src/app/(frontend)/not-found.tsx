@@ -1,30 +1,33 @@
-import Modules from '@/ui/modules'
-import { fetchSanityLive } from '@/sanity/lib/fetch'
-import { groq } from 'next-sanity'
-import { MODULES_QUERY } from '@/sanity/lib/queries'
+import CTA from '@/ui/CTA'
+import Link from 'next/link'
 
-export default async function NotFound() {
-	const page = await get404()
-	if (!page) return <h1 className="section text-center text-5xl">404</h1>
-	return <Modules modules={page?.modules} />
-}
+export default function NotFound() {
 
-export async function generateMetadata() {
-	return (await get404())?.metadata
-}
-
-async function get404() {
-	return await fetchSanityLive<Sanity.Page>({
-		query: groq`*[_type == 'page' && metadata.slug.current == '404'][0]{
-			...,
-			'modules': (
-				// global modules (before)
-				*[_type == 'global-module' && path == '*'].before[]{ ${MODULES_QUERY} }
-				// page modules
-				+ modules[]{ ${MODULES_QUERY} }
-				// global modules (after)
-				+ *[_type == 'global-module' && path == '*'].after[]{ ${MODULES_QUERY} }
-			)
-		}`,
-	})
+  return (
+    <div className="min-h-dvh bg-gray-100 flex flex-col items-center justify-center">
+      <div className="container">
+        <div className='grid grid-cols-1 gap-8 items-center py-10'>
+          <div className='text-center'>
+            <h1 className="text-6xl sm:text-8xl font-bold text-gray-900 tracking-tight mb-4">
+              404
+            </h1>
+            <h2 className="text-2xl sm:text-3xl font-semibold mb-6">
+              Страница не найдена
+            </h2>
+            <p className="text-gray-500 mb-8">
+              Возможно, она была удалена, переименована или не существует.
+            </p>
+            <div className="space-x-4">
+              <Link
+                href={'/'}
+                className='min-w-64 bg-brand-gradient uppercase font-semibold'
+              >
+                На главную
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
 }
