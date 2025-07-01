@@ -1,4 +1,6 @@
 // import { GoogleTagManager } from '@next/third-parties/google'
+// import { Analytics } from '@vercel/analytics/react'
+// import { SpeedInsights } from '@vercel/speed-insights/next'
 import Root from '@/ui/Root'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
 import SkipToContent from '@/ui/SkipToContent'
@@ -6,8 +8,6 @@ import Announcement from '@/ui/Announcement'
 import Header from '@/ui/header'
 import Footer from '@/ui/footer'
 import VisualEditingControls from '@/ui/VisualEditingControls'
-import { Analytics } from '@vercel/analytics/react'
-import { SpeedInsights } from '@vercel/speed-insights/next'
 import '@/styles/app.css'
 
 export default async function RootLayout({
@@ -18,12 +18,12 @@ export default async function RootLayout({
 	return (
 		<Root>
 			{/* <GoogleTagManager gtmId="" /> */}
-			<body className="bg-canvas text-ink antialiased">
+			<body className="bg-canvas text-ink antialiased flex flex-col min-h-screen">
 				<NuqsAdapter>
 					<SkipToContent />
 					<Announcement />
 					<Header />
-					<main id="main-content" role="main" tabIndex={-1}>
+					<main id="main-content" role="main" className='flex-1'>
 						{children}
 					</main>
 					<Footer />
@@ -31,8 +31,8 @@ export default async function RootLayout({
 					<VisualEditingControls />
 				</NuqsAdapter>
 
-				<Analytics />
-				<SpeedInsights />
+				{/*<Analytics />*/}
+				{/*<SpeedInsights />*/}
 			</body>
 		</Root>
 	)
