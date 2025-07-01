@@ -9,30 +9,34 @@ import Header from '@/ui/header'
 import Footer from '@/ui/footer'
 import VisualEditingControls from '@/ui/VisualEditingControls'
 import '@/styles/app.css'
+import { cn } from '@/lib/utils'
+import { fontSans } from '@/lib/fonts'
 
 export default async function RootLayout({
-	children,
-}: {
+																					 children,
+																				 }: {
 	children: React.ReactNode
 }) {
 	return (
 		<Root>
 			{/* <GoogleTagManager gtmId="" /> */}
-			<body className="bg-canvas text-ink antialiased flex flex-col min-h-screen">
-				<NuqsAdapter>
-					<SkipToContent />
-					<Announcement />
-					<Header />
-					<main id="main-content" role="main" className='flex-1'>
-						{children}
-					</main>
-					<Footer />
+			<body className={cn('bg-canvas text-ink antialiased flex flex-col min-h-screen',
+				fontSans.variable,
+			)}>
+			<NuqsAdapter>
+				<SkipToContent />
+				<Announcement />
+				<Header />
+				<main id="main-content" role="main" className="flex-1">
+					{children}
+				</main>
+				<Footer />
 
-					<VisualEditingControls />
-				</NuqsAdapter>
+				<VisualEditingControls />
+			</NuqsAdapter>
 
-				{/*<Analytics />*/}
-				{/*<SpeedInsights />*/}
+			{/*<Analytics />*/}
+			{/*<SpeedInsights />*/}
 			</body>
 		</Root>
 	)
