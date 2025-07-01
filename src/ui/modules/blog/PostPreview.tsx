@@ -27,7 +27,7 @@ export default function PostPreview({
 
 				{post?.featured && (
 					<span className="action absolute top-0 right-4 rounded-t-none py-1 text-xs shadow-md">
-						Featured
+						Избранное
 					</span>
 				)}
 			</figure>
