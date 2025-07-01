@@ -3,6 +3,7 @@ import { PortableText, stegaClean } from 'next-sanity'
 import { Img } from '@/ui/Img'
 import { VscSurroundWith } from 'react-icons/vsc'
 import { cn } from '@/lib/utils'
+import { BsChatLeftQuote, BsChatRightQuote } from 'react-icons/bs'
 
 export default function TestimonialList({
 	pretitle,
@@ -48,7 +49,9 @@ export default function TestimonialList({
 							>
 								<blockquote className="flex flex-col items-center gap-4">
 									<div className="richtext text-balance">
+										<BsChatLeftQuote className='inline'/>
 										<PortableText value={testimonial.content} />
+										<BsChatRightQuote className='inline' />
 									</div>
 
 									{testimonial.author && (
