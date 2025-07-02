@@ -5,7 +5,7 @@ import Root from '@/ui/Root'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
 import SkipToContent from '@/ui/SkipToContent'
 import Announcement from '@/ui/Announcement'
-import Header from '@/ui/header'
+import { Header } from '@/components/header';
 import Footer from '@/ui/footer'
 import VisualEditingControls from '@/ui/VisualEditingControls'
 import '@/styles/app.css'
