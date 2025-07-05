@@ -3,59 +3,60 @@ import styles from './styles.module.css'
 import { cn } from '@/lib/utils'
 import { getSite } from '@/sanity/lib/queries'
 import { Img } from '@/ui/Img'
+import React from 'react'
+import { BasicNavbar } from '@/components/header/index'
 
 export default async function Header() {
-	const { title, logo, ctas } = await getSite()
-
-	const logoImage = logo?.image?.dark || logo?.image?.default
+	const { title, logo, ctas, headerMenu } = await getSite()
 
 	return (
-		<Navbar
-			shouldHideOnScroll
+		<BasicNavbar
 			classNames={{
 				wrapper: cn(styles.Header),
 			}}
-		>
-			<div className={cn('container', styles.Container)}>
-				<NavbarBrand as={Link} href="/">
-					{logoImage ? (
-						<Img
-							className="inline-block max-h-10 w-auto"
-							image={logoImage}
-							alt={logo?.name || title}
-						/>
-					) : (
-						<span className="text-gradient">{title}</span>
-					)}
-				</NavbarBrand>
-				<NavbarContent className="hidden sm:flex gap-4" justify="center">
-					<NavbarItem>
-						<Link color="foreground" href="#">
-							Features
-						</Link>
-					</NavbarItem>
-					<NavbarItem isActive>
-						<Link aria-current="page" href="#">
-							Customers
-						</Link>
-					</NavbarItem>
-					<NavbarItem>
-						<Link color="foreground" href="#">
-							Integrations
-						</Link>
-					</NavbarItem>
-				</NavbarContent>
-				<NavbarContent justify="end">
-					<NavbarItem className="hidden lg:flex">
-						<Link href="#">Login</Link>
-					</NavbarItem>
-					<NavbarItem>
-						<Button as={Link} color="primary" href="#" variant="flat">
-							Sign Up
-						</Button>
-					</NavbarItem>
-				</NavbarContent>
-			</div>
-		</Navbar>
+			logo={logo}
+			title={title}
+			menuItems={headerMenu?.items}
+		/>
+		// <Navbar
+		// 	shouldHideOnScroll
+		// 	classNames={{
+		// 		wrapper: cn(styles.Header),
+		// 	}}
+		// >
+		// 	<div className={cn('container', styles.Container)}>
+		// 		{/*<NavbarBrand as={Link} href="/">*/}
+		// 		{/*	{logoImage ? (*/}
+		// 		{/*		<Img*/}
+		// 		{/*			className="inline-block max-h-10 w-auto"*/}
+		// 		{/*			image={logoImage}*/}
+		// 		{/*			alt={logo?.name || title}*/}
+		// 		{/*		/>*/}
+		// 		{/*	) : (*/}
+		// 		{/*		<span className="text-gradient">{title}</span>*/}
+		// 		{/*	)}*/}
+		// 		{/*</NavbarBrand>*/}
+		// 		{/*<NavbarContent className="hidden sm:flex gap-4" justify="center">*/}
+		// 		{/*	/!*{*!/*/}
+		// 		{/*	/!*	headerMenu?.items?.map((item, key) => {*!/*/}
+		// 		{/*	/!*		return (*!/*/}
+		// 		{/*	/!*			<NavbarItem key={key}>*!/*/}
+		// 		{/*	/!*				<Link color="foreground" href={item?.internal?.metadata?.slug?.current === 'index' ? '/' : item?.internal?.metadata?.slug?.current || '#'}>*!/*/}
+		// 		{/*	/!*					{item?.internal?.metadata?.slug?.current === 'index' ? 'Главная' : item?.internal?.metadata?.title}*!/*/}
+		// 		{/*	/!*				</Link>*!/*/}
+		// 		{/*	/!*			</NavbarItem>*!/*/}
+		// 		{/*	/!*		)*!/*/}
+		// 		{/*	/!*	})*!/*/}
+		// 		{/*	/!*}*!/*/}
+		// 		{/*</NavbarContent>*/}
+		// 		{/*<NavbarContent justify="end">*/}
+		// 		{/*	<NavbarItem>*/}
+		// 		{/*		<Button as={Link} color="primary" href="#" radius="full" className="uppercase">*/}
+		// 		{/*			Заказать*/}
+		// 		{/*		</Button>*/}
+		// 		{/*	</NavbarItem>*/}
+		// 		{/*</NavbarContent>*/}
+		// 	</div>
+		// </Navbar>
 	)
 }
