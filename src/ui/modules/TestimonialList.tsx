@@ -3,7 +3,7 @@ import { PortableText, stegaClean } from 'next-sanity'
 import { Img } from '@/ui/Img'
 import { VscSurroundWith } from 'react-icons/vsc'
 import { cn } from '@/lib/utils'
-import { BsChatLeftQuote, BsChatRightQuote } from 'react-icons/bs'
+import { BsChatLeftQuote } from 'react-icons/bs'
 
 export default function TestimonialList({
 	pretitle,
@@ -37,7 +37,7 @@ export default function TestimonialList({
 						? 'carousel max-md:full-bleed md:overflow-fade-r pb-4 max-md:px-4'
 						: 'grid sm:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]',
 					layoutMobile === 'carousel' &&
-						'max-md:carousel max-md:full-bleed max-md:px-4 max-md:pb-4',
+					'max-md:carousel max-md:full-bleed max-md:px-4 max-md:pb-4',
 				)}
 			>
 				{testimonials?.map(
@@ -49,9 +49,8 @@ export default function TestimonialList({
 							>
 								<blockquote className="flex flex-col items-center gap-4">
 									<div className="richtext text-balance">
-										<BsChatLeftQuote className='inline'/>
+										<BsChatLeftQuote className='inline' />
 										<PortableText value={testimonial.content} />
-										<BsChatRightQuote className='inline' />
 									</div>
 
 									{testimonial.author && (

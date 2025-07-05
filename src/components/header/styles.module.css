@@ -1,0 +1,7 @@
+.Header {
+    max-width: 100%;
+    padding-inline: 0;
+}
+.Container {
+    @apply flex justify-between items-center;
+}
