@@ -5,13 +5,14 @@ import Root from '@/ui/Root'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
 import SkipToContent from '@/ui/SkipToContent'
 import Announcement from '@/ui/Announcement'
-import { Header } from '@/components/header';
+import { Header } from '@/components/header'
 import Footer from '@/ui/footer'
 import VisualEditingControls from '@/ui/VisualEditingControls'
 import '@/styles/app.css'
 import { cn } from '@/lib/utils'
 import { fontSans } from '@/lib/fonts'
 import { HeroUIProvider } from '@heroui/react'
+import { Banner } from '@/components/banner'
 
 export default async function RootLayout({
 																					 children,
@@ -27,7 +28,8 @@ export default async function RootLayout({
 			<HeroUIProvider>
 				<NuqsAdapter>
 					<SkipToContent />
-					<Announcement />
+					{/*<Announcement />*/}
+					<Banner />
 					<Header />
 					<main id="main-content" role="main" className="flex-1">
 						{children}
