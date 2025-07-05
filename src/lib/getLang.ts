@@ -10,5 +10,5 @@ export default function getLang() {
 		pathname.match(new RegExp(`^\/(blog\/)?(?<lang>[${languages.join('|')}]+)`))
 			?.groups ?? {}
 
-	return lang || languages?.[0] || 'en'
+	return lang || languages?.[0] || 'ru'
 }
