@@ -14,9 +14,22 @@ export default async function Header() {
 			classNames={{
 				wrapper: cn(styles.Header),
 			}}
-			logo={logo}
+			logo={{
+				name: logo?.name,
+				image: {
+					dark: logo?.image?.dark?.asset?.url,
+					default: logo?.image?.default?.asset?.url
+				}
+			}}
 			title={title}
-			menuItems={headerMenu?.items}
+			menuItems={headerMenu?.items?.map(item => ({
+				internal: {
+					metadata: {
+						slug: { current: 'internal' in item ? item.internal?.metadata?.slug?.current || '' : '' },
+						title: ('internal' in item && item.internal?.metadata?.title) || ''
+					}
+				}
+			}))}
 		/>
 		// <Navbar
 		// 	shouldHideOnScroll
