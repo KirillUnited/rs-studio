@@ -25,7 +25,6 @@ const BasicNavbar = React.forwardRef<HTMLElement, NavbarProps>(
 	({ classNames = {}, logo, title, menuItems = menuItems, ...props }, ref) => {
 		const [isMenuOpen, setIsMenuOpen] = React.useState(false)
 		const logoImage = logo?.image?.dark || logo?.image?.default
-console.log('logoImage', logoImage)
 
 		return (
 			<Navbar

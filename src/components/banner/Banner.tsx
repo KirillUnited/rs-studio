@@ -38,7 +38,7 @@ export default async function Banner() {
 									width={16}
 								/>
 							}
-							href={cta?.internal || cta?.external}
+							href={`/about`}
 							style={{
 								border: 'solid 2px transparent',
 								backgroundImage: `linear-gradient(hsl(var(--heroui-background)), hsl(var(--heroui-background))), linear-gradient(to right, #F871A0, #9353D3)`,
