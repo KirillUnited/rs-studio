@@ -6,16 +6,18 @@ import Pretitle from '@/ui/Pretitle'
 import CustomHTML from './CustomHTML'
 import Reputation from '@/ui/Reputation'
 import { cn } from '@/lib/utils'
+import { Button } from '@heroui/react'
+import { Icon } from '@iconify/react'
 
 export default function Hero({
-	pretitle,
-	content,
-	ctas,
-	assets,
-	textAlign: ta = 'center',
-	alignItems: ai,
-	...props
-}: Partial<{
+															 pretitle,
+															 content,
+															 ctas,
+															 assets,
+															 textAlign: ta = 'center',
+															 alignItems: ai,
+															 ...props
+														 }: Partial<{
 	pretitle: string
 	content: any
 	ctas: Sanity.CTA[]
@@ -34,7 +36,7 @@ export default function Hero({
 		<section
 			className={cn(
 				hasImage &&
-					'bg-ink text-canvas grid overflow-hidden *:col-span-full *:row-span-full',
+				'bg-ink text-canvas grid overflow-hidden *:col-span-full *:row-span-full',
 			)}
 			{...moduleProps(props)}
 		>
@@ -64,9 +66,23 @@ export default function Hero({
 						)}
 						style={{ textAlign }}
 					>
-						<Pretitle className={cn(hasImage && 'text-canvas/70')}>
+						{/*<Pretitle className={cn(hasImage && 'text-canvas/70')}>*/}
+						{/*	{pretitle}*/}
+						{/*</Pretitle>*/}
+						<Button
+							className="h-9 overflow-hidden border-1 border-default-100 bg-default-50 px-[18px] py-2 text-small font-normal leading-5 text-default-500"
+							endContent={
+								<Icon
+									className="flex-none outline-none [&>path]:stroke-[2]"
+									icon="solar:arrow-right-linear"
+									width={20}
+								/>
+							}
+							radius="full"
+							variant="bordered"
+						>
 							{pretitle}
-						</Pretitle>
+						</Button>
 
 						<PortableText
 							value={content}
@@ -93,14 +109,39 @@ export default function Hero({
 							}}
 						/>
 
-						<CTAList
-							ctas={ctas}
-							className={cn('!mt-4', {
-								'justify-start': textAlign === 'left',
-								'justify-center': textAlign === 'center',
-								'justify-end': textAlign === 'right',
-							})}
-						/>
+						{/*<CTAList*/}
+						{/*	ctas={ctas}*/}
+						{/*	className={cn('!mt-4', {*/}
+						{/*		'justify-start': textAlign === 'left',*/}
+						{/*		'justify-center': textAlign === 'center',*/}
+						{/*		'justify-end': textAlign === 'right',*/}
+						{/*	})}*/}
+						{/*/>*/}
+						<div className="flex flex-col items-center justify-center gap-6 sm:flex-row">
+							<Button
+								className="h-10 w-[163px] bg-default-foreground px-[16px] py-[10px] text-small font-medium leading-5 text-background"
+								radius="full"
+							>
+								Заказать
+							</Button>
+							<Button
+								className="h-10 w-[163px] border-1 border-default-100 px-[16px] py-[10px] text-small font-medium leading-5"
+								endContent={
+									<span
+										className="pointer-events-none flex h-[22px] w-[22px] items-center justify-center rounded-full bg-default-100">
+                  <Icon
+										className="text-default-500 [&>path]:stroke-[1.5]"
+										icon="solar:arrow-right-linear"
+										width={16}
+									/>
+                </span>
+								}
+								radius="full"
+								variant="bordered"
+							>
+								Узнать цены
+							</Button>
+						</div>
 					</div>
 				</div>
 			)}
