@@ -1,7 +1,5 @@
 'use client'
 
-import type { NavbarProps } from '@heroui/react'
-
 import React from 'react'
 import {
 	Navbar,
@@ -19,37 +17,15 @@ import {
 import { Icon } from '@iconify/react'
 
 import styles from './styles.module.css'
-import { Img } from '@/ui/Img'
-
-export interface BasicNavbarProps extends NavbarProps {
-	/** Logo data */
-	logo?: {
-		name?: string
-		image?: {
-			dark?: string
-			default?: string
-		}
-	}
-	/** Title of the navbar */
-	title?: string
-	/** Menu items */
-	menuItems?: Array<{
-		/** Internal metadata */
-		internal: {
-			metadata: {
-				slug: {
-					current: string
-				}
-				title: string
-			}
-		}
-	}>
-}
+import { BasicNavbarProps } from '@/components/header/types'
+import Image from 'next/image'
+import { urlFor } from '@/sanity/lib/image'
 
 const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 	({ classNames = {}, logo, title, menuItems, ...props }, ref) => {
 		const [isMenuOpen, setIsMenuOpen] = React.useState(false)
 		const logoImage = logo?.image?.dark || logo?.image?.default
+		console.log('logoImage', logoImage)
 
 		return (
 			<Navbar
@@ -71,10 +47,13 @@ const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 				<div className={cn('container', styles.Container)}>{/* Left Content */}
 					<NavbarBrand as={Link} href="/">
 						{logoImage ? (
-							<Img
+							<Image
 								className="inline-block max-h-10 w-auto"
-								image={`${logoImage}`}
-								alt={logo?.name || title}
+								src={urlFor(logoImage as any).url()}
+								alt={`${logo?.name}` || `${title}`}
+								width={40}
+								height={40}
+								quality={50}
 							/>
 						) : (
 							<span className="text-gradient">{title}</span>
@@ -84,11 +63,11 @@ const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 					{/* Center Content */}
 					<NavbarContent justify="center">
 						{
-							menuItems.map((item, index) => (
+							menuItems?.map((item, index) => (
 								<NavbarItem key={index}>
 									<Link className="text-default-500"
-												href={item?.internal?.metadata?.slug?.current === 'index' ? '/' : item?.internal?.metadata?.slug?.current || '#'}
-												size="sm">
+										href={item?.internal?.metadata?.slug?.current === 'index' ? '/' : item?.internal?.metadata?.slug?.current || '#'}
+										size="sm">
 										{item?.internal?.metadata?.slug?.current === 'index' ? 'Главная' : item?.internal?.metadata?.title}
 									</Link>
 								</NavbarItem>
@@ -125,11 +104,11 @@ const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 							},
 						}}
 					>
-						{menuItems.map((item, index) => (
+						{menuItems?.map((item, index) => (
 							<NavbarMenuItem key={index}>
 								<Link className="mb-2 w-full text-default-500"
-											href={item?.internal?.metadata?.slug?.current === 'index' ? '/' : item?.internal?.metadata?.slug?.current || '#'}
-											size="md">
+									href={item?.internal?.metadata?.slug?.current === 'index' ? '/' : item?.internal?.metadata?.slug?.current || '#'}
+									size="md">
 									{item?.internal?.metadata?.slug?.current === 'index' ? 'Главная' : item?.internal?.metadata?.title}
 								</Link>
 								{index < menuItems.length - 1 && <Divider className="opacity-50" />}
