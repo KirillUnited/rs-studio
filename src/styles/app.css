@@ -101,6 +101,9 @@
 	hr {
 		@apply border-ink/10;
 	}
+	code {
+		@apply rounded-full bg-ink/5 px-1 py-0.5 border-1 text-white/80 font-mono;
+	}
 }
 
 @utility container {
@@ -108,6 +111,16 @@
 	padding-inline: 1rem;
 }
 
+@utility hero-section-title {
+          	 background: linear-gradient(91deg, #FFF 32.88%, rgba(255, 255, 255, 0.40) 99.12%);
+						 -webkit-background-clip: text;
+						 background-clip: text;
+						 -webkit-text-fill-color: transparent;
+}
+
+@utility brand-gradient {
+	@apply bg-gradient-to-r from-primary to-secondary;
+}
 /* animations */
 
 @utility anim-fade {

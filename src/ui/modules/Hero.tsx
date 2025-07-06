@@ -10,14 +10,14 @@ import { Button } from '@heroui/react'
 import { Icon } from '@iconify/react'
 
 export default function Hero({
-															 pretitle,
-															 content,
-															 ctas,
-															 assets,
-															 textAlign: ta = 'center',
-															 alignItems: ai,
-															 ...props
-														 }: Partial<{
+	pretitle,
+	content,
+	ctas,
+	assets,
+	textAlign: ta = 'center',
+	alignItems: ai,
+	...props
+}: Partial<{
 	pretitle: string
 	content: any
 	ctas: Sanity.CTA[]
@@ -36,7 +36,7 @@ export default function Hero({
 		<section
 			className={cn(
 				hasImage &&
-				'bg-ink text-canvas grid overflow-hidden *:col-span-full *:row-span-full',
+				'relative isolate bg-ink text-canvas grid overflow-hidden *:col-span-full *:row-span-full after:absolute after:z-0 after:inset-0 after:bg-ink/70 after:content-[""]',
 			)}
 			{...moduleProps(props)}
 		>
@@ -50,10 +50,11 @@ export default function Hero({
 			)}
 
 			{content && (
-				<div className="section flex w-full flex-col text-balance">
+				<div className="section flex w-full flex-col text-balance z-10">
 					<div
 						className={cn(
 							'richtext headings:text-balance relative isolate max-w-xl',
+							'flex flex-col gap-4 items-center',
 							hasImage && 'text-shadow',
 							{
 								'mb-8': alignItems === 'start',
@@ -83,6 +84,11 @@ export default function Hero({
 						>
 							{pretitle}
 						</Button>
+						<div className="text-center text-[clamp(40px,10vw,44px)] font-bold leading-[1.2] tracking-tighter sm:text-[64px]">
+							<h1 className="hero-section-title bg-clip-text text-transparent !text-[clamp(40px,10vw,64px)]">
+								{pretitle}
+							</h1>
+						</div>
 
 						<PortableText
 							value={content}
@@ -119,27 +125,26 @@ export default function Hero({
 						{/*/>*/}
 						<div className="flex flex-col items-center justify-center gap-6 sm:flex-row">
 							<Button
-								className="h-10 w-[163px] bg-default-foreground px-[16px] py-[10px] text-small font-medium leading-5 text-background"
+								className="h-10 w-[163px] brand-gradient px-[16px] py-[10px] text-small font-medium leading-5 text-background"
 								radius="full"
 							>
 								Заказать
 							</Button>
 							<Button
-								className="h-10 w-[163px] border-1 border-default-100 px-[16px] py-[10px] text-small font-medium leading-5"
+								className="h-10 w-[163px] border-1 border-default-100 px-[16px] py-[10px] text-small font-medium leading-5 text-white"
 								endContent={
-									<span
-										className="pointer-events-none flex h-[22px] w-[22px] items-center justify-center rounded-full bg-default-100">
-                  <Icon
-										className="text-default-500 [&>path]:stroke-[1.5]"
-										icon="solar:arrow-right-linear"
-										width={16}
-									/>
-                </span>
+									<span className="pointer-events-none flex h-[22px] w-[22px] items-center justify-center rounded-full bg-default-100">
+										<Icon
+											className="text-default-500 [&>path]:stroke-[1.5]"
+											icon="solar:arrow-right-linear"
+											width={16}
+										/>
+									</span>
 								}
 								radius="full"
 								variant="bordered"
 							>
-								Узнать цены
+								Подробнее
 							</Button>
 						</div>
 					</div>
