@@ -1,7 +1,5 @@
 'use client'
 
-import type { NavbarProps } from '@heroui/react'
-
 import React from 'react'
 import {
 	Navbar,
@@ -20,31 +18,7 @@ import { Icon } from '@iconify/react'
 
 import styles from './styles.module.css'
 import { Img } from '@/ui/Img'
-
-export interface BasicNavbarProps extends NavbarProps {
-	/** Logo data */
-	logo?: {
-		name?: string
-		image?: {
-			dark?: string
-			default?: string
-		}
-	}
-	/** Title of the navbar */
-	title?: string
-	/** Menu items */
-	menuItems?: Array<{
-		/** Internal metadata */
-		internal: {
-			metadata: {
-				slug: {
-					current: string
-				}
-				title: string
-			}
-		}
-	}>
-}
+import { BasicNavbarProps } from '@/components/header/types'
 
 const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 	({ classNames = {}, logo, title, menuItems, ...props }, ref) => {
