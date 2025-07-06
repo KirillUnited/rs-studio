@@ -21,7 +21,32 @@ import { Icon } from '@iconify/react'
 import styles from './styles.module.css'
 import { Img } from '@/ui/Img'
 
-const BasicNavbar = React.forwardRef<HTMLElement, NavbarProps>(
+export interface BasicNavbarProps extends NavbarProps {
+	/** Logo data */
+	logo?: {
+		name?: string
+		image?: {
+			dark?: string
+			default?: string
+		}
+	}
+	/** Title of the navbar */
+	title?: string
+	/** Menu items */
+	menuItems?: Array<{
+		/** Internal metadata */
+		internal: {
+			metadata: {
+				slug: {
+					current: string
+				}
+				title: string
+			}
+		}
+	}>
+}
+
+const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 	({ classNames = {}, logo, title, menuItems = menuItems, ...props }, ref) => {
 		const [isMenuOpen, setIsMenuOpen] = React.useState(false)
 		const logoImage = logo?.image?.dark || logo?.image?.default
@@ -48,7 +73,7 @@ const BasicNavbar = React.forwardRef<HTMLElement, NavbarProps>(
 						{logoImage ? (
 							<Img
 								className="inline-block max-h-10 w-auto"
-								image={logoImage}
+								image={`${logoImage}`}
 								alt={logo?.name || title}
 							/>
 						) : (
