@@ -36,7 +36,7 @@ export default function Hero({
 		<section
 			className={cn(
 				hasImage &&
-				'bg-ink text-canvas grid overflow-hidden *:col-span-full *:row-span-full',
+				'relative isolate bg-ink text-canvas grid overflow-hidden *:col-span-full *:row-span-full after:absolute after:z-0 after:inset-0 after:bg-ink/50 after:content-[""]',
 			)}
 			{...moduleProps(props)}
 		>
@@ -50,10 +50,11 @@ export default function Hero({
 			)}
 
 			{content && (
-				<div className="section flex w-full flex-col text-balance">
+				<div className="section flex w-full flex-col text-balance z-10">
 					<div
 						className={cn(
 							'richtext headings:text-balance relative isolate max-w-xl',
+							'flex flex-col gap-4',
 							hasImage && 'text-shadow',
 							{
 								'mb-8': alignItems === 'start',
@@ -84,9 +85,9 @@ export default function Hero({
 							{pretitle}
 						</Button>
 						<div className="text-center text-[clamp(40px,10vw,44px)] font-bold leading-[1.2] tracking-tighter sm:text-[64px]">
-							<div className="hero-section-title bg-clip-text text-transparent">
+							<h1 className="hero-section-title bg-clip-text text-transparent !text-[clamp(40px,10vw,64px)]">
 								{pretitle}
-							</div>
+							</h1>
 						</div>
 
 						<PortableText
