@@ -10,14 +10,14 @@ import { Button } from '@heroui/react'
 import { Icon } from '@iconify/react'
 
 export default function Hero({
-															 pretitle,
-															 content,
-															 ctas,
-															 assets,
-															 textAlign: ta = 'center',
-															 alignItems: ai,
-															 ...props
-														 }: Partial<{
+	pretitle,
+	content,
+	ctas,
+	assets,
+	textAlign: ta = 'center',
+	alignItems: ai,
+	...props
+}: Partial<{
 	pretitle: string
 	content: any
 	ctas: Sanity.CTA[]
@@ -83,6 +83,11 @@ export default function Hero({
 						>
 							{pretitle}
 						</Button>
+						<div className="text-center text-[clamp(40px,10vw,44px)] font-bold leading-[1.2] tracking-tighter sm:text-[64px]">
+							<div className="hero-section-title bg-clip-text text-transparent">
+								{pretitle}
+							</div>
+						</div>
 
 						<PortableText
 							value={content}
@@ -127,19 +132,18 @@ export default function Hero({
 							<Button
 								className="h-10 w-[163px] border-1 border-default-100 px-[16px] py-[10px] text-small font-medium leading-5"
 								endContent={
-									<span
-										className="pointer-events-none flex h-[22px] w-[22px] items-center justify-center rounded-full bg-default-100">
-                  <Icon
-										className="text-default-500 [&>path]:stroke-[1.5]"
-										icon="solar:arrow-right-linear"
-										width={16}
-									/>
-                </span>
+									<span className="pointer-events-none flex h-[22px] w-[22px] items-center justify-center rounded-full bg-default-100">
+										<Icon
+											className="text-default-500 [&>path]:stroke-[1.5]"
+											icon="solar:arrow-right-linear"
+											width={16}
+										/>
+									</span>
 								}
 								radius="full"
 								variant="bordered"
 							>
-								Узнать цены
+								Подробнее
 							</Button>
 						</div>
 					</div>
