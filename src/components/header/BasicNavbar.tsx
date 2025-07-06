@@ -14,7 +14,7 @@ import {
 	Link,
 	Button,
 	Divider,
-	cn, menuItem,
+	cn,
 } from '@heroui/react'
 import { Icon } from '@iconify/react'
 
@@ -47,7 +47,7 @@ export interface BasicNavbarProps extends NavbarProps {
 }
 
 const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
-	({ classNames = {}, logo, title, menuItems = menuItems, ...props }, ref) => {
+	({ classNames = {}, logo, title, menuItems, ...props }, ref) => {
 		const [isMenuOpen, setIsMenuOpen] = React.useState(false)
 		const logoImage = logo?.image?.dark || logo?.image?.default
 
@@ -86,7 +86,9 @@ const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 						{
 							menuItems.map((item, index) => (
 								<NavbarItem key={index}>
-									<Link className="text-default-500" href={item?.internal?.metadata?.slug?.current === 'index' ? '/' : item?.internal?.metadata?.slug?.current || '#'} size="sm">
+									<Link className="text-default-500"
+												href={item?.internal?.metadata?.slug?.current === 'index' ? '/' : item?.internal?.metadata?.slug?.current || '#'}
+												size="sm">
 										{item?.internal?.metadata?.slug?.current === 'index' ? 'Главная' : item?.internal?.metadata?.title}
 									</Link>
 								</NavbarItem>
@@ -125,7 +127,9 @@ const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 					>
 						{menuItems.map((item, index) => (
 							<NavbarMenuItem key={index}>
-								<Link className="mb-2 w-full text-default-500" href={item?.internal?.metadata?.slug?.current === 'index' ? '/' : item?.internal?.metadata?.slug?.current || '#'} size="md">
+								<Link className="mb-2 w-full text-default-500"
+											href={item?.internal?.metadata?.slug?.current === 'index' ? '/' : item?.internal?.metadata?.slug?.current || '#'}
+											size="md">
 									{item?.internal?.metadata?.slug?.current === 'index' ? 'Главная' : item?.internal?.metadata?.title}
 								</Link>
 								{index < menuItems.length - 1 && <Divider className="opacity-50" />}
