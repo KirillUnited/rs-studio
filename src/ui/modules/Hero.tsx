@@ -36,7 +36,7 @@ export default function Hero({
 		<section
 			className={cn(
 				hasImage &&
-				'relative isolate bg-ink text-canvas grid overflow-hidden *:col-span-full *:row-span-full after:absolute after:z-0 after:inset-0 after:bg-ink/50 after:content-[""]',
+				'relative isolate bg-ink text-canvas grid overflow-hidden *:col-span-full *:row-span-full after:absolute after:z-0 after:inset-0 after:bg-ink/70 after:content-[""]',
 			)}
 			{...moduleProps(props)}
 		>
@@ -125,7 +125,7 @@ export default function Hero({
 						{/*/>*/}
 						<div className="flex flex-col items-center justify-center gap-6 sm:flex-row">
 							<Button
-								className="h-10 w-[163px] bg-gradient-to-r from-primary to-secondary px-[16px] py-[10px] text-small font-medium leading-5 text-background"
+								className="h-10 w-[163px] brand-gradient px-[16px] py-[10px] text-small font-medium leading-5 text-background"
 								radius="full"
 							>
 								Заказать
