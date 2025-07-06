@@ -54,7 +54,7 @@ export default function Hero({
 					<div
 						className={cn(
 							'richtext headings:text-balance relative isolate max-w-xl',
-							'flex flex-col gap-4',
+							'flex flex-col gap-4 items-center',
 							hasImage && 'text-shadow',
 							{
 								'mb-8': alignItems === 'start',
@@ -125,7 +125,7 @@ export default function Hero({
 						{/*/>*/}
 						<div className="flex flex-col items-center justify-center gap-6 sm:flex-row">
 							<Button
-								className="h-10 w-[163px] bg-default-foreground px-[16px] py-[10px] text-small font-medium leading-5 text-background"
+								className="h-10 w-[163px] bg-gradient-to-r from-primary to-secondary px-[16px] py-[10px] text-small font-medium leading-5 text-background"
 								radius="full"
 							>
 								Заказать
