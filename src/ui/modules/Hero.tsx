@@ -11,6 +11,7 @@ import { Icon } from '@iconify/react'
 
 export default function Hero({
 	pretitle,
+	title,
 	content,
 	ctas,
 	assets,
@@ -19,6 +20,7 @@ export default function Hero({
 	...props
 }: Partial<{
 	pretitle: string
+	title: string
 	content: any
 	ctas: Sanity.CTA[]
 	assets: Sanity.Img[]
@@ -50,10 +52,10 @@ export default function Hero({
 			)}
 
 			{content && (
-				<div className="section flex w-full flex-col text-balance z-10">
+				<div className="section flex w-full flex-col text-balance z-10 dark">
 					<div
 						className={cn(
-							'richtext headings:text-balance relative isolate max-w-xl',
+							'richtext headings:text-balance relative isolate max-w-3xl',
 							'flex flex-col gap-4 items-center',
 							hasImage && 'text-shadow',
 							{
@@ -70,23 +72,27 @@ export default function Hero({
 						{/*<Pretitle className={cn(hasImage && 'text-canvas/70')}>*/}
 						{/*	{pretitle}*/}
 						{/*</Pretitle>*/}
-						<Button
-							className="h-9 overflow-hidden border-1 border-default-100 bg-default-50 px-[18px] py-2 text-small font-normal leading-5 text-default-500"
-							endContent={
-								<Icon
-									className="flex-none outline-none [&>path]:stroke-[2]"
-									icon="solar:arrow-right-linear"
-									width={20}
-								/>
-							}
-							radius="full"
-							variant="bordered"
-						>
-							{pretitle}
-						</Button>
-						<div className="text-center text-[clamp(40px,10vw,44px)] font-bold leading-[1.2] tracking-tighter sm:text-[64px]">
-							<h1 className="hero-section-title bg-clip-text text-transparent !text-[clamp(40px,10vw,64px)]">
+						{pretitle && (
+							<Button
+								className="h-9 overflow-hidden border-1 border-default-100 bg-default-50 px-[18px] py-2 text-small font-normal leading-5 text-default-500"
+								endContent={
+									<Icon
+										className="flex-none outline-none [&>path]:stroke-[2]"
+										icon="solar:arrow-right-linear"
+										width={20}
+									/>
+								}
+								radius="full"
+								variant="bordered"
+							>
 								{pretitle}
+							</Button>
+						)
+						}
+						<div
+							className="text-center text-[clamp(40px,10vw,44px)] font-bold leading-[1.2] tracking-tighter sm:text-[64px]">
+							<h1 className="hero-section-title bg-clip-text text-transparent !text-[clamp(40px,10vw,64px)]">
+								{title}
 							</h1>
 						</div>
 
@@ -125,7 +131,7 @@ export default function Hero({
 						{/*/>*/}
 						<div className="flex flex-col items-center justify-center gap-6 sm:flex-row">
 							<Button
-								className="h-10 w-[163px] brand-gradient px-[16px] py-[10px] text-small font-medium leading-5 text-background"
+								className="h-10 w-[163px] brand-gradient px-[16px] py-[10px] text-small font-medium leading-5 text-foreground"
 								radius="full"
 							>
 								Заказать
@@ -133,7 +139,8 @@ export default function Hero({
 							<Button
 								className="h-10 w-[163px] border-1 border-default-100 px-[16px] py-[10px] text-small font-medium leading-5 text-white"
 								endContent={
-									<span className="pointer-events-none flex h-[22px] w-[22px] items-center justify-center rounded-full bg-default-100">
+									<span
+										className="pointer-events-none flex h-[22px] w-[22px] items-center justify-center rounded-full bg-default-100">
 										<Icon
 											className="text-default-500 [&>path]:stroke-[1.5]"
 											icon="solar:arrow-right-linear"
