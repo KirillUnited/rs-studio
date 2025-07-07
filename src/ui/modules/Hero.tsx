@@ -1,8 +1,6 @@
 import moduleProps from '@/lib/moduleProps'
 import { ResponsiveImg } from '@/ui/Img'
 import { PortableText, stegaClean } from 'next-sanity'
-import CTAList from '@/ui/CTAList'
-import Pretitle from '@/ui/Pretitle'
 import CustomHTML from './CustomHTML'
 import Reputation from '@/ui/Reputation'
 import { cn } from '@/lib/utils'
@@ -121,14 +119,6 @@ export default function Hero({
 							}}
 						/>
 
-						{/*<CTAList*/}
-						{/*	ctas={ctas}*/}
-						{/*	className={cn('!mt-4', {*/}
-						{/*		'justify-start': textAlign === 'left',*/}
-						{/*		'justify-center': textAlign === 'center',*/}
-						{/*		'justify-end': textAlign === 'right',*/}
-						{/*	})}*/}
-						{/*/>*/}
 						<div className="flex flex-col items-center justify-center gap-6 sm:flex-row">
 							<Button
 								className="h-10 w-[163px] brand-gradient px-[16px] py-[10px] text-small font-medium leading-5 text-foreground"
