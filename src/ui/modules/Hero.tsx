@@ -46,6 +46,9 @@ export default function Hero({
 					className="max-h-fold size-full object-cover"
 					width={2400}
 					draggable={false}
+					style={{
+						maxHeight: '75vh',
+					}}
 				/>
 			)}
 
@@ -119,7 +122,7 @@ export default function Hero({
 							}}
 						/>
 
-						<div className="flex flex-col items-center justify-center gap-6 sm:flex-row">
+						<div className="flex flex-col items-center justify-center gap-6 sm:flex-row mt-10">
 							<Button
 								className="h-10 w-[163px] brand-gradient px-[16px] py-[10px] text-small font-medium leading-5 text-foreground"
 								radius="full"
@@ -127,10 +130,10 @@ export default function Hero({
 								Заказать
 							</Button>
 							<Button
-								className="h-10 w-[163px] border-1 border-default-100 px-[16px] py-[10px] text-small font-medium leading-5 text-white"
+								className="group h-10 w-[163px] border-1 border-default-100 px-[16px] py-[10px] text-small font-medium leading-5 text-white"
 								endContent={
 									<span
-										className="pointer-events-none flex h-[22px] w-[22px] items-center justify-center rounded-full bg-default-100">
+										className="group-hover:translate-x-1 transition-transform pointer-events-none flex h-[22px] w-[22px] items-center justify-center rounded-full bg-default-100">
 										<Icon
 											className="text-default-500 [&>path]:stroke-[1.5]"
 											icon="solar:arrow-right-linear"
