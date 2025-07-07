@@ -23,7 +23,7 @@ export default async function Banner() {
 			{announcements?.map(({ start, end, content, cta, _id }) => (
 				<Scheduler start={start} end={end} key={_id}>
 					<aside
-						className="dark flex flex-wrap gap-y-2 w-full items-center gap-x-6 border-b-1 border-divider bg-background px-6 py-2 backdrop-blur-xl sm:px-3.5 sm:before:flex-1">
+						className="hidden dark md:flex flex-wrap gap-y-2 w-full items-center gap-x-6 border-b-1 border-divider bg-background px-6 py-2 backdrop-blur-xl sm:px-3.5 sm:before:flex-1">
 						<div className="text-small text-foreground">
 							<PortableText value={content} />
 						</div>
