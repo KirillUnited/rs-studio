@@ -17,8 +17,8 @@ export default async function Header() {
 			logo={{
 				name: logo?.name,
 				image: {
-					dark: logo?.image?.dark?.asset?.url,
-					default: logo?.image?.default?.asset?.url
+					dark: logo?.image?.dark?.asset,
+					default: logo?.image?.default?.asset
 				}
 			}}
 			title={title}
