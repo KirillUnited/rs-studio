@@ -6,17 +6,19 @@ import Reputation from '@/ui/Reputation'
 import { cn } from '@/lib/utils'
 import { Button } from '@heroui/react'
 import { Icon } from '@iconify/react'
+import Link from 'next/link'
+import { CallUsBadge } from '@/components/ui'
 
 export default function Hero({
-	pretitle,
-	title,
-	content,
-	ctas,
-	assets,
-	textAlign: ta = 'center',
-	alignItems: ai,
-	...props
-}: Partial<{
+															 pretitle,
+															 title,
+															 content,
+															 ctas,
+															 assets,
+															 textAlign: ta = 'center',
+															 alignItems: ai,
+															 ...props
+														 }: Partial<{
 	pretitle: string
 	title: string
 	content: any
@@ -53,10 +55,10 @@ export default function Hero({
 			)}
 
 			{content && (
-				<div className="section flex w-full flex-col text-balance z-10 dark">
+				<div className="flex w-full flex-col text-balance z-10 dark container">
 					<div
 						className={cn(
-							'headings:text-balance relative isolate container',
+							'headings:text-balance relative isolate py-12',
 							'flex flex-col gap-4 items-center',
 							hasImage && 'text-shadow',
 							{
@@ -92,11 +94,11 @@ export default function Hero({
 						}
 						<div
 							className={cn(
-								"text-center text-[clamp(40px,10vw,44px)] font-bold leading-[1.2] tracking-tighter sm:text-[64px]",
+								'text-center text-[clamp(40px,10vw,44px)] font-bold leading-[1.2] tracking-tighter sm:text-[64px]',
 								{
 									'text-right': ['left', 'end'].includes(textAlign),
 									'text-left': ['right', 'start'].includes(textAlign),
-								}
+								},
 							)}>
 							<h1 className="hero-section-title bg-clip-text text-transparent !text-[clamp(40px,10vw,64px)]">
 								{title}
@@ -128,31 +130,40 @@ export default function Hero({
 							}}
 						/>
 
-						<div className="flex flex-col items-center justify-center gap-6 sm:flex-row mt-10">
-							<Button
-								className="group h-10 w-[163px] brand-gradient px-[16px] py-[10px] text-small font-medium leading-5 text-foreground"
-								radius="full"
-							>
-								<Icon className="group-hover:-translate-x-1 transition-transform" icon="bi:calendar-event" width={16} />
-								Заказать
-							</Button>
-							<Button
-								className="group h-10 w-[163px] border-1 border-default-100 px-[16px] py-[10px] text-small font-medium leading-5 text-white"
-								endContent={
-									<span
-										className="group-hover:translate-x-1 transition-transform pointer-events-none flex h-[22px] w-[22px] items-center justify-center rounded-full bg-foreground">
+						<div className="flex flex-col sm:items-end justify-between w-full gap-6 sm:flex-row mt-10">
+							<div className='flex flex-col gap-2 sm:flex-row'>
+								<Button
+									className="group brand-gradient font-medium"
+									radius="full"
+									size='lg'
+								>
+									<Icon className="group-hover:-translate-x-1 transition-transform" icon="bi:calendar-event"
+												width={18} />
+									Заказать
+								</Button>
+								<Button
+									className="group border-1 border-default-100 font-medium text-white"
+									endContent={
+										<span
+											className="group-hover:translate-x-1 transition-transform pointer-events-none flex h-[22px] w-[22px] items-center justify-center rounded-full bg-foreground">
 										<Icon
 											className="text-background [&>path]:stroke-[1.5]"
 											icon="solar:arrow-right-linear"
 											width={16}
 										/>
 									</span>
-								}
-								radius="full"
-								variant="bordered"
-							>
-								Подробнее
-							</Button>
+									}
+									radius="full"
+									variant="bordered"
+									as={Link}
+									href="/blog/tekhnologiya-litech-revolyuciya-v-restavracii-kozhi"
+									size='lg'
+									target="_blank"
+								>
+									Подробнее
+								</Button>
+							</div>
+							<CallUsBadge />
 						</div>
 					</div>
 				</div>
