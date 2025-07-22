@@ -1,9 +1,8 @@
 import Link from 'next/link'
-import { Icon } from '@iconify/react'
 import { Avatar } from '@heroui/react'
 import styles from './ui.module.css'
 import { cn } from '@/lib/utils'
-import { FaPhone } from 'react-icons/fa'
+import { FaPhoneAlt } from 'react-icons/fa'
 
 export default function CallUsBadge() {
 	return (
@@ -16,17 +15,11 @@ export default function CallUsBadge() {
 			<div className="flex flex-col">
 				<span className="text-xs">Позвоните нам</span>
 				<div className="flex items-center gap-2">
-					<Icon
-						className="group-hover:translate-x-1 transition-transform"
-						icon="solar:phone-call-linear"
-						width={20}
-						height={20}
-					/>
-					<FaPhone size={18} />
+					<FaPhoneAlt size={18} />
 					<span className="text-lg font-semibold">(123) 456-7890</span>
 				</div>
 			</div>
-			<Avatar src="/images/call-us.png" size="lg" />
+			<Avatar src="https://testingbot.com/free-online-tools/random-avatar/200?img=5" size="lg" />
 		</Link>
 	)
 }
