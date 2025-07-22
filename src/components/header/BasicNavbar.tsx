@@ -20,10 +20,12 @@ import styles from './styles.module.css'
 import { BasicNavbarProps } from '@/components/header/types'
 import Image from 'next/image'
 import { urlFor } from '@/sanity/lib/image'
+import { ModalDialog } from '@/components/modal-dialog'
 
 const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 	({ classNames = {}, logo, title, menuItems, ...props }, ref) => {
-		const [isMenuOpen, setIsMenuOpen] = React.useState(false)
+		const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+		const [isModalOpen, setIsModalOpen] = React.useState(false);
 		const logoImage = logo?.image?.dark || logo?.image?.default
 
 		return (
@@ -48,7 +50,7 @@ const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 					<NavbarBrand as={Link} href="/" className='flex-0'>
 						{logoImage ? (
 							<Image
-								className="inline-block max-h-10 w-10"
+								className="inline-block max-h-10 w-10 rounded-full"
 								src={urlFor(logoImage as any).url()}
 								alt={`${logo?.name}` || `${title}`}
 								width={40}
@@ -84,9 +86,12 @@ const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 								endContent={<Icon icon="solar:alt-arrow-right-linear" />}
 								radius="full"
 								variant="flat"
+								onPress={() => setIsModalOpen(true)}
 							>
 								Заказать
 							</Button>
+
+							<ModalDialog isOpen={isModalOpen}  onClose={() => setIsModalOpen(false)}/>
 						</NavbarItem>
 					</NavbarContent>
 
