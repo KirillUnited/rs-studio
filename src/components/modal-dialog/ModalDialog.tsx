@@ -1,3 +1,4 @@
+import { sendOrderMessage } from '@/lib/messenger'
 import { Button, Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Textarea } from '@heroui/react'
 import { useForm } from 'react-hook-form'
 
@@ -9,8 +10,8 @@ type OrderFormDataProps = {
 }
 
 export interface ModalDialogProps {
-  isOpen?: boolean;
-  onClose: () => void;
+	isOpen?: boolean;
+	onClose: () => void;
 }
 
 export default function ModalDialog({ isOpen, onClose }: ModalDialogProps) {
@@ -21,11 +22,11 @@ export default function ModalDialog({ isOpen, onClose }: ModalDialogProps) {
 		formState: { errors },
 	} = useForm<OrderFormDataProps>()
 
-	const onSubmit = (data: OrderFormDataProps) => {
+	const onSubmit = async (data: OrderFormDataProps) => {
+		await sendOrderMessage(data)
 		console.log('Order submitted:', data)
-		// Here you would typically send the data to your API
-		// setIsOpen(false)
 		reset()
+		onClose()
 	}
 
 	return (
@@ -48,8 +49,8 @@ export default function ModalDialog({ isOpen, onClose }: ModalDialogProps) {
 								{...register('phone', {
 									required: 'Обязательное поле',
 									pattern: {
-										value: /^[+]?[\s.-]?(\d[\s.-]?){10,}$/,
-										message: 'Введите корректный номер телефона',
+										value: /^\+375(17|29|33|44|25)[0-9]{7}$/,
+										message: 'Введите корректный номер телефона в формате +375XXXXXXXXX',
 									},
 								})}
 								label="Телефон"
@@ -78,6 +79,7 @@ export default function ModalDialog({ isOpen, onClose }: ModalDialogProps) {
 							/>
 
 							<ModalFooter className="mt-6">
+								{errors.message && <p>{errors.message.message}</p>}
 								<Button variant="flat" onPress={onClose}>
 									Отмена
 								</Button>
