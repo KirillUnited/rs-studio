@@ -13,11 +13,11 @@ export async function sendOrderMessage(data: any): Promise<any> {
         comment,
     } = data;
     const message = `
-    📝 Новый заказ:\n\n
-    👤 Имя: ${name}\n
-    📱 Телефон: ${phone}\n
-    📧 Email: ${email}\n
-    📝 Комментарий: ${comment || 'Нет комментариев'}\n
+    📝 Новый заказ:\n
+    👤 Имя: ${name}
+    📱 Телефон: ${phone}
+    📧 Email: ${email}
+    📝 Комментарий: ${comment || 'Нет комментариев'}
     `;
 
     return await axios

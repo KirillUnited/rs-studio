@@ -14,15 +14,15 @@ import { ModalDialog } from '@/components/modal-dialog'
 
 
 export default function Hero({
-															 pretitle,
-															 title,
-															 content,
-															 ctas,
-															 assets,
-															 textAlign: ta = 'center',
-															 alignItems: ai,
-															 ...props
-														 }: Partial<{
+	pretitle,
+	title,
+	content,
+	ctas,
+	assets,
+	textAlign: ta = 'center',
+	alignItems: ai,
+	...props
+}: Partial<{
 	pretitle: string
 	title: string
 	content: any
@@ -36,8 +36,8 @@ export default function Hero({
 	const asset = assets?.[0]
 
 	const textAlign = stegaClean(ta)
-  const alignItems = stegaClean(ai)
-  const [isOpen, setIsOpen] = useState(false);
+	const alignItems = stegaClean(ai)
+	const [isOpen, setIsOpen] = useState(false);
 	const openDialog = () => setIsOpen(true)
 
 	return (
@@ -83,16 +83,17 @@ export default function Hero({
 					>
 						{pretitle && (
 							<Button
-								className="h-9 overflow-hidden border-1 border-default-100 bg-default-50 px-[18px] py-2 text-small font-normal leading-5 text-foreground/90"
+								className="border-1 border-default-100 bg-default-50 text-foreground/90"
 								startContent={
 									<Icon
 										className="flex-none outline-none transition-transform [&>path]:stroke-[2] text-secondary"
 										icon="solar:star-linear"
-										width={20}
+										width={18}
 									/>
 								}
 								radius="full"
 								variant="bordered"
+								size='sm'
 							>
 								{pretitle}
 							</Button>
@@ -106,7 +107,7 @@ export default function Hero({
 									'text-left': ['right', 'start'].includes(textAlign),
 								},
 							)}>
-							<h1 className="hero-section-title bg-clip-text text-transparent !text-[clamp(40px,10vw,64px)]">
+							<h1 className="hero-section-title bg-clip-text text-transparent !text-[clamp(40px,10vw,64px)] leading-none">
 								{title}
 							</h1>
 						</div>
@@ -146,7 +147,7 @@ export default function Hero({
 										size='lg'
 									>
 										<Icon className="group-hover:-translate-x-1 transition-transform" icon="bi:calendar-event"
-												width={18} />
+											width={18} />
 										Заказать
 									</Button>
 
@@ -157,12 +158,12 @@ export default function Hero({
 									endContent={
 										<span
 											className="group-hover:translate-x-1 transition-transform pointer-events-none flex h-[22px] w-[22px] items-center justify-center rounded-full bg-foreground">
-										<Icon
-											className="text-background [&>path]:stroke-[1.5]"
-											icon="solar:arrow-right-linear"
-											width={16}
-										/>
-									</span>
+											<Icon
+												className="text-background [&>path]:stroke-[1.5]"
+												icon="solar:arrow-right-linear"
+												width={16}
+											/>
+										</span>
 									}
 									radius="full"
 									variant="bordered"

@@ -14,16 +14,17 @@ export default function Pretitle({
 
 	return (
 		<Button
-			className={cn("h-9 overflow-hidden border-1 border-default-100 bg-default-50 px-[18px] py-2 text-small font-normal leading-5 text-foreground/90", className)}
-			startContent={
-				<Icon
-					className="flex-none outline-none transition-transform [&>path]:stroke-[2] text-secondary"
-					icon="solar:star-linear"
-					width={20}
-				/>
-			}
+			className={cn("border-1 border-secondary-500 bg-default-50 text-foreground/90", className)}
+			// startContent={
+			// 	<Icon
+			// 		className="flex-none outline-none transition-transform [&>path]:stroke-[2] text-secondary"
+			// 		icon="solar:star-linear"
+			// 		width={18}
+			// 	/>
+			// }
 			radius="full"
 			variant="bordered"
+			size='sm'
 		>
 			{stegaClean(children)}
 		</Button>
