@@ -5,9 +5,10 @@ import { Button } from '@heroui/react'
 import { JSX } from 'react'
 
 export default function Pretitle({
-																	 className,
-																	 children,
-																 }: JSX.Element) {
+	children
+}: {
+	children?: React.ReactNode
+}) {
 	if (!children) return null
 
 	return (
