@@ -22,7 +22,7 @@ export default async function RootLayout({
 	return (
 		<Root>
 			{/* <GoogleTagManager gtmId="" /> */}
-			<body className={cn('bg-canvas text-ink antialiased flex flex-col min-h-screen',
+			<body className={cn('bg-background text-foreground antialiased flex flex-col min-h-screen dark',
 				fontSans.variable,
 			)}>
 			<HeroUIProvider>
