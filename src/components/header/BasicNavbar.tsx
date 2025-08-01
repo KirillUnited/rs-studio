@@ -33,7 +33,7 @@ const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 				ref={ref}
 				{...props}
 				classNames={{
-					base: cn('border-default-100 bg-transparent', {
+					base: cn('border-default-100 bg-background', {
 						'bg-default-200/50 dark:bg-default-100/50': isMenuOpen,
 					}),
 					wrapper: 'w-full justify-center',
@@ -67,7 +67,7 @@ const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 						{
 							menuItems?.map((item, index) => (
 								<NavbarItem key={index}>
-									<Link className="text-default-500"
+									<Link className="text-foreground"
 										href={item?.internal?.metadata?.slug?.current === 'index' ? '/' : item?.internal?.metadata?.slug?.current || '#'}
 										size="sm">
 										{item?.internal?.metadata?.slug?.current === 'index' ? 'Главная' : item?.internal?.metadata?.title}
