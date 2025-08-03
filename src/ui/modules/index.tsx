@@ -22,6 +22,7 @@ import TestimonialFeatured from './TestimonialFeatured'
 
 import dynamic from 'next/dynamic'
 import { createDataAttribute } from 'next-sanity'
+import { ContactUs } from '@/components/contact-us'
 
 const MODULE_MAP = {
 	'accordion-list': AccordionList,
@@ -95,6 +96,7 @@ export default function Modules({
 					/>
 				)
 			})}
+			<ContactUs />
 		</>
 	)
 }
