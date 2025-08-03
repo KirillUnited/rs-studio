@@ -1,3 +1,4 @@
+'use client';
 import { sendOrderMessage } from '@/lib/messenger'
 import { Button, Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Textarea } from '@heroui/react'
 import { useForm } from 'react-hook-form'
