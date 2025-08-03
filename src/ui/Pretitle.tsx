@@ -14,7 +14,7 @@ export default function Pretitle({
 
 	return (
 		<Button
-			className={cn("border-1 border-secondary-500 bg-default-50 text-foreground/90", className)}
+			className={cn("border-1 border-default-100 bg-default-50 text-foreground/90", className)}
 			// startContent={
 			// 	<Icon
 			// 		className="flex-none outline-none transition-transform [&>path]:stroke-[2] text-secondary"

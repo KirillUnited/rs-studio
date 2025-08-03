@@ -12,6 +12,8 @@
 	--color-accent: #000;
 
 	--max-height-fold: calc(100svh - var(--header-height));
+	--color-background: #111317;
+	--color-foreground: #f5f2f0;
 }
 
 @custom-variant hover (&:hover);
@@ -196,6 +198,10 @@
 	@apply from-accent/3 to-accent bg-linear-to-br bg-clip-text text-transparent;
 }
 
+@utility text-brand-gradient {
+	@apply from-primary/3 to-secondary bg-linear-to-br bg-clip-text text-transparent;
+}
+
 /* ctas, links */
 
 @utility action-base {
@@ -279,6 +285,10 @@
 
 @utility section {
 	@apply mx-auto max-w-screen-xl p-8 max-md:px-4 md:py-12;
+}
+
+@utility section-container {
+	@apply py-8 md:py-12;
 }
 
 /* richtext */
