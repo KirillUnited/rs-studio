@@ -25,6 +25,9 @@ export default function OrderForm() {
 				label="Ваше имя"
 				variant="bordered"
 				errorMessage={errors.name?.message}
+				classNames={{
+					inputWrapper: 'rounded-large',
+				}}
 			/>
 
 			<Input
@@ -38,6 +41,9 @@ export default function OrderForm() {
 				label="Телефон"
 				variant="bordered"
 				errorMessage={errors.phone?.message}
+				classNames={{
+					inputWrapper: 'rounded-large',
+				}}
 			/>
 
 			<Input
@@ -51,6 +57,9 @@ export default function OrderForm() {
 				label="Email"
 				variant="bordered"
 				errorMessage={errors.email?.message}
+				classNames={{
+					inputWrapper: 'rounded-large',
+				}}
 			/>
 
 			<Textarea
@@ -58,10 +67,13 @@ export default function OrderForm() {
 				label="Дополнительная информация"
 				variant="bordered"
 				className="col-span-2"
+				classNames={{
+					inputWrapper: 'rounded-large',
+				}}
 			/>
 
 
-			<Button color="primary" className="w-full brand-gradient group" type='submit'>
+			<Button color="primary" className="w-full brand-gradient group rounded-large" type='submit'>
 				Отправить
 				<BsArrowRight size={16} className='group-hover:translate-x-1 transition-transform' />
 			</Button>

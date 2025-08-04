@@ -4,6 +4,7 @@ import { PortableText, stegaClean } from 'next-sanity'
 import CTAList from '@/ui/CTAList'
 import { Img } from '@/ui/Img'
 import { cn } from '@/lib/utils'
+import { FeaturedServiceCard } from '@/components/service/ui'
 
 export default function CardList({
 	pretitle,
@@ -46,21 +47,21 @@ export default function CardList({
 					isCarousel
 						? 'carousel max-md:full-bleed md:overflow-fade-r pb-4 max-md:px-4'
 						: [
-								'grid *:h-full max-md:pb-4',
-								columns
-									? 'md:grid-cols-[repeat(var(--col,3),minmax(0,1fr))]'
-									: 'sm:grid-cols-[repeat(auto-fill,minmax(var(--size,300px),1fr))]',
-							],
+							'grid *:h-full max-md:pb-4',
+							columns
+								? 'md:grid-cols-[repeat(var(--col,3),minmax(0,1fr))]'
+								: 'sm:grid-cols-[repeat(auto-fill,minmax(var(--size,300px),1fr))]',
+						],
 				)}
 				style={
 					columns
 						? ({
-								'--col': columns,
-							} as React.CSSProperties)
+							'--col': columns,
+						} as React.CSSProperties)
 						: undefined
 				}
 			>
-				{cards?.map((card, key) => (
+				{/* {cards?.map((card, key) => (
 					<article
 						className={cn(
 							'flex flex-col gap-2',
@@ -83,7 +84,12 @@ export default function CardList({
 						</div>
 						<CTAList className="mt-auto" ctas={card.ctas} />
 					</article>
-				))}
+				))} */}
+
+				{/* TODO: remove */}
+				<FeaturedServiceCard card={{
+					title: 'Подробнее о наших услугах',
+				}} />
 			</div>
 		</section>
 	)

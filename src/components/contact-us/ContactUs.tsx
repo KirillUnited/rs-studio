@@ -64,7 +64,7 @@ export default function ContactUs() {
 							</div>
 						</div>
 
-						<Alert color='default' title='Бесплатная консультация' className='border-1 border-primary/20'>
+						<Alert color='default' title='Бесплатная консультация' className='border-1 border-primary/20 rounded-large'>
 							<p className="text-foreground-500 text-xs">
 								Получите бесплатную подробную оценку салона вашего автомобиля и индивидуальный план реставрации.
 							</p>
