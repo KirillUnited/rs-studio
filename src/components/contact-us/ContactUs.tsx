@@ -4,59 +4,62 @@ import { BsArrowRight, BsCheckCircle, BsMailbox, BsPhone } from "react-icons/bs"
 import { CgLock } from "react-icons/cg"
 import { FaMapPin } from "react-icons/fa"
 import { OrderForm } from '@/components/forms'
+import Link from 'next/link'
 
 export default function ContactUs() {
 	return (
 		<section id="contact" className="py-20 bg-background">
 			<div className="container">
-				<div className="flex flex-col gap-6 items-start mb-16">
+				<div className="flex flex-col gap-2 items-start mb-8 max-w-2xl">
 					<Pretitle>Свяжитесь с нами</Pretitle>
 					<h2 className="text-3xl md:text-4xl font-bold text-foreground">Получите бесплатную оценку</h2>
-					<p className="text-foreground-500">Готовы отреставрировать салон вашего автомобиля? Свяжитесь с нами для бесплатной консультации и получения оценки, адаптированной к потребностям вашего автомобиля.</p>
+					<p className="text-foreground-500">
+						Готовы отреставрировать салон вашего автомобиля? <br/>
+						Свяжитесь с нами для бесплатной консультации и получения оценки</p>
 				</div>
 
 				<div className="grid lg:grid-cols-2 gap-12">
 					<div className="space-y-8">
 						<div>
-							<h3 className="text-xl font-semibold text-foreground mb-6">Контактные данные</h3>
-							<div className="space-y-4">
+							<h3 className="text-xl font-semibold text-foreground-500 mb-2">Контактные данные</h3>
+							<div className="flex flex-col gap-2">
 								<div className="flex items-center space-x-4">
 									<BsPhone className="h-5 w-5 text-primary" />
-									<span className="text-foreground">(555) 123-4567</span>
+									<Link href="tel:+375295916386" className="text-foreground-700 font-semibold hover:underline hover:text-primary transition-colors">+375 (29) 591 63 86</Link>
 								</div>
 								<div className="flex items-center space-x-4">
 									<BsMailbox className="h-5 w-5 text-primary" />
-									<span className="text-foreground">info@luxeleatherpro.com</span>
+									<Link href="mailto:info@rs-service.by" className="text-foreground-700 font-semibold hover:underline hover:text-primary transition-colors">info@rs-service.by</Link>
 								</div>
 								<div className="flex items-center space-x-4">
 									<FaMapPin className="h-5 w-5 text-primary" />
-									<span className="text-foreground">123 Restoration Way, Auto City, AC 12345</span>
+									<span className="text-foreground-700 font-semibold">123 Restoration Way, Auto City, AC 12345</span>
 								</div>
 								<div className="flex items-center space-x-4">
 									<CgLock className="h-5 w-5 text-primary" />
-									<span className="text-foreground">Mon-Fri: 8AM-6PM, Sat: 9AM-4PM</span>
+									<span className="text-foreground-700 font-semibold">Пн-Пт: 8:00 - 18:00</span>
 								</div>
 							</div>
 						</div>
 
 						<div>
-							<h3 className="text-xl font-semibold text-foreground mb-4">Почему выбирают нас?</h3>
-							<div className="space-y-3">
+							<h3 className="text-xl font-semibold text-foreground-500 mb-2">Почему выбирают нас?</h3>
+							<div className="flex flex-col gap-2">
 								<div className="flex items-center space-x-3">
 									<BsCheckCircle className="h-5 w-5 text-primary" />
-									<span className="text-muted-foreground">15+ лет опыта</span>
+									<span className="text-foreground-700 font-semibold">15+ лет опыта</span>
 								</div>
 								<div className="flex items-center space-x-3">
 									<BsCheckCircle className="h-5 w-5 text-primary" />
-									<span className="text-muted-foreground">Мастера, прошедшие обучение на заводе</span>
+									<span className="text-foreground-700 font-semibold">Мастера, прошедшие обучение на заводе</span>
 								</div>
 								<div className="flex items-center space-x-3">
 									<BsCheckCircle className="h-5 w-5 text-primary" />
-									<span className="text-muted-foreground">100% гарантия удовлетворенности</span>
+									<span className="text-foreground-700 font-semibold">100% гарантия удовлетворенности</span>
 								</div>
 								<div className="flex items-center space-x-3">
 									<BsCheckCircle className="h-5 w-5 text-primary" />
-									<span className="text-muted-foreground">Только высококачественные материалы</span>
+									<span className="text-foreground-700 font-semibold">Только высококачественные материалы</span>
 								</div>
 							</div>
 						</div>
@@ -69,7 +72,7 @@ export default function ContactUs() {
 					</div>
 
 					<div>
-						<Card className="bg-content1 border-border">
+						<Card className="bg-content1 border-1 border-content2 shadow-none">
 							<CardHeader className='flex-col items-start'>
 								<h3 className="text-foreground text-2xl font-semibold">Отправьте нам сообщение</h3>
 								<p className="text-foreground-500 text-sm">
