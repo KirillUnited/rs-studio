@@ -1,5 +1,5 @@
 'use client'
-import { Button, Input, ModalFooter, Textarea } from '@heroui/react'
+import { Button, Input, Textarea } from '@heroui/react'
 import { useForm } from 'react-hook-form'
 import { sendOrderMessage } from '@/lib/messenger'
 import { OrderFormDataProps } from '@/components/forms/types'
@@ -63,7 +63,7 @@ export default function OrderForm() {
 
 			<Button color="primary" className="w-full brand-gradient group" type='submit'>
 				Отправить
-				<BsArrowRight size={16} className='group-hover:translate-x-1 transition-transform'/>
+				<BsArrowRight size={16} className='group-hover:translate-x-1 transition-transform' />
 			</Button>
 		</form>
 	);
