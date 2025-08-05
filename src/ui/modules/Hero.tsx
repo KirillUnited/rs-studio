@@ -9,9 +9,9 @@ import { Button } from '@heroui/react'
 import { Icon } from '@iconify/react'
 import Link from 'next/link'
 import { CallUsBadge } from '@/components/ui'
-import { useState } from 'react'
+import { JSX, useState } from 'react'
 import { ModalDialog } from '@/components/modal-dialog'
-
+import { BsArrowUpRight } from 'react-icons/bs'
 
 export default function Hero({
 	pretitle,
@@ -31,14 +31,14 @@ export default function Hero({
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
 }> &
-	Sanity.Module) {
+	Sanity.Module): JSX.Element {
+	const [isOpen, setIsOpen] = useState(false);
+	const openDialog = () => setIsOpen(true)
 	const hasImage = !!assets?.[0]
 	const asset = assets?.[0]
 
 	const textAlign = stegaClean(ta)
 	const alignItems = stegaClean(ai)
-	const [isOpen, setIsOpen] = useState(false);
-	const openDialog = () => setIsOpen(true)
 
 	return (
 		<section
@@ -51,12 +51,10 @@ export default function Hero({
 			{hasImage && (
 				<ResponsiveImg
 					img={asset}
-					className="max-h-fold size-full object-cover"
+					className="size-full object-cover md:max-h-[75vh]"
 					width={2400}
 					draggable={false}
-					style={{
-						maxHeight: '75vh',
-					}}
+					loading="eager"
 				/>
 			)}
 
@@ -158,11 +156,7 @@ export default function Hero({
 									endContent={
 										<span
 											className="group-hover:translate-x-1 transition-transform pointer-events-none flex h-[22px] w-[22px] items-center justify-center rounded-full bg-foreground">
-											<Icon
-												className="text-background [&>path]:stroke-[1.5]"
-												icon="solar:arrow-right-linear"
-												width={16}
-											/>
+											<BsArrowUpRight size={14} className='text-background' />
 										</span>
 									}
 									radius="full"

@@ -26,7 +26,7 @@ export default function HeroSplit({
 	const asset = assets?.[0]
 
 	return (
-		<section>
+		<section className='section-container bg-content1'>
 			<div className='container'>
 				<div className='grid items-center gap-8 md:grid-cols-2 md:gap-x-12'>
 					<figure

@@ -16,12 +16,12 @@ export default async function processMetadata(
 
 	return {
 		metadataBase: new URL(BASE_URL),
-		title,
+		title: `${title} | RS Service`,
 		description,
 		openGraph: {
 			type: 'website',
 			url,
-			title,
+			title: `${title} | RS Service`,
 			description,
 			images:
 				ogimage || `${BASE_URL}/api/og?title=${encodeURIComponent(title)}`,
