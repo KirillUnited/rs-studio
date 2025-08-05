@@ -13,32 +13,33 @@ export default async function Footer() {
 
 	return (
 		<footer className="bg-ink text-canvas" role="contentinfo">
-			<div className="section flex flex-wrap justify-between gap-x-12 gap-y-8 max-sm:flex-col">
-				<div className="flex flex-col gap-3 self-stretch">
-					<Link className="h3 md:h2 max-w-max" href="/">
-						{logoImage ? (
-							<Img
-								className="max-h-[1.5em] w-auto"
-								image={logoImage}
-								alt={logo?.name || title}
-							/>
-						) : (
-							title
+			<div className="section-container">
+				<div className="container flex flex-wrap justify-between gap-x-12 gap-y-8 max-sm:flex-col">
+					<div className="flex flex-col gap-3 self-stretch">
+						<Link className="h3 md:h2 max-w-max" href="/">
+							{logoImage ? (
+								<Img
+									className="max-h-[1.5em] w-auto"
+									image={logoImage}
+									alt={logo?.name || title}
+								/>
+							) : (
+								title
+							)}
+						</Link>
+
+						{blurb && (
+							<div className="max-w-sm text-sm text-balance">
+								<PortableText value={blurb} />
+							</div>
 						)}
-					</Link>
 
-					{blurb && (
-						<div className="max-w-sm text-sm text-balance">
-							<PortableText value={blurb} />
-						</div>
-					)}
+						<Social className="mb-auto -ml-2" />
 
-					<Social className="mb-auto -ml-2" />
+						<LanguageSwitcher className="mt-4 max-w-max" />
+					</div>
 
-					<LanguageSwitcher className="mt-4 max-w-max" />
-				</div>
-
-				<Navigation />
+					<Navigation /></div>
 			</div>
 
 			{copyright && (
