@@ -1,18 +1,17 @@
-'use client';
+'use client'
 import { Button } from '@heroui/react'
 import { Icon } from '@iconify/react'
 import { ModalDialog } from '../modal-dialog'
 import Link from 'next/link'
-import { useState } from 'react';
+import { JSX, useState } from 'react'
+import { BsArrowUpRight } from 'react-icons/bs'
 
-
-export default function CTABlock() {
-	const [isOpen, setIsOpen] = useState(false);
-	const openDialog = () => setIsOpen(true);
+export default function CTABlock(): JSX.Element {
+	const [isOpen, setIsOpen] = useState(false)
+	const openDialog = () => setIsOpen(true)
 
 	return (
-
-		<div className='flex flex-col gap-2 sm:flex-row'>
+		<div className="w-full flex flex-col gap-2 sm:flex-row">
 			<>
 				<Button
 					onPress={openDialog}
@@ -20,7 +19,7 @@ export default function CTABlock() {
 					radius="full"
 				>
 					<Icon className="group-hover:-translate-x-1 transition-transform" icon="bi:calendar-event"
-						width={18} />
+								width={18} />
 					Заказать
 				</Button>
 
@@ -31,12 +30,8 @@ export default function CTABlock() {
 				endContent={
 					<span
 						className="group-hover:translate-x-1 transition-transform pointer-events-none flex h-[22px] w-[22px] items-center justify-center rounded-full bg-foreground">
-						<Icon
-							className="text-background [&>path]:stroke-[1.5]"
-							icon="solar:arrow-right-linear"
-							width={16}
-						/>
-					</span>
+											<BsArrowUpRight size={14} className="text-background" />
+										</span>
 				}
 				radius="full"
 				variant="bordered"

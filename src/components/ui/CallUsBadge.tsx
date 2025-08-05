@@ -19,7 +19,7 @@ export default function CallUsBadge() {
 					<span className="text-lg font-semibold">(123) 456-7890</span>
 				</div>
 			</div>
-			<Avatar src="https://testingbot.com/free-online-tools/random-avatar/200?img=5" size="lg" />
+			<Avatar src="/images/call-us.webp" size="lg" />
 		</Link>
 	)
 }
