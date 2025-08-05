@@ -23,6 +23,7 @@ import TestimonialFeatured from './TestimonialFeatured'
 import dynamic from 'next/dynamic'
 import { createDataAttribute } from 'next-sanity'
 import { ContactUs } from '@/components/contact-us'
+import { InstagramFeed } from '@/components/socials'
 
 const MODULE_MAP = {
 	'accordion-list': AccordionList,
@@ -96,6 +97,7 @@ export default function Modules({
 					/>
 				)
 			})}
+			<InstagramFeed />
 			<ContactUs />
 		</>
 	)
