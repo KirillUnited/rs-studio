@@ -1,3 +1,4 @@
 import InstagramFeed from './InstagramFeed';
+import InstagramSection from './InstagramSection';
 
-export { InstagramFeed };
+export { InstagramFeed, InstagramSection };
