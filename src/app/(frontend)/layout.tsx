@@ -10,6 +10,8 @@ import { cn } from '@/lib/utils'
 import { fontSans } from '@/lib/fonts'
 import { HeroUIProvider } from '@heroui/react'
 import { Banner } from '@/components/banner'
+import Script from 'next/script'
+import { jsonLd } from '@/lib/json-ld'
 
 export default async function RootLayout({
 	children,
@@ -38,6 +40,12 @@ export default async function RootLayout({
 						<VisualEditingControls />
 					</NuqsAdapter>
 				</HeroUIProvider>
+				<Script
+					id="json-ld-car-service"
+					type="application/ld+json"
+					strategy="afterInteractive"
+					dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd({})) }}
+				/>
 			</body>
 		</Root>
 	)

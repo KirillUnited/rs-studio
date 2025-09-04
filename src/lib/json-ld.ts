@@ -1,0 +1,35 @@
+export const jsonLd = (siteConfig: any) => ({
+	"@context": "https://schema.org",
+	"@type": "AutoRepair",
+	"name": siteConfig.title || 'RS Service',
+	"image": siteConfig.image || process.env.NEXT_PUBLIC_BASE_URL + '/apple-touch-icon.png',
+	"@id": siteConfig.url || process.env.NEXT_PUBLIC_BASE_URL,
+	"url": siteConfig.url || process.env.NEXT_PUBLIC_BASE_URL,
+	"description": siteConfig.description || '',
+	"logo": siteConfig.logo || '',
+	"telephone": siteConfig.phone || '',
+	"priceRange": siteConfig.priceRange || '$$',
+	"address": {
+		"@type": "PostalAddress",
+		"streetAddress": siteConfig.address?.streetAddress || '',
+		"addressLocality": siteConfig.address?.locality || 'Минск',
+		"addressRegion": siteConfig.address?.region || 'Минская область',
+		"postalCode": siteConfig.address?.postalCode || '',
+		"addressCountry": siteConfig.address?.country || 'BY',
+	},
+	"geo": {
+		"@type": "GeoCoordinates",
+		"latitude": siteConfig.address?.latitude || '',
+		"longitude": siteConfig.address?.longitude || '',
+	},
+	"openingHoursSpecification": [
+		{
+			"@type": "OpeningHoursSpecification",
+			"dayOfWeek": siteConfig.hours?.days || ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+			"opens": siteConfig.hours?.opens || "08:00",
+			"closes": siteConfig.hours?.closes || "18:00",
+		},
+	],
+	"sameAs": Object.values(siteConfig.socials || {}),
+	"serviceType": siteConfig.services || ["Защита кожаного салона", "Матовое покрытие MATT X2", "Покраска кожи автомобиля"],
+});
