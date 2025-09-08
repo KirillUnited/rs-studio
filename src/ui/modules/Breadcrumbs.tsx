@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import { Fragment, JSX } from 'react'
 import CTA from '@/ui/CTA'
 import { stegaClean } from 'next-sanity'
 
@@ -10,7 +10,7 @@ export default async function Breadcrumbs({
 	crumbs: Sanity.Link[]
 	hideCurrent?: boolean
 	currentPage: Sanity.Page | Sanity.BlogPost
-}>) {
+}>): Promise<JSX.Element> {
 	return (
 		<nav className="section py-4 text-sm">
 			<ol
@@ -23,7 +23,7 @@ export default async function Breadcrumbs({
 						<Crumb link={crumb} position={key + 1} />
 
 						{(key < crumbs.length - 1 || !hideCurrent) && (
-							<li className="text-ink/20" role="presentation">
+							<li className="text-foreground" role="presentation">
 								/
 							</li>
 						)}
