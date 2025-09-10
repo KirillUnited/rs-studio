@@ -35,5 +35,9 @@ export const structure = structureTool({
 					S.documentTypeListItem('reputation'),
 					S.documentTypeListItem('testimonial').title('Testimonials'),
 				]),
+				S.divider(),
+
+				S.documentTypeListItem('servicePage').title('Страницы услуг'),
+				S.documentTypeListItem('projectPage').title('Страницы проектов (Портфолио)'),
 			]),
 })
