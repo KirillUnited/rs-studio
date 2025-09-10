@@ -70,7 +70,7 @@ export default function FeaturedServiceCard({ card }: FeaturedServiceCardProps):
 					<BsArrowUpRightCircle className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
 				</Button>
 				<>
-					<Button radius="full" color="primary" className="flex-1 group" onPress={openDialog}>
+					<Button radius="full" color="primary" className="flex-1 group brand-gradient" onPress={openDialog}>
 						<BsCalendar className="group-hover:scale-110 transition-transform" size={16} />
 						Заказать
 					</Button>

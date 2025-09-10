@@ -4,19 +4,20 @@ import styles from './ui.module.css'
 import { cn } from '@/lib/utils'
 import { FaPhoneAlt } from 'react-icons/fa'
 
-export default function CallUsBadge() {
+export default function CallUsBadge({ phone, label="Позвоните нам", className }: { className?: string, phone?: string, label?: string }) {
 	return (
 		<Link
-			href="tel:+1234567890"
+			href={`tel:${phone}`}
 			className={cn('group flex gap-2 justify-between items-center rounded-4xl bg-gradient-to-r from-[#F871A0] to-[#9353D3] p-3 text-sm font-medium text-white shadow-lg transition-transform hover:scale-105 hover:shadow-xl',
 				styles.callUs,
+				className
 			)}
 		>
 			<div className="flex flex-col">
-				<span className="text-xs">Позвоните нам</span>
+				<span className="text-xs">{label}</span>
 				<div className="flex items-center gap-2">
 					<FaPhoneAlt size={18} />
-					<span className="text-lg font-semibold">(123) 456-7890</span>
+					<span className="text-lg font-semibold">{phone}</span>
 				</div>
 			</div>
 			<Avatar src="/images/call-us.webp" size="lg" />
