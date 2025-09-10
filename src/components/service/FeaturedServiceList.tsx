@@ -1,12 +1,14 @@
 import { PortableTextBlock, stegaClean } from 'next-sanity'
 import { cn } from '@/lib/utils'
 import { FeaturedServiceCard } from '@/components/service/ui'
+import { SERVICE_PAGE_LIST_QUERY } from './lib/queries'
+import { fetchSanityLive } from '@/sanity/lib/fetch'
 
-export default function FeaturedServiceList({
-																							items,
-																							layout,
-																							columns = 3,
-																						}: Partial<{
+export default async function FeaturedServiceList({
+	items,
+	layout,
+	columns = 3,
+}: Partial<{
 	items: Partial<{
 		image: Sanity.Image
 		content: PortableTextBlock[],
@@ -16,6 +18,9 @@ export default function FeaturedServiceList({
 	columns: number
 }> &
 	Sanity.Module) {
+	const featuredServiceList = await fetchSanityLive({
+		query: SERVICE_PAGE_LIST_QUERY,
+	});
 	const isCarousel = stegaClean(layout) === 'carousel'
 
 	return (
@@ -39,8 +44,13 @@ export default function FeaturedServiceList({
 					: undefined
 			}
 		>
-			{items?.map((card, key) => (
-				<FeaturedServiceCard card={card} key={key} />
+			{featuredServiceList?.map((card: Partial<{
+				title: string
+				image: Sanity.Image
+				content: any
+				ctas: Sanity.CTA[]
+			}>) => (
+				<FeaturedServiceCard card={card} key={card.title} />
 			))}
 		</div>
 	)

@@ -1,27 +1,31 @@
 import moduleProps from '@/lib/moduleProps'
 import Pretitle from '@/ui/Pretitle'
 import { PortableText, stegaClean } from 'next-sanity'
-import CTAList from '@/ui/CTAList'
-import { Img } from '@/ui/Img'
 import { cn } from '@/lib/utils'
 import { FeaturedServiceCard } from '@/components/service/ui'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Button } from '@heroui/react'
+import { BsArrowUpRightCircle } from 'react-icons/bs'
+import { JSX } from 'react'
+import { fetchSanityLive } from '@/sanity/lib/fetch'
+import { SERVICE_PAGE_LIST_LIMIT_QUERY } from '@/components/service/lib/queries'
 
-export default function CardList({
-																	 pretitle,
-																	 intro,
-																	 cards,
-																	 ctas,
-																	 layout,
-																	 columns = 3,
-																	 visualSeparation,
-																	 ...props
-																 }: Partial<{
+export default async function CardList({
+	pretitle,
+	intro,
+	cards,
+	ctas,
+	layout,
+	columns = 3,
+	visualSeparation,
+	...props
+}: Partial<{
 	pretitle: string
 	intro: any
 	ctas: Sanity.CTA[]
 	cards: Partial<{
+		title: string
 		image: Sanity.Image
 		content: any
 		ctas: Sanity.CTA[]
@@ -30,17 +34,33 @@ export default function CardList({
 	columns: number
 	visualSeparation: boolean
 }> &
-	Sanity.Module) {
-	const isCarousel = stegaClean(layout) === 'carousel'
+	Sanity.Module): Promise<JSX.Element> {
+	const featuredServices = await fetchSanityLive({
+		query: SERVICE_PAGE_LIST_LIMIT_QUERY,
+		params: {
+			limit: 3,
+		}
+	})
+	const isCarousel = stegaClean(layout) === 'carousel';
 
 	return (
 		<section className="section-container space-y-12" {...moduleProps(props)}>
 			<div className="container">
 				{(pretitle || intro) && (
-					<header className="richtext mb-8 md:mb-16 max-w-2xl">
-						<Pretitle>{pretitle}</Pretitle>
-						<PortableText value={intro} />
-						<CTAList className="justify-center" ctas={ctas} />
+					<header className="mb-8 md:mb-16 flex flewrap justify-between">
+						<div className="richtext max-w-2xl">
+							<Pretitle>{pretitle}</Pretitle>
+							<PortableText value={intro} />
+						</div>
+						{
+							ctas?.map((cta: Sanity.CTA, index) => (
+								<Button as={Link} href={cta.link?.external} key={index} className="self-end group max-md:hidden" radius="full" variant="bordered">
+									{cta.link?.label}
+
+									<BsArrowUpRightCircle className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+								</Button>
+							))
+						}
 					</header>
 				)}
 
@@ -60,49 +80,30 @@ export default function CardList({
 							: undefined
 					}
 				>
-					{/* {cards?.map((card, key) => (
-					<article
-						className={cn(
-							'flex flex-col gap-2',
-							visualSeparation && 'border-ink/10 border p-4',
-						)}
-						key={key}
-					>
-						{card.image && (
-							<figure>
-								<Img
-									className="aspect-video w-full object-cover"
-									image={card.image}
-									width={600}
-								/>
-							</figure>
-						)}
-
-						<div className="richtext grow">
-							<PortableText value={card.content} />
-						</div>
-						<CTAList className="mt-auto" ctas={card.ctas} />
-					</article>
-				))} */}
-
-					{/* TODO: remove */}
-					<FeaturedServiceCard card={{
-						title: 'Защита кожаного салона',
-						image: '/images/service-1.jpg'
-					}} />
-					<FeaturedServiceCard card={{
-						title: 'Матовое покрытие MATT X2',
-						image: '/images/service-2.jpg'
-					}} />
-					<FeaturedServiceCard card={{
-						title: 'Покраска кожи автомобиля',
-						image: '/images/service-3.jpg'
-					}} />
+					{
+						featuredServices?.map((service: Partial<{
+							title: string
+							image: Sanity.Image
+							content: any
+							ctas: Sanity.CTA[]
+						}>) => (
+							<FeaturedServiceCard key={service.title} card={service} />
+						))
+					}
 				</div>
+				{
+					ctas?.map((cta: Sanity.CTA, index) => (
+						<Button as={Link} href={cta.link?.external} key={index} className="self-end group mt-4 md:hidden" radius="full" variant="bordered">
+							{cta.link?.label}
+
+							<BsArrowUpRightCircle className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+						</Button>
+					))
+				}
 			</div>
 			<div className="container">
 				{/* Before/After Showcase */}
-				<Link href="/portfolio" className="flex relative rounded-large overflow-hidden">
+				<Link href="/projects" className="flex relative rounded-large overflow-hidden">
 					<Image
 						src={`/images/before-after.jpg`}
 						width={1920}
