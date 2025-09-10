@@ -51,6 +51,8 @@ import stepList from './modules/step-list'
 import tabbedContent from './modules/tabbed-content'
 import testimonialFeatured from './modules/testimonial.featured'
 import testimonialList from './modules/testimonial-list'
+import { servicePageType } from './documents/servicePageType'
+import { projectPageType } from './documents/projectPageType'
 
 export const schemaTypes: SchemaTypeDefinition[] = [
 	// documents
@@ -60,6 +62,8 @@ export const schemaTypes: SchemaTypeDefinition[] = [
 	blogPost,
 	blogCategory,
 	navigation,
+	servicePageType,
+	projectPageType,
 
 	// miscellaneous
 	announcement,

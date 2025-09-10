@@ -169,7 +169,7 @@ export default function Hero({
 									Подробнее
 								</Button>
 							</div>
-							<CallUsBadge />
+							<CallUsBadge phone="+375 (29) 591 63 86" />
 						</div>
 					</div>
 				</div>
