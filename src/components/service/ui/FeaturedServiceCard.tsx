@@ -7,13 +7,18 @@ import { BiCheckCircle } from 'react-icons/bi'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ModalDialog } from '@/components/modal-dialog'
+import { urlFor } from '@/sanity/lib/image'
 
 export interface FeaturedServiceCardProps extends HTMLAttributes<HTMLDivElement> {
 	card: Partial<{
 		title: string,
-		image: any,
+		description: string,
+		heroImage: any,
 		content: PortableTextBlock[],
 		features: string[],
+		slug: {
+			current: string
+		}
 	}>
 }
 
@@ -37,22 +42,22 @@ export default function FeaturedServiceCard({ card }: FeaturedServiceCardProps):
 			{/*{card.image && (*/}
 			{/*	<Image src={`${card.image}`} width={300} height={200} alt={card.title} />*/}
 			{/*)}*/}
-			{card.image && (
+			{card.heroImage && (
 				<Image
 					className="object-cover w-full h-48"
-					src={`${card.image}`}
+					src={`${urlFor(card.heroImage).width(300).height(200).url()}`}
 					width={300}
 					height={200}
 					quality={50}
 					placeholder="blur"
-					blurDataURL={`${card.image}`}
+					blurDataURL={`${card.heroImage}`}
 					alt={`${card.title}`}
 				/>
 			)}
 			<CardHeader className="flex-col items-start gap-2">
 				<h3 className="text-2xl font-semibold leading-none tracking-tight text-foreground">{card.title}</h3>
 				{card.content && <PortableText value={card.content} />}
-				<p className="text-sm text-foreground-500 line-clamp-2">Профессиональная реставрация кожаной обивки салона, устранение потертостей, трещин и царапин.</p>
+				{card.description && <p className="text-sm text-foreground-500 line-clamp-2">{card.description}</p>}
 			</CardHeader>
 			<CardBody className="p-4">
 				<ul className="space-y-2">
@@ -65,7 +70,7 @@ export default function FeaturedServiceCard({ card }: FeaturedServiceCardProps):
 				</ul>
 			</CardBody>
 			<CardFooter className="gap-2 border-t-1 border-content2">
-				<Button className="group flex items-center font-medium text-foreground" as={Link} href="/services" radius="full">
+				<Button className="group flex items-center font-medium text-foreground" as={Link} href={`/services/${card.slug?.current}`} radius="full">
 					Подробнее
 					<BsArrowUpRightCircle className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
 				</Button>

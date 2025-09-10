@@ -10,6 +10,7 @@ import { useState } from "react";
 import { Icon } from '@iconify/react'
 import { ModalDialog } from "@/components/modal-dialog";
 import Link from "next/link";
+import { FeaturedServiceList } from "@/components/service";
 
 const Services = () => {
 
@@ -230,20 +231,7 @@ const Services = () => {
 						</p>
 					</div>
 
-					<div className="grid lg:grid-cols-3 gap-12">
-						<FeaturedServiceCard card={{
-							title: 'Защита кожаного салона',
-							image: '/images/service-1.jpg'
-						}} />
-						<FeaturedServiceCard card={{
-							title: 'Матовое покрытие MATT X2',
-							image: '/images/service-2.jpg'
-						}} />
-						<FeaturedServiceCard card={{
-							title: 'Покраска кожи автомобиля',
-							image: '/images/service-3.jpg'
-						}} />
-					</div>
+					<FeaturedServiceList _type="card-list" _key="card-list" layout="carousel" />
 				</div>
 			</section>
 
