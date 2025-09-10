@@ -1,5 +1,4 @@
-'use client'
-import { BsArrowRight, BsArrowUpRight, BsCarFront } from "react-icons/bs";
+import { BsArrowUpRight, BsCarFront } from "react-icons/bs";
 import { BiCar, BiCheckCircle, BiMailSend, BiPalette, BiPhone, BiPhoneCall, BiShield, BiWrench } from "react-icons/bi";
 import { Accordion, AccordionItem, Button, Card, CardBody, CardHeader, Table, TableBody, TableCell, TableHeader, TableRow } from "@heroui/react";
 import Pretitle from "@/ui/Pretitle";
@@ -154,8 +153,8 @@ const Services = () => {
 
 	const defaultContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
-	const [isOpen, setIsOpen] = useState(false);
-	const openDialog = () => setIsOpen(true)
+	// const [isOpen, setIsOpen] = useState(false);
+	// const openDialog = () => setIsOpen(true)
 
 	return (
 		<>
@@ -181,7 +180,7 @@ const Services = () => {
 					</p>
 					<div className="flex flex-col sm:flex-row gap-4 justify-center">
 						<div className='flex flex-col gap-2 sm:flex-row'>
-							<>
+							{/* <>
 								<Button
 									onPress={openDialog}
 									className="group brand-gradient font-medium"
@@ -194,7 +193,7 @@ const Services = () => {
 								</Button>
 
 								<ModalDialog isOpen={isOpen} onClose={() => setIsOpen(false)} />
-							</>
+							</> */}
 							<Button
 								className="group border-1 border-default-100 font-medium text-white"
 								endContent={
@@ -389,7 +388,7 @@ const Services = () => {
 			</section>
 
 			{/* FAQ Section */}
-			<section className="py-10 md:py-20 bg-content1">
+			{/* <section className="py-10 md:py-20 bg-content1">
 				<div className="container mx-auto px-4">
 					<div className="text-center mb-16">
 						<Pretitle>FAQ</Pretitle>
@@ -412,7 +411,7 @@ const Services = () => {
 						</Accordion>
 					</div>
 				</div>
-			</section>
+			</section> */}
 		</>
 	);
 };
