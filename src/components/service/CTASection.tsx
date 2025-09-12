@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 interface CTASectionProps extends HTMLAttributes<HTMLDivElement> {
 }
 
-export default function CTASection({className, ...props}: CTASectionProps): JSX.Element {
+export default function CTASection({ className, ...props }: CTASectionProps): JSX.Element {
 	return (
 		<section {...props} className={cn('relative', className)}>
 			<div className="container">
@@ -18,10 +18,10 @@ export default function CTASection({className, ...props}: CTASectionProps): JSX.
 							 backgroundImage: 'url(/images/before-after.jpg)',
 						 }}
 				>
-					<div className='relative z-10 text-center flex flex-col items-center gap-4'>
+					<div className="relative z-10 text-center flex flex-col items-center gap-4">
 						<Pretitle>
-						Всегда на связи
-					</Pretitle>
+							Всегда на связи
+						</Pretitle>
 						<h2 className="text-3xl md:text-4xl font-bold">
 							Готовы преобразить салон своего автомобиля?
 						</h2>
