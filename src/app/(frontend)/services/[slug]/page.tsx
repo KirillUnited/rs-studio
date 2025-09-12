@@ -4,6 +4,7 @@ import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { SERVICE_PAGE_QUERY } from '@/components/service/lib/queries'
 import { JSX } from 'react'
 import { CTASection } from '@/components/service'
+import { FAQSection } from '@/components/ui'
 
 export async function generateMetadata(props: {
 	params: Promise<{ slug: string }>;
@@ -61,6 +62,7 @@ export default async function ServicePage(props: {
 		<>
 			<HeroSection title={page?.title} description={page?.description} heroImage={page?.heroImage} />
 			<AboutSection title={page?.title} description={page?.about} />
+			<FAQSection items={page?.faqs} />
 			<CTASection className='mb-20' />
 		</>
 	)

@@ -11,7 +11,7 @@ export default function CTASection({ className, ...props }: CTASectionProps): JS
 		<section {...props} className={cn('relative', className)}>
 			<div className="container">
 				<div className={cn(
-					'relative py-20 rounded-large overflow-hidden bg-cover bg-center bg-no-repeat',
+					'relative py-20 px-4 rounded-large overflow-hidden bg-cover bg-center bg-no-repeat',
 					'after:absolute after:inset-0 after:bg-black/70',
 				)}
 						 style={{
