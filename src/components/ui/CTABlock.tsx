@@ -3,15 +3,22 @@ import { Button } from '@heroui/react'
 import { Icon } from '@iconify/react'
 import { ModalDialog } from '../modal-dialog'
 import Link from 'next/link'
-import { JSX, useState } from 'react'
+import { HTMLAttributes, JSX, useState } from 'react'
 import { BsArrowUpRight } from 'react-icons/bs'
+import { cn } from '@/lib/utils'
 
-export default function CTABlock(): JSX.Element {
+interface CTABlockProps extends HTMLAttributes<HTMLDivElement> {
+}
+
+export default function CTABlock({ className }: CTABlockProps): JSX.Element {
 	const [isOpen, setIsOpen] = useState(false)
 	const openDialog = () => setIsOpen(true)
 
 	return (
-		<div className="w-full flex flex-col gap-2 sm:flex-row">
+		<div className={cn(
+			'w-full flex flex-col gap-2 sm:flex-row',
+			className
+		)}>
 			<>
 				<Button
 					onPress={openDialog}
@@ -36,10 +43,10 @@ export default function CTABlock(): JSX.Element {
 				radius="full"
 				variant="bordered"
 				as={Link}
-				href="/about"
+				href="/projects"
 				target="_blank"
 			>
-				Подробнее
+				Наши работы
 			</Button>
 		</div>
 	)
