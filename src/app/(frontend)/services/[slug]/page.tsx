@@ -59,7 +59,7 @@ export default async function ServicePage(props: {
 	return (
 		<>
 			<HeroSection title={page?.title} description={page?.description} heroImage={page?.heroImage} />
-			<AboutSection />
+			<AboutSection title={page?.title} description={page?.about} />
 		</>
 	)
 }
