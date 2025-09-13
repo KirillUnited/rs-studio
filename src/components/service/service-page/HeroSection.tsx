@@ -9,10 +9,10 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({
-																			title,
-																			description,
-																			heroImage,
-																		}: HeroSectionProps): JSX.Element | null {
+	title,
+	description,
+	heroImage,
+}: HeroSectionProps): JSX.Element | null {
 	if (!title) return null
 
 	const heroImageUrl = heroImage ? urlFor(heroImage).width(1200).height(800).crop('center').format('webp').url() : null
@@ -22,7 +22,7 @@ export default function HeroSection({
 			className="relative flex items-center justify-center bg-cover bg-center bg-no-repeat bg-fixed"
 			style={{ backgroundImage: `url(${heroImageUrl})` }}
 		>
-			<div className="absolute inset-0 bg-black/60"></div>
+			<div className="absolute inset-0 bg-black/70"></div>
 
 			<div className="relative z-10 container mx-auto px-4 py-20 text-center">
 				<div className="max-w-4xl mx-auto animate-fade-in-up">
