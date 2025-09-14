@@ -36,7 +36,7 @@ export default function ProcessSection() {
 						Как мы <span className="text-brand-gradient">работаем</span>
 					</h2>
 					<div className="w-20 h-1 brand-gradient rounded-full mx-auto mb-6"></div>
-					<p className="text-foreground-700 font-light max-w-3xl mx-auto">
+					<p className="text-sm md:text-base text-foreground-700 font-light max-w-3xl mx-auto">
 						Наш проверенный 4-этапный процесс гарантирует исключительные результаты для любого проекта по реставрации салона автомобиля, сочетая опыт и передовые технологии <span className="brand-gradient">LeTech</span>.
 					</p>
 				</div>
@@ -47,12 +47,12 @@ export default function ProcessSection() {
 						return (
 							<div key={index} className="relative">
 								<Card className="h-full transition-all duration-300 transform hover:-translate-y-2 border-0 relative z-10 overflow-visible">
-									<CardBody className="p-8 text-center overflow-visible">
-										<div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 brand-gradient rounded-full flex items-center justify-center font-bold text-sm">
+									<CardBody className="md:px-6 py-8 md:pb-6 overflow-visible">
+										<div className="absolute -top-4 left-13 md:left-16 transform -translate-x-1/2 w-8 h-8 brand-gradient rounded-full flex items-center justify-center font-bold text-sm">
 											{index + 1}
 										</div>
 
-										<div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 mt-4 bg-background">
+										<div className="w-20 h-20 rounded-full flex items-center justify-center mb-6 mt-4 bg-background">
 											<IconComponent className="w-12 h-12 text-secondary" />
 										</div>
 
@@ -80,7 +80,7 @@ export default function ProcessSection() {
 						<h3 className="text-2xl font-bold mb-4">
 							Сроки и Результат
 						</h3>
-						<p className="text-foreground-700 mb-6">
+						<p className="text-sm md:text-base text-foreground-700 mb-6">
 							Большинство проектов по реставрации салона автомобиля завершаются в течение 1–2 рабочих дней, в зависимости от объема необходимой реставрации.
 						</p>
 						<div className="flex justify-center space-x-8">

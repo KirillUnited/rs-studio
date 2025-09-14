@@ -38,13 +38,13 @@ export default function FAQSection({ items }: FAQSectionProps): JSX.Element | nu
 
 	return (
 		<section className="py-20 bg-gradient-subtle">
-			<div className="container mx-auto px-4">
+			<div className="container">
 				<div className="text-center mb-16">
-					<h2 className="text-4xl md:text-5xl font-bold text-automotive-navy mb-4">
+					<h2 className="text-4xl md:text-5xl font-bold mb-4">
 						Часто задаваемые <span className="text-brand-gradient">вопросы</span>
 					</h2>
 					<div className="w-20 h-1 brand-gradient rounded-full mx-auto mb-6"></div>
-					<p className="text-muted-foreground max-w-2xl mx-auto">
+					<p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
 						Получите ответы на самые распространенные вопросы о наших услугах по восстановлению салона автомобиля и технологиях <span className="brand-gradient">LeTech</span>.
 					</p>
 				</div>
@@ -64,20 +64,20 @@ export default function FAQSection({ items }: FAQSectionProps): JSX.Element | nu
 				</div>
 
 				<div className="mt-16 text-center">
-					<Card className="p-8 max-w-2xl mx-auto">
+					<Card className="p-8 max-w-2xl mx-auto shadow-small">
 						<h3 className="text-2xl font-bold text-white mb-4">
 							Остались вопросы?
 						</h3>
-						<p className="text-white/80 mb-6 text-balance">
+						<p className="text-sm md:text-base text-white/80 mb-6 text-balance">
 							Наша команда экспертов готова помочь. Свяжитесь с нами, чтобы получить персональные ответы и бесплатную консультацию по вопросам реставрации салона вашего автомобиля.
 						</p>
 						<div className="flex flex-col md:flex-row gap-4 justify-center">
-							<div className="text-white">
+							<p className="text-white">
 								<span className="font-semibold text-automotive-gold">Call:</span> +1 (555) 123-4567
-							</div>
-							<div className="text-white">
+							</p>
+							<p className="text-white">
 								<span className="font-semibold text-automotive-gold">Email:</span> info@rs-service.by
-							</div>
+							</p>
 						</div>
 					</Card>
 				</div>
