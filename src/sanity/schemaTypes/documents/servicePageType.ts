@@ -77,6 +77,19 @@ export const servicePageType = defineType({
 			description: 'Фотографии до/после или примеры работ'
 		}),
 		defineField({
+			name: "relatedProjects",
+			title: "Связанные проекты",
+			type: "array",
+			of: [
+				{
+					type: "reference",
+					to: [{ type: "projectPage" }],
+				},
+			],
+			description: "Выберите проекты, которые будут отображаться как связанные",
+			group: "content",
+		}),
+		defineField({
 			name: 'faqs',
 			title: 'Часто задаваемые вопросы',
 			type: 'array',
