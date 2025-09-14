@@ -27,7 +27,7 @@ export default function BenefitsSection({
 						Наши <span className="text-brand-gradient">преимущества</span>
 					</h2>
 					<div className="w-20 h-1 brand-gradient rounded-full mx-auto mb-6"></div>
-					<p className="text-muted-foreground max-w-2xl mx-auto">
+					<p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
 						Наша передовая технология <span className='brand-gradient'>LeTech</span> обеспечивает непревзойденные результаты при реставрации салона автомобиля, сочетая инновации с проверенным опытом.
 					</p>
 				</div>
@@ -39,9 +39,9 @@ export default function BenefitsSection({
 								key={index}
 								className="transition-all duration-300 transform hover:-translate-y-2 border-0 md:basis-[calc(100%/4-1rem)] "
 							>
-								<CardBody className="p-8 text-center flex-1">
+								<CardBody className="md:p-6 flex-1">
 									<div
-										className="w-16 h-16 brand-gradient rounded-full flex items-center justify-center mx-auto mb-6">
+										className="w-16 h-16 brand-gradient rounded-full flex items-center justify-center mb-6">
 										{BenefitsSectionIconMap[benefit?.icon as BenefitsSectionIconType]}
 									</div>
 

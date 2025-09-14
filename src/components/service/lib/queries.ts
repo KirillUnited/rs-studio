@@ -13,11 +13,12 @@ export const SERVICE_PAGE_QUERY = groq`
     },
     gallery[]{asset->{url, metadata}},
     faqs[]{question, answer},
-    relatedProjects[]{
-      title,
-      description,
-      image{asset->{url, metadata}}
-    },
+    relatedProjects[]->{
+			title,
+			description,
+			image,
+			slug
+		},
     seo{
       metaTitle,
       metaDescription,

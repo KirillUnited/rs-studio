@@ -6,6 +6,7 @@ import { JSX } from 'react'
 import { CTASection } from '@/components/service'
 import { FAQSection } from '@/components/ui'
 import { ContactUs } from '@/components/contact-us'
+import ProjectsSection from '@/components/service/service-page/ProjectsSection'
 
 export async function generateMetadata(props: {
 	params: Promise<{ slug: string }>;
@@ -65,8 +66,9 @@ export default async function ServicePage(props: {
 			<AboutSection title={page?.title} description={page?.about} />
 			<BenefitsSection title={''} description={''} items={page?.benefits} />
 			<ProcessSection />
-			<FAQSection items={page?.faqs} />
+			<ProjectsSection title={''} description={''} projects={page?.relatedProjects} />
 			<CTASection className='mb-20' />
+			<FAQSection items={page?.faqs} />
 			<ContactUs />
 		</>
 	)
