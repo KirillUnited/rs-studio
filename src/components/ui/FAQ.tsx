@@ -33,7 +33,9 @@ interface FAQSectionProps {
 	items: typeof faqs
 }
 
-export default function FAQSection({items}: FAQSectionProps): JSX.Element {
+export default function FAQSection({ items }: FAQSectionProps): JSX.Element | null {
+	if (!items) return null;
+
 	return (
 		<section className="py-20 bg-gradient-subtle">
 			<div className="container mx-auto px-4">
@@ -43,7 +45,7 @@ export default function FAQSection({items}: FAQSectionProps): JSX.Element {
 					</h2>
 					<div className="w-20 h-1 brand-gradient rounded-full mx-auto mb-6"></div>
 					<p className="text-muted-foreground max-w-2xl mx-auto">
-						Получите ответы на самые распространенные вопросы о наших услугах по восстановлению салона автомобиля и технологиях LeTech.
+						Получите ответы на самые распространенные вопросы о наших услугах по восстановлению салона автомобиля и технологиях <span className="brand-gradient">LeTech</span>.
 					</p>
 				</div>
 
