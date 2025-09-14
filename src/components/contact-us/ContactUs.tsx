@@ -1,14 +1,15 @@
 import Pretitle from "@/ui/Pretitle"
-import { Alert, Badge, Button, Card, CardBody, CardHeader, Input, Textarea } from '@heroui/react'
-import { BsArrowRight, BsCheckCircle, BsMailbox, BsPhone } from "react-icons/bs"
+import { Alert, Card, CardBody, CardHeader } from '@heroui/react'
+import { BsCheckCircle, BsMailbox, BsPhone } from "react-icons/bs"
 import { CgLock } from "react-icons/cg"
 import { FaMapPin } from "react-icons/fa"
 import { OrderForm } from '@/components/forms'
 import Link from 'next/link'
+import { cn } from "@/lib/utils"
 
-export default function ContactUs() {
+export default function ContactUs({ className }: { className?: string }) {
 	return (
-		<section id="contact" className="py-20 bg-background">
+		<section id="contact" className={cn('py-20 bg-background', className)}>
 			<div className="container">
 				<div className="flex flex-col gap-2 items-start mb-8 max-w-2xl">
 					<Pretitle>Свяжитесь с нами</Pretitle>

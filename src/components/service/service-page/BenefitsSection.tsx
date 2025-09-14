@@ -1,7 +1,6 @@
 import { Card, CardBody } from '@heroui/react'
 import { JSX } from 'react'
-import { FaComments } from 'react-icons/fa6'
-import { FaHandsHelping, FaLeaf, FaShieldAlt, FaTools } from 'react-icons/fa'
+import { BenefitsSectionIconMap, BenefitsSectionIconType } from '../lib/iconMap'
 
 interface BenefitsSectionProps {
 	title: string,
@@ -13,38 +12,23 @@ interface BenefitsSectionProps {
 	}[]
 }
 
-// TODO: create iconMap.tsx (Service)
-export enum BenefitsSectionIconType {
-	FaLeaf = "FaLeaf",
-	FaComments = 'FaComments',
-	FaHandsHelping = 'FaHandsHelping',
-	FaTools = 'FaTools',
-	FaShieldAlt = 'FaShieldAlt',
-}
-
-export const BenefitsSectionIconMap = {
-	[BenefitsSectionIconType.FaLeaf]: <FaLeaf size={32} />,
-	[BenefitsSectionIconType.FaComments]: <FaComments size={32} />,
-	[BenefitsSectionIconType.FaHandsHelping]: <FaHandsHelping size={32} />,
-	[BenefitsSectionIconType.FaTools]: <FaTools size={32} />,
-	[BenefitsSectionIconType.FaShieldAlt]: <FaShieldAlt size={32} />,
-};
-
 export default function BenefitsSection({
 	title,
 	description,
 	items,
-}: BenefitsSectionProps): JSX.Element {
+}: BenefitsSectionProps): JSX.Element | null {
+	if (!items) return null;
+
 	return (
 		<section className="py-20 bg-background">
 			<div className="container mx-auto px-4">
 				<div className="text-center mb-16">
-					<h2 className="text-4xl md:text-5xl font-bold text-automotive-navy mb-4">
+					<h2 className="text-4xl md:text-5xl font-bold mb-4 capitalize">
 						Наши <span className="text-brand-gradient">преимущества</span>
 					</h2>
 					<div className="w-20 h-1 brand-gradient rounded-full mx-auto mb-6"></div>
 					<p className="text-muted-foreground max-w-2xl mx-auto">
-						Наша передовая технология LeTech обеспечивает непревзойденные результаты при реставрации салона автомобиля, сочетая инновации с проверенным опытом.
+						Наша передовая технология <span className='brand-gradient'>LeTech</span> обеспечивает непревзойденные результаты при реставрации салона автомобиля, сочетая инновации с проверенным опытом.
 					</p>
 				</div>
 

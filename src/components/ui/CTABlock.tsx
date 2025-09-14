@@ -8,9 +8,10 @@ import { BsArrowUpRight } from 'react-icons/bs'
 import { cn } from '@/lib/utils'
 
 interface CTABlockProps extends HTMLAttributes<HTMLDivElement> {
+	useContactAnchor?: boolean
 }
 
-export default function CTABlock({ className }: CTABlockProps): JSX.Element {
+export default function CTABlock({ className, useContactAnchor }: CTABlockProps): JSX.Element {
 	const [isOpen, setIsOpen] = useState(false)
 	const openDialog = () => setIsOpen(true)
 
@@ -19,26 +20,41 @@ export default function CTABlock({ className }: CTABlockProps): JSX.Element {
 			'w-full flex flex-col gap-2 sm:flex-row',
 			className
 		)}>
-			<>
+			{useContactAnchor ? (
 				<Button
-					onPress={openDialog}
+
+					as={Link}
+					href="#contact"
 					className="group brand-gradient font-medium"
 					radius="full"
 				>
 					<Icon className="group-hover:-translate-x-1 transition-transform" icon="bi:calendar-event"
-								width={18} />
+						width={18} />
 					Заказать
 				</Button>
+			) : (
+				<>
+					<Button
+						onPress={openDialog}
+						className="group brand-gradient font-medium"
+						radius="full"
+					>
+						<Icon className="group-hover:-translate-x-1 transition-transform" icon="bi:calendar-event"
+							width={18} />
+						Заказать
+					</Button>
 
-				<ModalDialog isOpen={isOpen} onClose={() => setIsOpen(false)} />
-			</>
+					<ModalDialog isOpen={isOpen} onClose={() => setIsOpen(false)} />
+				</>
+			)
+			}
 			<Button
 				className="group border-1 border-default-100 font-medium text-foreground"
 				endContent={
 					<span
 						className="group-hover:translate-x-1 transition-transform pointer-events-none flex h-[22px] w-[22px] items-center justify-center rounded-full bg-foreground">
-											<BsArrowUpRight size={14} className="text-background" />
-										</span>
+						<BsArrowUpRight size={14} className="text-background" />
+					</span>
 				}
 				radius="full"
 				variant="bordered"
