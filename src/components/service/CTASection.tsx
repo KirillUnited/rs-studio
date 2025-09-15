@@ -4,9 +4,10 @@ import { CTABlock } from '@/components/ui'
 import { cn } from '@/lib/utils'
 
 interface CTASectionProps extends HTMLAttributes<HTMLDivElement> {
+	useContactAnchor?: boolean
 }
 
-export default function CTASection({ className, ...props }: CTASectionProps): JSX.Element {
+export default function CTASection({ className, useContactAnchor, ...props }: CTASectionProps): JSX.Element {
 	return (
 		<section {...props} className={cn('relative', className)}>
 			<div className="container">
@@ -29,7 +30,7 @@ export default function CTASection({ className, ...props }: CTASectionProps): JS
 							Свяжитесь с нами сегодня для бесплатной консультации и узнайте, как технологии <span
 								className="brand-gradient font-bold">LeTech</span> помогут восстановить идеальный салон вашего автомобиля
 						</p>
-						<CTABlock className="md:w-auto mt-4" useContactAnchor />
+						<CTABlock className="md:w-auto mt-4" useContactAnchor={useContactAnchor} />
 					</div>
 				</div>
 			</div>
