@@ -73,8 +73,8 @@ export default function ServicesPage(): JSX.Element {
 							endContent={
 								<span
 									className="group-hover:translate-x-1 transition-transform pointer-events-none flex h-[22px] w-[22px] items-center justify-center rounded-full bg-foreground">
-											<BsArrowUpRight size={14} className="text-background" />
-										</span>
+									<BsArrowUpRight size={14} className="text-background" />
+								</span>
 							}
 							radius="full"
 							as={Link}
@@ -107,7 +107,7 @@ export default function ServicesPage(): JSX.Element {
 				</div>
 			</section>
 			{/* CTA Section */}
-			<CTASection className='mb-20'/>
+			<CTASection className='mb-20' />
 		</>
 	)
 }

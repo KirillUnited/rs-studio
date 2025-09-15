@@ -21,7 +21,7 @@ export default function ProjectsSection({
 					</h2>
 					<div className="w-20 h-1 brand-gradient rounded-full mx-auto mb-6"></div>
 					<p className="text-sm md:text-base max-w-2xl mx-auto">
-						{description}
+						{description || 'Ознакомьтесь с некоторыми из наших самых успешных проектов по реставрации салонов автомобилей, демонстрирующих универсальность и эффективность технологии LeTech.'}
 					</p>
 				</div>
 				<ProjectList projects={projects} />

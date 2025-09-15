@@ -67,7 +67,7 @@ export default async function ServicePage(props: {
 			<BenefitsSection title={''} description={''} items={page?.benefits} />
 			<ProcessSection />
 			<ProjectsSection title={''} description={''} projects={page?.relatedProjects} />
-			<CTASection className='mb-20' />
+			<CTASection className='mb-20' useContactAnchor />
 			<FAQSection items={page?.faqs} />
 			<ContactUs />
 		</>
