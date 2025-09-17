@@ -5,6 +5,7 @@ import LanguageSwitcher from '@/ui/LanguageSwitcher'
 import { PortableText } from 'next-sanity'
 import Link from 'next/link'
 import { Img } from '@/ui/Img'
+import { ContactList } from '@/components/contact-us/ui'
 
 export default async function Footer() {
 	const { title, blurb, logo, copyright } = await getSite()
@@ -33,6 +34,8 @@ export default async function Footer() {
 								<PortableText value={blurb} />
 							</div>
 						)}
+
+						<ContactList />
 
 						<Social className="mb-auto -ml-2" />
 
