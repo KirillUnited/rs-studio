@@ -20,7 +20,7 @@ export const PROJECT_QUERY = groq`
 `;
 
 export const PROJECT_LIST_QUERY = groq`
-	*[_type == "project"] | order(_createdAt desc){
+	*[_type == "projectPage"] | order(_createdAt desc){
     title,
     slug,
     description,
