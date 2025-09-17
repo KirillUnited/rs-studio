@@ -21,6 +21,7 @@ import { BasicNavbarProps } from '@/components/header/types'
 import Image from 'next/image'
 import { urlFor } from '@/sanity/lib/image'
 import { ModalDialog } from '@/components/modal-dialog'
+import { ContactList } from '../contact-us/ui'
 
 const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 	({ classNames = {}, logo, title, menuItems, ...props }, ref) => {
@@ -68,7 +69,7 @@ const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 							menuItems?.map((item, index) => (
 								<NavbarItem key={index}>
 									<Link className="text-foreground"
-										href={item?.internal?.metadata?.slug?.current === 'index' ? '/' : item?.internal?.metadata?.slug?.current || '#'}
+										href={item?.internal?.metadata?.slug?.current === 'index' ? '/' : `/${item?.internal?.metadata?.slug?.current}` || '#'}
 										size="sm">
 										{item?.internal?.metadata?.slug?.current === 'index' ? 'Главная' : item?.internal?.metadata?.title}
 									</Link>
@@ -91,7 +92,7 @@ const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 								Заказать
 							</Button>
 
-							<ModalDialog isOpen={isModalOpen}  onClose={() => setIsModalOpen(false)}/>
+							<ModalDialog isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 						</NavbarItem>
 					</NavbarContent>
 
@@ -112,13 +113,18 @@ const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 						{menuItems?.map((item, index) => (
 							<NavbarMenuItem key={index}>
 								<Link className="mb-2 w-full text-default-500"
-									href={item?.internal?.metadata?.slug?.current === 'index' ? '/' : item?.internal?.metadata?.slug?.current || '#'}
+									href={item?.internal?.metadata?.slug?.current === 'index' ? '/' : `/${item?.internal?.metadata?.slug?.current}` || '#'}
 									size="md">
 									{item?.internal?.metadata?.slug?.current === 'index' ? 'Главная' : item?.internal?.metadata?.title}
 								</Link>
 								{index < menuItems.length - 1 && <Divider className="opacity-50" />}
 							</NavbarMenuItem>
 						))}
+
+						<div className='flex flex-col gap-4 mt-auto'>
+							<Divider />
+							<ContactList />
+						</div>
 					</NavbarMenu>
 				</div>
 			</Navbar>
