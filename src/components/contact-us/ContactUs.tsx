@@ -6,6 +6,7 @@ import { FaMapPin } from "react-icons/fa"
 import { OrderForm } from '@/components/forms'
 import Link from 'next/link'
 import { cn } from "@/lib/utils"
+import { ContactList } from "./ui"
 
 export default function ContactUs({ className }: { className?: string }) {
 	return (
@@ -21,26 +22,9 @@ export default function ContactUs({ className }: { className?: string }) {
 
 				<div className="grid lg:grid-cols-2 gap-12">
 					<div className="space-y-8">
-						<div>
-							<h3 className="text-foreground-500 mb-2">Контактные данные</h3>
-							<div className="flex flex-col gap-2">
-								<div className="flex items-center space-x-4">
-									<BsPhone className="h-5 w-5 text-primary-600" />
-									<Link href="tel:+375295916386" className="text-foreground-700 font-semibold hover:underline hover:text-primary transition-colors">+375 (29) 591 63 86</Link>
-								</div>
-								<div className="flex items-center space-x-4">
-									<BsMailbox className="h-5 w-5 text-primary-600" />
-									<Link href="mailto:info@rs-service.by" className="text-foreground-700 font-semibold hover:underline hover:text-primary transition-colors">info@rs-service.by</Link>
-								</div>
-								<div className="flex items-center space-x-4">
-									<FaMapPin className="h-5 w-5 text-primary-600" />
-									<span className="text-foreground-700 font-semibold">123 Restoration Way, Auto City, AC 12345</span>
-								</div>
-								<div className="flex items-center space-x-4">
-									<CgLock className="h-5 w-5 text-primary-600" />
-									<span className="text-foreground-700 font-semibold">Пн-Пт: 8:00 - 18:00</span>
-								</div>
-							</div>
+						<div className="flex flex-col gap-2">
+							<h3 className="text-foreground-500">Контактные данные</h3>
+							<ContactList />
 						</div>
 
 						<div>
