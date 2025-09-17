@@ -21,6 +21,7 @@ import { BasicNavbarProps } from '@/components/header/types'
 import Image from 'next/image'
 import { urlFor } from '@/sanity/lib/image'
 import { ModalDialog } from '@/components/modal-dialog'
+import { ContactList } from '../contact-us/ui'
 
 const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 	({ classNames = {}, logo, title, menuItems, ...props }, ref) => {
@@ -119,6 +120,11 @@ const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 								{index < menuItems.length - 1 && <Divider className="opacity-50" />}
 							</NavbarMenuItem>
 						))}
+
+						<div className='flex flex-col gap-4 mt-auto'>
+							<Divider />
+							<ContactList />
+						</div>
 					</NavbarMenu>
 				</div>
 			</Navbar>
