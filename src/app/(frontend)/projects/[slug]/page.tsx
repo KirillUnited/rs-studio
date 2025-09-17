@@ -1,4 +1,4 @@
-import { Stat } from "@/components/project/project-page";
+import { DescriptionSection, Stat } from "@/components/project/project-page";
 import { HeroSection } from "@/components/project/project-page";
 import { Badge, Button, Card, CardBody } from "@heroui/react";
 import { BiCalendar, BiCheckCircle, BiShield, BiWrench } from "react-icons/bi";
@@ -13,11 +13,6 @@ export interface Step {
 	title: string;
 	description: string;
 	icon: any;
-}
-
-
-export interface DescriptionSectionProps {
-	description: string;
 }
 
 export interface StepsSectionProps {
@@ -36,25 +31,7 @@ export interface CallToActionSectionProps {
 
 // ------------------- Components -------------------
 
-const DescriptionSection: React.FC<DescriptionSectionProps> = ({ description }) => (
-	<section className="py-20 bg-background">
-		<div className="container mx-auto px-4">
-			<div className="max-w-4xl mx-auto">
-				<div className="text-center mb-16">
-					<h2 className="text-3xl md:text-4xl font-bold text-automotive-navy mb-6">
-						Описание <span className="text-automotive-gold">проекта</span>
-					</h2>
-					<div className="w-20 h-1 bg-automotive-gold rounded-full mx-auto mb-8"></div>
-				</div>
-				<Card className="shadow-card">
-					<CardBody className="p-8 md:p-12">
-						<p className="text-lg text-muted-foreground leading-relaxed text-center">{description}</p>
-					</CardBody>
-				</Card>
-			</div>
-		</div>
-	</section>
-);
+
 
 const StepsSection: React.FC<StepsSectionProps> = ({ steps }) => (
 	<section className="py-20 bg-gradient-subtle">
