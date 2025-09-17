@@ -1,7 +1,7 @@
 import { Button, Card, CardBody } from "@heroui/react";
 import { BsArrowLeft } from "react-icons/bs";
 
-export interface Stat {
+export interface HeroStatProps {
 	label: string;
 	value: string;
 	icon: any;
@@ -10,7 +10,7 @@ export interface Stat {
 export interface HeroSectionProps {
 	title: string;
 	subtitleHighlight: string;
-	stats: Stat[];
+	stats: HeroStatProps[];
 	heroImage: string;
 }
 
