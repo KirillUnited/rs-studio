@@ -68,7 +68,7 @@ const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 							menuItems?.map((item, index) => (
 								<NavbarItem key={index}>
 									<Link className="text-foreground"
-										href={item?.internal?.metadata?.slug?.current === 'index' ? '/' : item?.internal?.metadata?.slug?.current || '#'}
+										href={item?.internal?.metadata?.slug?.current === 'index' ? '/' : `/${item?.internal?.metadata?.slug?.current}` || '#'}
 										size="sm">
 										{item?.internal?.metadata?.slug?.current === 'index' ? 'Главная' : item?.internal?.metadata?.title}
 									</Link>
@@ -91,7 +91,7 @@ const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 								Заказать
 							</Button>
 
-							<ModalDialog isOpen={isModalOpen}  onClose={() => setIsModalOpen(false)}/>
+							<ModalDialog isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 						</NavbarItem>
 					</NavbarContent>
 
@@ -112,7 +112,7 @@ const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 						{menuItems?.map((item, index) => (
 							<NavbarMenuItem key={index}>
 								<Link className="mb-2 w-full text-default-500"
-									href={item?.internal?.metadata?.slug?.current === 'index' ? '/' : item?.internal?.metadata?.slug?.current || '#'}
+									href={item?.internal?.metadata?.slug?.current === 'index' ? '/' : `/${item?.internal?.metadata?.slug?.current}` || '#'}
 									size="md">
 									{item?.internal?.metadata?.slug?.current === 'index' ? 'Главная' : item?.internal?.metadata?.title}
 								</Link>
