@@ -12,6 +12,7 @@ import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
 import { FaServicestack } from "react-icons/fa";
 import { PiSteeringWheel } from "react-icons/pi";
+import { JSX } from "react";
 
 // Example mock data (replace with Sanity later)
 const stats: Stat[] = [
@@ -91,8 +92,10 @@ const CallToActionSection: React.FC<CallToActionSectionProps> = () => (
 
 // ------------------- Main Page -------------------
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-	const { slug } = await params;
+export async function generateMetadata(props: {
+	params: Promise<{ slug: string }>;
+}) {
+	const { slug } = await props.params;
 	const project = await fetchSanityLive({ query: PROJECT_QUERY, params: { slug } });
 
 	return {
@@ -122,13 +125,13 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 	};
 }
 
-const ProjectDetail = async ({ params }: { params: { slug: string } }) => {
-	const { slug } = await params;
+export default async function ProjectPage(props: {
+	params: Promise<{ slug: string }>;
+}): Promise<JSX.Element> {
+	const { slug } = await props.params;
 	const project = await fetchSanityLive({ query: PROJECT_QUERY, params: { slug } });
 	const heroImage = urlFor(project?.image).width(1200).height(630).format("webp").url();
 	const description = project?.description;
-
-	console.log(project);
 
 	if (!project) return <NotFound />;
 
@@ -142,5 +145,3 @@ const ProjectDetail = async ({ params }: { params: { slug: string } }) => {
 		</>
 	);
 };
-
-export default ProjectDetail;
