@@ -4,15 +4,14 @@ import { HeroSection } from "@/components/project/project-page";
 import { Step } from "@/components/project/project-page";
 import { fetchSanityLive } from "@/sanity/lib/fetch";
 import { Button } from "@heroui/react";
-import { BiCalendar, BiCheckCircle, BiShield, BiWrench } from "react-icons/bi";
-// import { useRouter } from "next/router";
+import { BiBookContent, BiCalendar, BiCheckCircle, BiShield, BiWrench } from "react-icons/bi";
 import { BsSearch } from "react-icons/bs";
 import { CgDollar, CgLock } from "react-icons/cg";
-import { GrSettingsOption } from "react-icons/gr";
 import NotFound from "../../not-found";
 import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
 import { FaServicestack } from "react-icons/fa";
+import { PiSteeringWheel } from "react-icons/pi";
 
 // Example mock data (replace with Sanity later)
 const stats: Stat[] = [
@@ -23,15 +22,40 @@ const stats: Stat[] = [
 ];
 
 const steps: Step[] = [
-	{ title: "Диагностика салона", description: "Определение состояния кожи и пластика.", icon: BsSearch },
-	{ title: "Подбор материалов", description: "Используем только сертифицированные материалы.", icon: GrSettingsOption },
-	{ title: "Ремонт и восстановление", description: "Проведение работ по восстановлению и покраске.", icon: BiWrench },
-	{ title: "Проверка качества", description: "Финальный контроль и выдача автомобиля клиенту.", icon: BiCheckCircle },
+	{
+		title: "Согласование",
+		description:
+			"На первом этапе мы проводим детальную консультацию с клиентом, уточняем все его требования и пожелания. В нашей мастерской имеется широкий ассортимент высококачественных материалов, что позволяет выбрать идеальное решение, соответствующее индивидуальному стилю автомобиля.",
+		icon: BsSearch,
+	},
+	{
+		title: "Демонтаж руля",
+		description:
+			"При демонтаже руля мы уделяем особое внимание аккуратному снятию всех кнопок и элементов управления. Если клиенту срочно нужен автомобиль, наша мастерская предоставляет подменный руль для удобства.",
+		icon: PiSteeringWheel,
+	},
+	{
+		title: "Подготовка и изготовление лекала",
+		description:
+			"На этом этапе мастер осторожно распарывает швы и снимает старую кожу. Затем он аккуратно отделяет вставку от руля. После этого берется за лекала, что является одним из ключевых этапов процесса перешивания. Тщательное и корректное создание лекала напрямую влияет на визуальное и тактильное восприятие нового руля.",
+		icon: BiBookContent,
+	},
+	{
+		title: "Перешив руля",
+		description:
+			"На данном этапе руль обретает свой окончательный вид. В этом проекте не предусмотрена декоративная строчка. Кожа фиксируется исключительно с помощью специального клея и фиксируется вставкой.",
+		icon: BiWrench,
+	},
+	{
+		title: "Установка и проверка",
+		description:
+			"После завершения всех работ руль устанавливается обратно. Мастер подключает все разъемы и проводит проверку работоспособности всех элементов, чтобы гарантировать безопасность и функциональность.",
+		icon: BiCheckCircle,
+	},
 ];
 
 const beforeImages = ["/images/project-before-1.jpg", "/images/project-before-2.jpg"];
 const afterImages = ["/images/project-after-1.jpg", "/images/project-after-2.jpg"];
-const heroImage = "/images/project-hero-bg.jpg";
 
 // ------------------- Interfaces -------------------
 
@@ -42,22 +66,24 @@ export interface CallToActionSectionProps {
 
 // ------------------- Components -------------------
 const CallToActionSection: React.FC<CallToActionSectionProps> = () => (
-	<section className="py-20 bg-secondary/50">
+	<section className="py-20 bg-content1">
 		<div className="container">
-			<h2 className="text-3xl md:text-4xl font-bold mb-6">Нужен похожий ремонт?</h2>
-			<p className="text-sm md:text-base mb-8 max-w-4xl text-balance">
-				Закажите профессиональное восстановление салона вашего автомобиля. Используем только проверенные материалы и
-				предоставляем гарантию на все работы.
-			</p>
-			<div className="flex flex-col md:flex-row gap-4">
-				<Button radius="full" color="primary" className="brand-gradient group">
-					<BiCalendar className="group-hover:scale-110 transition-transform" size={20} />
-					Заказать ремонт
-				</Button>
-				<Button className="text-foreground group" radius="full" as={Link} href="/services" variant="bordered" color="primary">
-					Все услуги
-					<FaServicestack className="group-hover:scale-110 transition-transform" size={20} />
-				</Button>
+			<div className="bg-secondary/50 rounded-large px-8 py-12">
+				<h2 className="text-3xl md:text-4xl font-bold mb-6">Нужен похожий ремонт?</h2>
+				<p className="text-sm md:text-base mb-8 max-w-4xl text-balance">
+					Закажите профессиональное восстановление салона вашего автомобиля. Используем только проверенные материалы и
+					предоставляем гарантию на все работы.
+				</p>
+				<div className="flex flex-col md:flex-row gap-4">
+					<Button as={Link} href="/#contact" radius="full" color="primary" className="brand-gradient group">
+						<BiCalendar className="group-hover:scale-110 transition-transform" size={20} />
+						Заказать ремонт
+					</Button>
+					<Button className="text-foreground group" radius="full" as={Link} href="/services" variant="bordered" color="primary">
+						Все услуги
+						<FaServicestack className="group-hover:scale-110 transition-transform" size={20} />
+					</Button>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -99,7 +125,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 const ProjectDetail = async ({ params }: { params: { slug: string } }) => {
 	const { slug } = await params;
 	const project = await fetchSanityLive({ query: PROJECT_QUERY, params: { slug } });
-	const heroImage = urlFor(project?.image).width(1200).height(630).url();
+	const heroImage = urlFor(project?.image).width(1200).height(630).format("webp").url();
 	const description = project?.description;
 
 	console.log(project);

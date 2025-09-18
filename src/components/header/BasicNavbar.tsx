@@ -113,9 +113,9 @@ const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 						{menuItems?.map((item, index) => (
 							<NavbarMenuItem key={index}>
 								<Link className="mb-2 w-full text-default-500"
-									href={item?.internal?.metadata?.slug?.current === 'index' ? '/' : `/${item?.internal?.metadata?.slug?.current}` || '#'}
+									href={item?.internal?.metadata?.slug?.current === 'index' ? '/' : `/${item?.internal?.metadata?.slug?.current}` ? item?.external?.slug : '#'}
 									size="md">
-									{item?.internal?.metadata?.slug?.current === 'index' ? 'Главная' : item?.internal?.metadata?.title}
+									{item?.internal?.metadata?.slug?.current === 'index' ? 'Главная' : item?.internal?.metadata?.title || item?.external?.title}
 								</Link>
 								{index < menuItems.length - 1 && <Divider className="opacity-50" />}
 							</NavbarMenuItem>
