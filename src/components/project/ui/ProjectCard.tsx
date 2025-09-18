@@ -12,7 +12,8 @@ export interface ProjectCardProps {
 		details: string[],
 		slug: {
 			current: string
-		}
+		},
+		category?: string
 	}
 }
 

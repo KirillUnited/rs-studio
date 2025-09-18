@@ -1,4 +1,4 @@
-import { ProjectList } from "@/components/project";
+import { AllProjects, ProjectList } from "@/components/project";
 import { PROJECT_LIST_QUERY } from "@/components/project/lib/queries";
 import { fetchSanityLive } from "@/sanity/lib/fetch";
 import { Button } from "@heroui/react";
@@ -81,7 +81,8 @@ export default async function ProjectsPage() {
 					</div>
 				</div>
 			</section>
-			<ProjectList projects={projects} />
+			{/* All Projects */}
+			<AllProjects projects={projects} />
 		</>
 	)
 }
