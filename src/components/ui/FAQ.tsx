@@ -37,14 +37,14 @@ export default function FAQSection({ items }: FAQSectionProps): JSX.Element | nu
 	if (!items) return null;
 
 	return (
-		<section className="py-20 bg-gradient-subtle">
+		<section className="py-20">
 			<div className="container">
-				<div className="text-center mb-16">
+				<div className="lg:text-center mb-16">
 					<h2 className="text-4xl md:text-5xl font-bold mb-4">
 						Часто задаваемые <span className="text-brand-gradient">вопросы</span>
 					</h2>
-					<div className="w-20 h-1 brand-gradient rounded-full mx-auto mb-6"></div>
-					<p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
+					<div className="w-20 h-1 brand-gradient rounded-full lg:mx-auto mb-6"></div>
+					<p className="text-sm md:text-base text-muted-foreground max-w-2xl lg:mx-auto">
 						Получите ответы на самые распространенные вопросы о наших услугах по восстановлению салона автомобиля и технологиях <span className="brand-gradient">LeTech</span>.
 					</p>
 				</div>
@@ -63,8 +63,8 @@ export default function FAQSection({ items }: FAQSectionProps): JSX.Element | nu
 					</Accordion>
 				</div>
 
-				<div className="mt-16 text-center">
-					<Card className="p-8 max-w-2xl mx-auto shadow-small">
+				<div className="mt-16 lg:text-center">
+					<Card className="p-8 max-w-2xl lg:mx-auto shadow-small">
 						<h3 className="text-2xl font-bold text-white mb-4">
 							Остались вопросы?
 						</h3>
