@@ -29,6 +29,9 @@ const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 		const [isModalOpen, setIsModalOpen] = React.useState(false);
 		const logoImage = logo?.image?.dark || logo?.image?.default
 
+
+		console.log(menuItems);
+
 		return (
 			<Navbar
 				ref={ref}
@@ -69,9 +72,9 @@ const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 							menuItems?.map((item, index) => (
 								<NavbarItem key={index}>
 									<Link className="text-foreground"
-										href={item?.internal?.metadata?.slug?.current === 'index' ? '/' : `/${item?.internal?.metadata?.slug?.current}` || '#'}
+										href={item?.internal?.metadata?.slug?.current === 'index' ? '/' : `/${item?.internal?.metadata?.slug?.current}` ? item?.external?.slug : '#'}
 										size="sm">
-										{item?.internal?.metadata?.slug?.current === 'index' ? 'Главная' : item?.internal?.metadata?.title}
+										{item?.internal?.metadata?.slug?.current === 'index' ? 'Главная' : item?.internal?.metadata?.title || item?.external?.title}
 									</Link>
 								</NavbarItem>
 							))

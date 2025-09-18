@@ -14,13 +14,18 @@ export interface BasicNavbarProps extends NavbarProps {
 	/** Menu items */
 	menuItems?: Array<{
 		/** Internal metadata */
-		internal: {
+		internal?: {
 			metadata: {
 				slug: {
 					current: string
 				}
 				title: string
 			}
+		}
+		/** External metadata */
+		external?: {
+			slug: string
+			title: string
 		}
 	}>
 }

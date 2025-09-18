@@ -3,6 +3,8 @@ import { cn } from '@/lib/utils'
 import { getSite } from '@/sanity/lib/queries'
 import React from 'react'
 import { BasicNavbar } from '@/components/header/index'
+import Link from 'next/link'
+import { LinkProps } from '@heroui/react'
 
 export default async function Header() {
 	const { title, logo, ctas, headerMenu } = await getSite();
@@ -13,12 +15,16 @@ export default async function Header() {
 			default: logo?.image?.default?.asset
 		}
 	};
-	const menuItems = headerMenu?.items?.map(item => ({
+	const menuItems = headerMenu?.items?.map((item: Sanity.Link | Sanity.LinkList) => ({
 		internal: {
 			metadata: {
 				slug: { current: 'internal' in item ? item.internal?.metadata?.slug?.current || '' : '' },
 				title: ('internal' in item && item.internal?.metadata?.title) || ''
 			}
+		},
+		external: {
+			slug: ('external' in item && item.external) || '',
+			title: ('label' in item && item.label) || ''
 		}
 	}));
 
