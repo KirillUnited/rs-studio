@@ -1,5 +1,6 @@
 import { AllProjects, ProjectList } from "@/components/project";
 import { PROJECT_LIST_QUERY } from "@/components/project/lib/queries";
+import { CTASection } from "@/components/service";
 import { fetchSanityLive } from "@/sanity/lib/fetch";
 import { Button } from "@heroui/react";
 import { Metadata } from "next";
@@ -83,6 +84,9 @@ export default async function ProjectsPage() {
 			</section>
 			{/* All Projects */}
 			<AllProjects projects={projects} />
+
+			{/* CTA Section */}
+			<CTASection className="my-16" />
 		</>
 	)
 }
