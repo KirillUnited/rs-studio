@@ -162,11 +162,11 @@ export default function Hero({
 									radius="full"
 									variant="bordered"
 									as={Link}
-									href="/blog/tekhnologiya-litech-revolyuciya-v-restavracii-kozhi"
+									href="/projects"
 									size='lg'
 									target="_blank"
 								>
-									Подробнее
+									Наши Работы
 								</Button>
 							</div>
 							<CallUsBadge phone="+375 (29) 591 63 86" />
