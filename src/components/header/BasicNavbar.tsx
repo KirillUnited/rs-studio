@@ -27,7 +27,7 @@ const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 	({ classNames = {}, logo, title, menuItems, ...props }, ref) => {
 		const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 		const [isModalOpen, setIsModalOpen] = React.useState(false);
-		const logoImage = logo?.image?.dark || logo?.image?.default
+		const logoImage = logo?.image?.dark || logo?.image?.default;
 
 		return (
 			<Navbar
@@ -69,9 +69,9 @@ const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 							menuItems?.map((item, index) => (
 								<NavbarItem key={index}>
 									<Link className="text-foreground"
-										href={item?.internal?.metadata?.slug?.current === 'index' ? '/' : `/${item?.internal?.metadata?.slug?.current}` || '#'}
+										href={item?.internal?.metadata?.slug?.current === 'index' ? '/' : `/${item?.internal?.metadata?.slug?.current}` ? item?.external?.slug : '#'}
 										size="sm">
-										{item?.internal?.metadata?.slug?.current === 'index' ? 'Главная' : item?.internal?.metadata?.title}
+										{item?.internal?.metadata?.slug?.current === 'index' ? 'Главная' : item?.internal?.metadata?.title || item?.external?.title}
 									</Link>
 								</NavbarItem>
 							))
@@ -113,9 +113,9 @@ const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 						{menuItems?.map((item, index) => (
 							<NavbarMenuItem key={index}>
 								<Link className="mb-2 w-full text-default-500"
-									href={item?.internal?.metadata?.slug?.current === 'index' ? '/' : `/${item?.internal?.metadata?.slug?.current}` || '#'}
+									href={item?.internal?.metadata?.slug?.current === 'index' ? '/' : `/${item?.internal?.metadata?.slug?.current}` ? item?.external?.slug : '#'}
 									size="md">
-									{item?.internal?.metadata?.slug?.current === 'index' ? 'Главная' : item?.internal?.metadata?.title}
+									{item?.internal?.metadata?.slug?.current === 'index' ? 'Главная' : item?.internal?.metadata?.title || item?.external?.title}
 								</Link>
 								{index < menuItems.length - 1 && <Divider className="opacity-50" />}
 							</NavbarMenuItem>
