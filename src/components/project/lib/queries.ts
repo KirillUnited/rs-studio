@@ -1,7 +1,7 @@
 import { groq } from "next-sanity";
 
 export const PROJECT_QUERY = groq`
-  *[_type == "project" && slug.current == $slug][0]{
+  *[_type == "projectPage" && slug.current == $slug][0]{
     title,
     description,
     image{asset->{url}},
