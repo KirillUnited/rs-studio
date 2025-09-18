@@ -1,19 +1,21 @@
 import Link from "next/link"
 import { ProjectCard } from "./ui"
 
+export type ProjectProps = {
+	image: Sanity.Image
+	title: string
+	description: string
+	details: string[],
+	slug: {
+		current: string
+	}
+	category?: string
+}
 
 export default function ProjectList({
 	projects,
 }: {
-	projects: {
-		image: Sanity.Image
-		title: string
-		description: string
-		details: string[],
-		slug: {
-			current: string
-		}
-	}[]
+	projects: ProjectProps[]
 }) {
 	if (!projects || !Array.isArray(projects) || projects.length === 0) {
 		return (
