@@ -19,14 +19,14 @@ export default function CTASection({ className, useContactAnchor, ...props }: CT
 						backgroundImage: 'url(/images/before-after.jpg)',
 					}}
 				>
-					<div className="relative z-10 text-center flex flex-col items-center gap-4">
+					<div className="relative z-10 lg:text-center flex flex-col items-start lg:items-center gap-4">
 						<Pretitle>
 							Всегда на связи
 						</Pretitle>
-						<h2 className="text-3xl md:text-4xl font-bold">
+						<h2 className="text-3xl md:text-4xl font-bold leadiing-none">
 							Готовы преобразить салон своего автомобиля?
 						</h2>
-						<p className="text-white/80 max-w-2xl mx-auto text-pretty">
+						<p className="text-sm lg:text-base text-white/80 max-w-2xl text-pretty">
 							Свяжитесь с нами сегодня для бесплатной консультации и узнайте, как технологии <span
 								className="brand-gradient font-bold">LeTech</span> помогут восстановить идеальный салон вашего автомобиля
 						</p>

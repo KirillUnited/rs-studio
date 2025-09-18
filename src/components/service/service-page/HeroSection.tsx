@@ -19,12 +19,12 @@ export default function HeroSection({
 
 	return (
 		<section
-			className="relative flex items-center justify-center bg-cover bg-center bg-no-repeat bg-fixed"
+			className="relative flex items-center lg:justify-center bg-cover bg-center bg-no-repeat bg-fixed"
 			style={{ backgroundImage: `url(${heroImageUrl})` }}
 		>
 			<div className="absolute inset-0 bg-black/70"></div>
 
-			<div className="relative z-10 container mx-auto px-4 py-20 text-center">
+			<div className="relative z-10 container py-20 lg:text-center">
 				<div className="max-w-4xl mx-auto animate-fade-in-up">
 					<h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
 						{title}{' '}
@@ -32,7 +32,7 @@ export default function HeroSection({
 					</h1>
 
 					{description && (
-						<p className="md:text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
+						<p className="md:text-lg mb-8 max-w-2xl lg:mx-auto leading-relaxed">
 							{description}
 						</p>
 					)}

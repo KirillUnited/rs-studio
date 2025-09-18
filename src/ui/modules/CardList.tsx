@@ -113,9 +113,9 @@ export default async function CardList({
 						quality={50}
 					/>
 					<div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-					<div className="absolute bottom-8 left-8 text-foreground">
-						<h3 className="text-2xl font-bold mb-2">Увидеть трансформацию</h3>
-						<p className="text-muted-foreground">Профессиональные результаты, которые говорят сами за себя</p>
+					<div className="absolute bottom-0 left-0 text-foreground p-4">
+						<h3 className="text-2xl font-bold mb-2 leading-none">Увидеть трансформацию</h3>
+						<p className="text-sm md:text-base text-muted-foreground">Профессиональные результаты, которые говорят сами за себя</p>
 					</div>
 				</Link>
 			</div>

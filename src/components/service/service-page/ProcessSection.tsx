@@ -31,12 +31,12 @@ export default function ProcessSection() {
 	return (
 		<section className="py-20 bg-content1">
 			<div className="container">
-				<div className="text-center mb-16">
+				<div className="mb-12">
 					<h2 className="text-4xl md:text-5xl font-bold mb-4 capitalize">
 						Как мы <span className="text-brand-gradient">работаем</span>
 					</h2>
-					<div className="w-20 h-1 brand-gradient rounded-full mx-auto mb-6"></div>
-					<p className="text-sm md:text-base text-foreground-700 font-light max-w-3xl mx-auto">
+					<div className="w-20 h-1 brand-gradient rounded-full mb-6"></div>
+					<p className="text-sm md:text-base text-foreground-700 font-light max-w-3xl">
 						Наш проверенный 4-этапный процесс гарантирует исключительные результаты для любого проекта по реставрации салона автомобиля, сочетая опыт и передовые технологии <span className="brand-gradient">LeTech</span>.
 					</p>
 				</div>
