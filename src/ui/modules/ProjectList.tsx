@@ -1,9 +1,6 @@
 import moduleProps from '@/lib/moduleProps'
 import { stegaClean } from 'next-sanity'
 import { cn } from '@/lib/utils'
-import Link from 'next/link'
-import { Button } from '@heroui/react'
-import { BsArrowUpRightCircle } from 'react-icons/bs'
 import { JSX } from 'react'
 import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { PROJECT_LIST_QUERY } from '@/components/project/lib/queries'
@@ -12,18 +9,20 @@ import { ProjectProps } from '@/components/project/ProjectList'
 import { CTASection } from '@/components/service'
 import { SectionHeader } from '@/components/section'
 
-export default async function CardList({
-	pretitle,
-	intro,
-	projects,
-	ctas,
-	layout,
-	columns = 3,
-	visualSeparation,
-	...props
-}: Partial<{
+export default async function ProjectList({
+																						pretitle,
+																						intro,
+																						description,
+																						projects,
+																						ctas,
+																						layout,
+																						columns = 3,
+																						visualSeparation,
+																						...props
+																					}: Partial<{
 	pretitle: string
 	intro: any
+	description: string
 	ctas: Sanity.CTA[]
 	projects: ProjectProps[]
 	layout: 'grid' | 'carousel'
@@ -31,9 +30,6 @@ export default async function CardList({
 	visualSeparation: boolean
 }> &
 	Sanity.Module): Promise<JSX.Element> {
-	const featuredProjects = await fetchSanityLive({
-		query: PROJECT_LIST_QUERY,
-	})
 	const isCarousel = stegaClean(layout) === 'carousel'
 
 	console.log(projects)
@@ -42,25 +38,8 @@ export default async function CardList({
 		<>
 			<section className="py-16 bg-content1" {...moduleProps(props)}>
 				<div className="container">
-					{/*{(pretitle || intro) && (*/}
-					{/*	<header className="mb-8 md:mb-16 flex flewrap justify-between">*/}
-					{/*		<div className="richtext max-w-2xl">*/}
-					{/*			<Pretitle>{pretitle}</Pretitle>*/}
-					{/*			<PortableText value={intro} />*/}
-					{/*		</div>*/}
-					{/*		{*/}
-					{/*			ctas?.map((cta: Sanity.CTA, index) => (*/}
-					{/*				<Button as={Link} href={cta.link?.external} key={index} className="self-end group max-md:hidden"*/}
-					{/*								radius="full" variant="bordered">*/}
-					{/*					{cta.link?.label}*/}
-
-					{/*					<BsArrowUpRightCircle className="h-4 w-4 group-hover:translate-x-1 transition-transform" />*/}
-					{/*				</Button>*/}
-					{/*			))*/}
-					{/*		}*/}
-					{/*	</header>*/}
-					{/*)}*/}
-					<SectionHeader pretitle={pretitle} title={intro} decription={'Портфолио успешных проектов по восстановлению автомобильных салонов. Каждый проект — это уникальное решение с гарантией качества.'} />
+					<SectionHeader pretitle={pretitle} title={intro}
+												 decription={description} />
 
 					{/* Before/After Showcase */}
 					<ProjectShowcase />
@@ -87,21 +66,11 @@ export default async function CardList({
 							))
 						}
 					</div>
-					{
-						ctas?.map((cta: Sanity.CTA, index) => (
-							<Button as={Link} href={cta.link?.external} key={index} className="self-end group mt-4 md:hidden"
-								radius="full" variant="bordered">
-								{cta.link?.label}
-
-								<BsArrowUpRightCircle className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-							</Button>
-						))
-					}
 				</div>
 			</section>
 
 			{/* CTA Section */}
-			<CTASection className='py-16' />
+			<CTASection className="py-16" />
 		</>
 	)
 }

@@ -24,8 +24,15 @@ export default defineType({
 		}),
 		defineField({
 			name: 'intro',
+			title: 'Заголовок',
 			type: 'array',
 			of: [{ type: 'block' }],
+			group: 'content',
+		}),
+		defineField({
+			name: 'description',
+			title: 'Описание',
+			type: 'text',
 			group: 'content',
 		}),
 		defineField({
@@ -76,11 +83,11 @@ export default defineType({
 	preview: {
 		select: {
 			intro: 'intro',
-			cards: 'cards',
+			projects: 'projects',
 		},
-		prepare: ({ intro, cards }) => ({
-			title: getBlockText(intro) || count(cards, 'card'),
-			subtitle: 'Card list',
+		prepare: ({ intro, projects }) => ({
+			title: getBlockText(intro) || count(projects, 'Проект'),
+			subtitle: 'Список проектов',
 		}),
 	},
 })
