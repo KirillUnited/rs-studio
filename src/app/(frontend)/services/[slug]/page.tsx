@@ -58,7 +58,6 @@ export default async function ServicePage(props: {
 		query: SERVICE_PAGE_QUERY,
 		params: { slug },
 	});
-	console.log(page)
 
 	return (
 		<>

@@ -1,6 +1,7 @@
 'use client'
 import { Accordion, AccordionItem, Card } from '@heroui/react'
 import { JSX } from 'react'
+import Link from 'next/link'
 
 const faqs = [
 	{
@@ -72,12 +73,12 @@ export default function FAQSection({ items }: FAQSectionProps): JSX.Element | nu
 							Наша команда экспертов готова помочь. Свяжитесь с нами, чтобы получить персональные ответы и бесплатную консультацию по вопросам реставрации салона вашего автомобиля.
 						</p>
 						<div className="flex flex-col md:flex-row gap-4 justify-center">
-							<p className="text-white">
-								<span className="font-semibold text-automotive-gold">Call:</span> +1 (555) 123-4567
-							</p>
-							<p className="text-white">
-								<span className="font-semibold text-automotive-gold">Email:</span> info@rs-service.by
-							</p>
+							<Link href={`tel:+375 (29) 591 63 86`} className='flex flex-col gap-1'>
+								<span className="font-semibold text-brand-gradient">Позвонить:</span> +375 (29) 591 63 86
+							</Link>
+							<Link href={`mailto:info@rs-service.by`} className='flex flex-col gap-1'>
+								<span className="font-semibold text-brand-gradient">Написать:</span> info@rs-service.by
+							</Link>
 						</div>
 					</Card>
 				</div>

@@ -2,6 +2,8 @@ import { Card, CardBody } from "@heroui/react";
 import { BiWrench } from "react-icons/bi";
 import { BsClipboard2Check, BsShieldCheck } from "react-icons/bs";
 import { IoSearchCircle } from "react-icons/io5";
+import { cn } from '@/lib/utils'
+import styles from './styles.module.css'
 
 const processSteps = [
 	{
@@ -41,7 +43,7 @@ export default function ProcessSection() {
 					</p>
 				</div>
 
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+				<div className={cn(styles.ProcessSteps, 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4')}>
 					{processSteps.map((step, index) => {
 						const IconComponent = step.icon;
 						return (
@@ -75,20 +77,20 @@ export default function ProcessSection() {
 					})}
 				</div>
 
-				<div className="mt-16 text-center">
-					<div className="rounded-xl p-8 max-w-2xl mx-auto bg-content2">
+				<div className="mt-16 lg:text-center">
+					<div className="rounded-xl p-6 max-w-2xl lg:mx-auto bg-content2">
 						<h3 className="text-2xl font-bold mb-4">
 							Сроки и Результат
 						</h3>
 						<p className="text-sm md:text-base text-foreground-700 mb-6">
 							Большинство проектов по реставрации салона автомобиля завершаются в течение 1–2 рабочих дней, в зависимости от объема необходимой реставрации.
 						</p>
-						<div className="flex justify-center space-x-8">
-							<div className="text-center">
+						<div className="flex flex-col lg:flex-row lg:justify-center gap-6">
+							<div className="lg:text-center">
 								<div className="text-2xl font-bold text-brand-gradient">День 1</div>
 								<div className="text-sm text-foreground-700">Оценка и старт работ</div>
 							</div>
-							<div className="text-center">
+							<div className="lg:text-center">
 								<div className="text-2xl font-bold text-brand-gradient">День 2</div>
 								<div className="text-sm text-foreground-700">Приёмка выполненных работ</div>
 							</div>
