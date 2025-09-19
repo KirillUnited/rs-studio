@@ -2,6 +2,7 @@
 import { Accordion, AccordionItem, Card } from '@heroui/react'
 import { JSX } from 'react'
 import Link from 'next/link'
+import { SectionHeader } from '@/components/section'
 
 const faqs = [
 	{
@@ -31,28 +32,29 @@ const faqs = [
 ]
 
 interface FAQSectionProps {
-	items: typeof faqs
+	pretitle: string
+	intro: any
+	description: string
+	ctas: Sanity.CTA[]
+	faqList: {
+		faqs: {
+			question: string
+			answer: string
+		}[]
+	}
 }
 
-export default function FAQSection({ items }: FAQSectionProps): JSX.Element | null {
-	if (!items) return null;
+export default function FAQSection({ faqList, intro, pretitle, description, ctas }: Partial<FAQSectionProps>): JSX.Element | null {
+	if (!faqList) return null;
 
 	return (
 		<section className="py-20">
 			<div className="container">
-				<div className="lg:text-center mb-16">
-					<h2 className="text-4xl md:text-5xl font-bold mb-4">
-						Часто задаваемые <span className="text-brand-gradient">вопросы</span>
-					</h2>
-					<div className="w-20 h-1 brand-gradient rounded-full lg:mx-auto mb-6"></div>
-					<p className="text-sm md:text-base text-muted-foreground max-w-2xl lg:mx-auto">
-						Получите ответы на самые распространенные вопросы о наших услугах по восстановлению салона автомобиля и технологиях <span className="brand-gradient">LeTech</span>.
-					</p>
-				</div>
+				<SectionHeader pretitle={pretitle} title={intro} description={description} ctas={ctas} align='center' />
 
 				<div className="max-w-4xl mx-auto">
 					<Accordion>
-						{items?.map((faq, index) => (
+						{faqList?.faqs?.map((faq, index) => (
 							<AccordionItem
 								key={index}
 								aria-label={faq.question}
@@ -67,7 +69,7 @@ export default function FAQSection({ items }: FAQSectionProps): JSX.Element | nu
 				<div className="mt-16 lg:text-center">
 					<Card className="p-8 max-w-2xl lg:mx-auto shadow-small">
 						<h3 className="text-2xl font-bold text-white mb-4">
-							Остались вопросы?
+							Всё ещё остались вопросы?
 						</h3>
 						<p className="text-sm md:text-base text-white/80 mb-6 text-balance">
 							Наша команда экспертов готова помочь. Свяжитесь с нами, чтобы получить персональные ответы и бесплатную консультацию по вопросам реставрации салона вашего автомобиля.

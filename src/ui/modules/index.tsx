@@ -25,6 +25,7 @@ import dynamic from 'next/dynamic'
 import { createDataAttribute } from 'next-sanity'
 import { ContactUs } from '@/components/contact-us'
 import { InstagramSection } from '@/components/socials'
+import { FAQSection } from '@/components/ui'
 
 const MODULE_MAP = {
 	'accordion-list': AccordionList,
@@ -52,6 +53,7 @@ const MODULE_MAP = {
 	'testimonial-list': TestimonialList,
 	'testimonial.featured': TestimonialFeatured,
 	'project-list': ProjectList,
+	'faq-list-section': FAQSection,
 } as const
 
 export default function Modules({
