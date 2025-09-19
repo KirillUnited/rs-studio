@@ -55,48 +55,46 @@ export default function ServicesPage(): JSX.Element {
 					backgroundImage: 'url(/images/service-placeholder.png)',
 				}}
 			>
-				<div className="container text-center relative z-10">
+				<div className="container flex flex-col items-start lg:items-center lg:text-center relative z-10">
 					<Pretitle className='mb-4'>
 						Восстановление и защите салона автомобиля
 					</Pretitle>
 					<h1 className="text-4xl md:text-6xl font-bold mb-6 capitalize">
 						Наши <span>услуги</span>
 					</h1>
-					<div className="w-24 h-1 brand-gradient rounded-full mx-auto mb-8"></div>
-					<p className="md:text-lg max-w-3xl mx-auto mb-8 text-balance">
+					<div className="w-24 h-1 brand-gradient rounded-full lg:mx-auto mb-8"></div>
+					<p className="md:text-lg max-w-3xl lg:mx-auto mb-8 text-balance">
 						Комплексные услуги по <span className="font-bold">восстановлению и защите салона автомобиля</span> с
 						использованием передовых технологий <span className="brand-gradient font-bold">LeTech</span>.
 					</p>
-					<div>
-						<Button
-							className="group brand-gradient font-medium"
-							endContent={
-								<span
-									className="group-hover:translate-x-1 transition-transform pointer-events-none flex h-[22px] w-[22px] items-center justify-center rounded-full bg-foreground">
+					<Button
+						className="group brand-gradient font-medium"
+						endContent={
+							<span
+								className="group-hover:translate-x-1 transition-transform pointer-events-none flex h-[22px] w-[22px] items-center justify-center rounded-full bg-foreground">
 									<BsArrowUpRight size={14} className="text-background" />
 								</span>
-							}
-							radius="full"
-							as={Link}
-							href="#about"
-						>
-							Подробнее
-						</Button>
-					</div>
+						}
+						radius="full"
+						as={Link}
+						href="#about"
+					>
+						Подробнее
+					</Button>
 
 				</div>
 			</section>
 			{/* Services Grid */}
 			<section id="about" className="py-20">
 				<div className="container">
-					<div className="text-center mb-16">
+					<div className="lg:text-center mb-16">
 						<Pretitle className='mb-4'>
 							Наши услуги
 						</Pretitle>
-						<h2 className="text-3xl md:text-4xl font-bold text-automotive-navy mb-4">
+						<h2 className="text-3xl md:text-4xl font-bold mb-4">
 							Комплексные решения
 						</h2>
-						<p className="max-w-2xl mx-auto text-pretty">
+						<p className="max-w-2xl lg:mx-auto text-pretty">
 							От мелкого ремонта до полной реставрации — мы предлагаем комплексные услуги, чтобы салон вашего автомобиля
 							выглядел и ощущался как новый.
 						</p>

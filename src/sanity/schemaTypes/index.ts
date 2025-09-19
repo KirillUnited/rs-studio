@@ -53,6 +53,7 @@ import testimonialFeatured from './modules/testimonial.featured'
 import testimonialList from './modules/testimonial-list'
 import { servicePageType } from './documents/servicePageType'
 import { projectPageType } from './documents/projectPageType'
+import projectList from './modules/project-list'
 
 export const schemaTypes: SchemaTypeDefinition[] = [
 	// documents
@@ -108,4 +109,5 @@ export const schemaTypes: SchemaTypeDefinition[] = [
 	tabbedContent,
 	testimonialFeatured,
 	testimonialList,
+	projectList,
 ]

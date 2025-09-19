@@ -1,6 +1,8 @@
 import { Card, CardBody } from '@heroui/react'
 import { JSX } from 'react'
 import { BenefitsSectionIconMap, BenefitsSectionIconType } from '../lib/iconMap'
+import styles from './styles.module.css'
+import { cn } from '@/lib/utils'
 
 interface BenefitsSectionProps {
 	title: string,
@@ -32,12 +34,12 @@ export default function BenefitsSection({
 					</p>
 				</div>
 
-				<div className="flex flex-wrap justify-items-center justify-center items-stretch gap-4">
+				<div className={cn(styles.BenefitList)}>
 					{items?.map((benefit, index) => {
 						return (
 							<Card
 								key={index}
-								className="transition-all duration-300 transform hover:-translate-y-2 border-0 md:basis-[calc(100%/4-1rem)] "
+								className="transition-all duration-300 transform hover:-translate-y-2 border-0"
 							>
 								<CardBody className="md:p-6 flex-1">
 									<div
@@ -65,7 +67,7 @@ export default function BenefitsSection({
 					<p className="text-white/80 mb-6 max-w-2xl lg:mx-auto text-sm md:text-base">
 						Наши сертифицированные специалисты используют только лучшие материалы и технологии LeTech, гарантируя, что реставрация салона вашего автомобиля превзойдет все ваши ожидания.
 					</p>
-					<div className="flex flex-wrap lg:justify-center gap-4">
+					<div className="flex flex-col md:flex-row flex-wrap lg:justify-center gap-4">
 						<div className="lg:text-center">
 							<div className="text-3xl font-bold text-brand-gradient">24 часа</div>
 							<div className="text-sm">Среднее время работы</div>
