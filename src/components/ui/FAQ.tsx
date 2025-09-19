@@ -36,10 +36,15 @@ interface FAQSectionProps {
 	intro: any
 	description: string
 	ctas: Sanity.CTA[]
-	faqList: { faqs: typeof faqs }
+	faqList: {
+		faqs: {
+			question: string
+			answer: string
+		}[]
+	}
 }
 
-export default function FAQSection({ faqList, intro, pretitle, description, ctas }: FAQSectionProps): JSX.Element | null {
+export default function FAQSection({ faqList, intro, pretitle, description, ctas }: Partial<FAQSectionProps>): JSX.Element | null {
 	if (!faqList) return null;
 
 	return (

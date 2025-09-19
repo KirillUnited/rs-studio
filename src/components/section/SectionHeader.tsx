@@ -16,7 +16,7 @@ export interface SectionHeaderProps {
 
 const RichTextComponents: any = {
 	marks: {
-		highlight: ({ children }) => <span className="text-brand-gradient">{children}</span>,
+		highlight: ({ children }: { children: React.ReactNode }) => <span className="text-brand-gradient">{children}</span>,
 	},
 }
 
@@ -30,8 +30,8 @@ export default function SectionHeader({ pretitle, title, description, ctas, alig
 				className)}>
 				<div className={cn(
 					'flex flex-col items-start', {
-						['lg:text-center lg:mx-auto lg:items-center']: align === 'center',
-					},
+					['lg:text-center lg:mx-auto lg:items-center']: align === 'center',
+				},
 				)}>
 					{pretitle && <Pretitle className="mb-4">{pretitle}</Pretitle>}
 					{title && (
@@ -49,7 +49,7 @@ export default function SectionHeader({ pretitle, title, description, ctas, alig
 				{
 					ctas?.map((cta: Sanity.CTA, index) => (
 						<Button as={Link} href={cta.link?.external} key={index} className="self-end group mt-4 md:hidden"
-										radius="full" variant="bordered">
+							radius="full" variant="bordered">
 							{cta.link?.label}
 
 							<BsArrowUpRightCircle className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
