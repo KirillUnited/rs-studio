@@ -26,7 +26,17 @@ export default defineType({
 			name: 'intro',
 			title: 'Заголовок',
 			type: 'array',
-			of: [{ type: 'block' }],
+			of: [{ type: 'block',
+				marks: {
+					decorators: [
+						{
+							title: 'Highlight',
+							value: 'highlight',
+							icon: () => <span style={{ fontWeight: 'bold' }}>H</span>,
+							component: ({ children }) => <span style={{ backgroundColor: '#ae7ede' }}>{children}</span>
+						}
+					]
+				} }],
 			group: 'content',
 		}),
 		defineField({

@@ -1,5 +1,5 @@
 import Pretitle from '@/ui/Pretitle'
-import { PortableText, PortableTextBlock } from 'next-sanity'
+import { PortableText, PortableTextBlock, PortableTextComponents } from 'next-sanity'
 import { cn } from '@/lib/utils'
 import { Button } from '@heroui/react'
 import Link from 'next/link'
@@ -13,18 +13,24 @@ export interface SectionHeaderProps {
 	className?: string;
 }
 
+const RichTextComponents: any = {
+	marks: {
+		highlight: ({ children }) => <span className="text-brand-gradient">{children}</span>,
+	}
+}
+
 export default function SectionHeader({ pretitle, title, decription, ctas, className }: SectionHeaderProps) {
-	if (!pretitle || !title) return null
+	if (!pretitle || !title) return null;
 
 	return (
 		<header className={cn('mb-8 md:mb-16 flex flex-wrap justify-between', className)}>
 			<div>
 				{pretitle && <Pretitle className="mb-4">{pretitle}</Pretitle>}
 				{title && (
-					<h2 className="text-4xl md:text-5xl font-bold mb-4 capitalize">
-						{/*<PortableText value={title} />*/}
-						Наши <span className="text-brand-gradient">Работы</span>
-					</h2>
+					<div className="text-4xl md:text-5xl font-bold mb-4 capitalize">
+						<PortableText value={title} components={RichTextComponents} />
+						{/*Наши <span className="text-brand-gradient">Работы</span>*/}
+					</div>
 				)}
 				<div className="w-20 h-1 brand-gradient rounded-full mb-6"></div>
 				{decription && (

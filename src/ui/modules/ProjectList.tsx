@@ -2,8 +2,6 @@ import moduleProps from '@/lib/moduleProps'
 import { stegaClean } from 'next-sanity'
 import { cn } from '@/lib/utils'
 import { JSX } from 'react'
-import { fetchSanityLive } from '@/sanity/lib/fetch'
-import { PROJECT_LIST_QUERY } from '@/components/project/lib/queries'
 import { ProjectCard, ProjectShowcase } from '@/components/project/ui'
 import { ProjectProps } from '@/components/project/ProjectList'
 import { CTASection } from '@/components/service'
@@ -32,7 +30,7 @@ export default async function ProjectList({
 	Sanity.Module): Promise<JSX.Element> {
 	const isCarousel = stegaClean(layout) === 'carousel'
 
-	console.log(projects)
+	console.log(intro)
 
 	return (
 		<>
