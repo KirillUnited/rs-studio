@@ -127,6 +127,7 @@ export const MODULES_QUERY = groq`
 	},
 	_type == 'testimonial.featured' => { testimonial-> },
 	_type == 'testimonial-list' => { testimonials[]-> },
+	_type == 'project-list' => { projects[]-> },
 `
 
 export const GLOBAL_MODULE_PATH_QUERY = groq`

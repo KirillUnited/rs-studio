@@ -1,6 +1,7 @@
 import { CTABlock } from '@/components/ui'
 import { JSX } from 'react'
 import { urlFor } from '@/sanity/lib/image'
+import Image from 'next/image'
 
 interface HeroSectionProps {
 	title: string,
@@ -15,14 +16,24 @@ export default function HeroSection({
 }: HeroSectionProps): JSX.Element | null {
 	if (!title) return null
 
-	const heroImageUrl = heroImage ? urlFor(heroImage).width(1200).height(800).crop('center').format('webp').url() : null
+	const heroImageUrl = heroImage ?
+		urlFor(heroImage).width(1200).height(800).crop('center').format('webp').url()
+		: '/images/service-hero-background.jpg';
 
 	return (
 		<section
 			className="relative flex items-center lg:justify-center bg-cover bg-center bg-no-repeat bg-fixed"
-			style={{ backgroundImage: `url(${heroImageUrl})` }}
 		>
-			<div className="absolute inset-0 bg-black/70"></div>
+			<div className="absolute inset-0 bg-black/70 after:absolute after:inset-0 after:bg-black/70">
+				<Image
+					src={heroImageUrl}
+					alt={title}
+					fill
+					className="object-cover"
+					priority
+					sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+				/>
+			</div>
 
 			<div className="relative z-10 container py-20 lg:text-center">
 				<div className="max-w-4xl mx-auto animate-fade-in-up">

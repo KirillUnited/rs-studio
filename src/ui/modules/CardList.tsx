@@ -3,24 +3,24 @@ import Pretitle from '@/ui/Pretitle'
 import { PortableText, stegaClean } from 'next-sanity'
 import { cn } from '@/lib/utils'
 import { FeaturedServiceCard } from '@/components/service/ui'
-import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@heroui/react'
 import { BsArrowUpRightCircle } from 'react-icons/bs'
 import { JSX } from 'react'
 import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { SERVICE_PAGE_LIST_LIMIT_QUERY } from '@/components/service/lib/queries'
+import { ProjectShowcase } from '@/components/project/ui'
 
 export default async function CardList({
-	pretitle,
-	intro,
-	cards,
-	ctas,
-	layout,
-	columns = 3,
-	visualSeparation,
-	...props
-}: Partial<{
+																				 pretitle,
+																				 intro,
+																				 cards,
+																				 ctas,
+																				 layout,
+																				 columns = 3,
+																				 visualSeparation,
+																				 ...props
+																			 }: Partial<{
 	pretitle: string
 	intro: any
 	ctas: Sanity.CTA[]
@@ -39,9 +39,9 @@ export default async function CardList({
 		query: SERVICE_PAGE_LIST_LIMIT_QUERY,
 		params: {
 			limit: 3,
-		}
+		},
 	})
-	const isCarousel = stegaClean(layout) === 'carousel';
+	const isCarousel = stegaClean(layout) === 'carousel'
 
 	return (
 		<section className="section-container space-y-12" {...moduleProps(props)}>
@@ -54,7 +54,8 @@ export default async function CardList({
 						</div>
 						{
 							ctas?.map((cta: Sanity.CTA, index) => (
-								<Button as={Link} href={cta.link?.external} key={index} className="self-end group max-md:hidden" radius="full" variant="bordered">
+								<Button as={Link} href={cta.link?.external} key={index} className="self-end group max-md:hidden"
+												radius="full" variant="bordered">
 									{cta.link?.label}
 
 									<BsArrowUpRightCircle className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -70,7 +71,7 @@ export default async function CardList({
 						// isCarousel
 						// 	? 'max-md:carousel max-md:full-bleed max-md:px-4 max-md:pb-4'
 						// 	: 'grid md:grid-cols-[repeat(var(--col,3),minmax(0,1fr))]',
-						'max-md:carousel max-md:full-bleed max-md:px-4 max-md:pb-4 md:grid md:grid-cols-[repeat(var(--col,3),minmax(0,1fr))]'
+						'max-md:carousel max-md:full-bleed max-md:px-4 max-md:pb-4 md:grid md:grid-cols-[repeat(var(--col,3),minmax(0,1fr))]',
 					)}
 					style={
 						columns
@@ -93,31 +94,14 @@ export default async function CardList({
 				</div>
 				{
 					ctas?.map((cta: Sanity.CTA, index) => (
-						<Button as={Link} href={cta.link?.external} key={index} className="self-end group mt-4 md:hidden" radius="full" variant="bordered">
+						<Button as={Link} href={cta.link?.external} key={index} className="self-end group mt-4 md:hidden"
+										radius="full" variant="bordered">
 							{cta.link?.label}
 
 							<BsArrowUpRightCircle className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
 						</Button>
 					))
 				}
-			</div>
-			<div className="container">
-				{/* Before/After Showcase */}
-				<Link href="/projects" className="flex relative rounded-large overflow-hidden">
-					<Image
-						src={`/images/before-after.jpg`}
-						width={1920}
-						height={380}
-						alt="Before and after restoration"
-						className="w-full h-96 object-cover"
-						quality={50}
-					/>
-					<div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-					<div className="absolute bottom-0 left-0 text-foreground p-4">
-						<h3 className="text-2xl font-bold mb-2 leading-none">Увидеть трансформацию</h3>
-						<p className="text-sm md:text-base text-muted-foreground">Профессиональные результаты, которые говорят сами за себя</p>
-					</div>
-				</Link>
 			</div>
 		</section>
 	)
