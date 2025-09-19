@@ -92,19 +92,8 @@ export const servicePageType = defineType({
 		defineField({
 			name: 'faqs',
 			title: 'Часто задаваемые вопросы',
-			type: 'array',
+			type: 'faq-list-section',
 			group: 'content',
-			of: [
-				{
-					name: 'faq',
-					title: 'Вопрос',
-					type: 'object',
-					fields: [
-						{ name: 'question', title: 'Вопрос', type: 'string' },
-						{ name: 'answer', title: 'Ответ', type: 'text' }
-					]
-				}
-			]
 		}),
 		defineField({
 			name: 'seo',

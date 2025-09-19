@@ -67,7 +67,7 @@ export default async function ServicePage(props: {
 			<ProcessSection />
 			<ProjectsSection title={''} description={''} projects={page?.relatedProjects} />
 			<CTASection className='mb-20' useContactAnchor />
-			<FAQSection items={page?.faqs} />
+			<FAQSection faqList={page?.faqs?.faqList} pretitle={page?.faqs?.pretitle} intro={page?.faqs?.intro} description={page?.faqs?.description} ctas={page?.faqs?.ctas} />
 			<ContactUs />
 		</>
 	)

@@ -12,7 +12,7 @@ export const SERVICE_PAGE_QUERY = groq`
       icon
     },
     gallery[]{asset->{url, metadata}},
-    faqs[]{question, answer},
+    faqs,
     relatedProjects[]->{
 			title,
 			description,

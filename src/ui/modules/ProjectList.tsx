@@ -30,14 +30,12 @@ export default async function ProjectList({
 	Sanity.Module): Promise<JSX.Element> {
 	const isCarousel = stegaClean(layout) === 'carousel'
 
-	console.log(intro)
-
 	return (
 		<>
 			<section className="py-16 bg-content1" {...moduleProps(props)}>
 				<div className="container">
 					<SectionHeader pretitle={pretitle} title={intro}
-												 decription={description} />
+												 description={description} />
 
 					{/* Before/After Showcase */}
 					<ProjectShowcase />

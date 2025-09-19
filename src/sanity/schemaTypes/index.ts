@@ -54,6 +54,8 @@ import testimonialList from './modules/testimonial-list'
 import { servicePageType } from './documents/servicePageType'
 import { projectPageType } from './documents/projectPageType'
 import projectList from './modules/project-list'
+import faqList from '@/sanity/schemaTypes/modules/faq-list'
+import faqListSection from '@/sanity/schemaTypes/modules/faq-list-section'
 
 export const schemaTypes: SchemaTypeDefinition[] = [
 	// documents
@@ -110,4 +112,6 @@ export const schemaTypes: SchemaTypeDefinition[] = [
 	testimonialFeatured,
 	testimonialList,
 	projectList,
+	faqList,
+	faqListSection,
 ]
