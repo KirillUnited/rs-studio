@@ -10,10 +10,11 @@ export default function CallUsBadge({ phone, label="Позвоните нам", 
 			as={Link}
 			size='lg'
 			href={`tel:${phone}`}
-			className={cn('group flex gap-2 justify-between items-center rounded-4xl bg-gradient-to-r from-[#F871A0] to-[#9353D3] p-3 font-medium text-white shadow-lg transition-transform hover:scale-105 hover:shadow-xl',
-				styles.callUs,
+			className={cn('bg-gradient-to-r from-[#F871A0] to-[#9353D3] p-3 font-medium text-white shadow-lg transition-transform hover:scale-105 hover:shadow-large',
+				styles.CallUsBadge,
 				className
 			)}
+			radius='full'
 		>
 			<div className="flex flex-col">
 				{/*<span className="text-xs">{label}</span>*/}

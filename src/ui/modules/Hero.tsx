@@ -1,4 +1,3 @@
-'use client'
 import moduleProps from '@/lib/moduleProps'
 import { ResponsiveImg } from '@/ui/Img'
 import { PortableText, stegaClean } from 'next-sanity'
@@ -8,12 +7,12 @@ import { cn } from '@/lib/utils'
 import { Button } from '@heroui/react'
 import { Icon } from '@iconify/react'
 import Link from 'next/link'
-import { CallUsBadge } from '@/components/ui'
-import { JSX, useState } from 'react'
-import { ModalDialog } from '@/components/modal-dialog'
-import { BsArrowUpRight } from 'react-icons/bs'
+import { CallUsBadge, CTAButton } from '@/components/ui'
+import React, { JSX } from 'react'
+import { BsArrowUpRight, BsPhone } from 'react-icons/bs'
+import { getSite } from '@/sanity/lib/queries'
 
-export default function Hero({
+export default async function Hero({
 	pretitle,
 	title,
 	content,
@@ -31,9 +30,9 @@ export default function Hero({
 	textAlign: React.CSSProperties['textAlign']
 	alignItems: React.CSSProperties['alignItems']
 }> &
-	Sanity.Module): JSX.Element {
-	const [isOpen, setIsOpen] = useState(false);
-	const openDialog = () => setIsOpen(true)
+	Sanity.Module): Promise<JSX.Element> {
+	const { contactInfo } = await getSite();
+	const phone = contactInfo?.phones?.[0];
 	const hasImage = !!assets?.[0]
 	const asset = assets?.[0]
 
@@ -137,20 +136,8 @@ export default function Hero({
 
 						<div className="flex flex-col sm:items-end justify-between w-full gap-6 sm:flex-row mt-10">
 							<div className='flex flex-col gap-2 sm:flex-row'>
-								<>
-									<Button
-										onPress={openDialog}
-										className="group brand-gradient font-medium"
-										radius="full"
-										size='lg'
-									>
-										<Icon className="group-hover:-translate-x-1 transition-transform" icon="bi:calendar-event"
-											width={18} />
-										Заказать
-									</Button>
+								<CTAButton/>
 
-									<ModalDialog isOpen={isOpen} onClose={() => setIsOpen(false)} />
-								</>
 								<Button
 									className="group border-1 border-default-100 font-medium text-white"
 									endContent={
@@ -169,7 +156,9 @@ export default function Hero({
 									Наши Работы
 								</Button>
 							</div>
-							<CallUsBadge phone="+375 (29) 591 63 86" />
+							{phone && (
+								<CallUsBadge phone={phone.number} />
+							)}
 						</div>
 					</div>
 				</div>
