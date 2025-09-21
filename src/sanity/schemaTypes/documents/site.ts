@@ -5,8 +5,8 @@ export default defineType({
 	title: 'Site settings',
 	type: 'document',
 	groups: [
-		{ name: 'branding', default: true },
-		{ name: 'info' },
+		{ name: 'branding' },
+		{ name: 'info', default: true },
 		{ name: 'navigation' },
 	],
 	fields: [

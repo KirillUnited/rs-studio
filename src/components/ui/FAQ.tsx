@@ -4,33 +4,6 @@ import { JSX } from 'react'
 import Link from 'next/link'
 import { SectionHeader } from '@/components/section'
 
-const faqs = [
-	{
-		question: 'How long does the repair take?',
-		answer: 'Most car interior restoration projects are completed within 1-2 business days, depending on the complexity and extent of the work needed. Simple repairs like small tears or scratches can often be completed in just a few hours.',
-	},
-	{
-		question: 'Do you provide a warranty?',
-		answer: 'Yes, all of our services come with a comprehensive 2-year warranty on workmanship and materials. We stand behind our work and use only the highest quality LeTech products to ensure long-lasting results.',
-	},
-	{
-		question: 'What materials can be repaired?',
-		answer: 'We specialize in repairing and restoring leather, vinyl, plastic, and fabric car interiors. This includes seats, dashboards, door panels, armrests, steering wheels, and other interior components. Our LeTech technology works on virtually all automotive interior materials.',
-	},
-	{
-		question: 'How much does it cost?',
-		answer: 'Pricing varies depending on the extent of damage, size of the repair area, and materials involved. We provide free consultations and detailed quotes before starting any work. Most repairs cost significantly less than replacement while delivering superior results.',
-	},
-	{
-		question: 'Can you match the original color?',
-		answer: 'Absolutely! Our color matching process uses advanced LeTech technology to ensure perfect color matches with your vehicle\'s original interior. We maintain an extensive database of automotive color codes and can create custom matches when needed.',
-	},
-	{
-		question: 'Is the restoration permanent?',
-		answer: 'When properly maintained, our LeTech restorations can last for many years. The advanced materials and techniques we use provide excellent durability and resistance to wear, UV damage, and everyday use. We also provide care instructions to help maximize longevity.',
-	},
-]
-
 interface FAQSectionProps {
 	pretitle: string
 	intro: any
