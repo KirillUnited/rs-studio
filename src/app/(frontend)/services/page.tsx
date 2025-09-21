@@ -4,6 +4,7 @@ import { Button } from '@heroui/react'
 import { BsArrowUpRight } from 'react-icons/bs'
 import Link from 'next/link'
 import Pretitle from '@/ui/Pretitle'
+import Breadcrumbs from '@/ui/modules/Breadcrumbs'
 
 export const generateMetadata = () => {
 	const url = `https://rs-service.by/services`;
@@ -47,6 +48,27 @@ export const generateMetadata = () => {
 };
 
 export default function ServicesPage(): JSX.Element {
+	const crumbs = [
+		{
+			internal: {
+				slug: {
+					current: 'index',
+					_type: 'slug',
+				},
+			},
+			label: 'Главная',
+			type:
+				'internal',
+			_key:
+				'692634eb5e13',
+			_type:
+				'link',
+		},
+	];
+	const currentPage: any = {
+		title: 'Наши услуги'
+	}
+
 	return (
 		<>
 			{/* Hero Section */}
@@ -84,6 +106,9 @@ export default function ServicesPage(): JSX.Element {
 
 				</div>
 			</section>
+
+			<Breadcrumbs crumbs={crumbs as any} currentPage={currentPage} />
+
 			{/* Services Grid */}
 			<section id="about" className="py-20">
 				<div className="container">
