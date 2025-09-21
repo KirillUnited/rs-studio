@@ -11,7 +11,7 @@ export default function CallUsBadge({ phone, label="Позвоните нам", 
 			size='lg'
 			href={`tel:${phone}`}
 			className={cn('bg-gradient-to-r from-[#F871A0] to-[#9353D3] p-3 font-medium text-white shadow-lg transition-transform hover:scale-105 hover:shadow-large',
-				styles.callUs,
+				styles.CallUsBadge,
 				className
 			)}
 			radius='full'
