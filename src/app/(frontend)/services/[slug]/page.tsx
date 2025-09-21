@@ -9,6 +9,7 @@ import { ContactUs } from '@/components/contact-us'
 import ProjectsSection from '@/components/service/service-page/ProjectsSection'
 import Breadcrumbs from '@/ui/modules/Breadcrumbs'
 import NotFound from '@/app/(frontend)/not-found'
+import { getBreadcrumbs } from '@/lib/crumbs'
 
 export async function generateMetadata(props: {
 	params: Promise<{ slug: string }>;
@@ -60,40 +61,14 @@ export default async function ServicePage(props: {
 		query: SERVICE_PAGE_QUERY,
 		params: { slug },
 	});
-	const crumbs = [
-		{
-			internal: {
-				slug: {
-					current: 'index',
-					_type: 'slug',
-				},
-			},
-			label: 'Главная',
-			type:
-				'internal',
-			_key:
-				'692634eb5e13',
-			_type:
-				'link',
-		},
-		{
-			external: '/services',
-			label: 'Наши Услуги',
-			type:
-				'external',
-			_key:
-				'234234',
-			_type:
-				'link',
-		},
-	];
+	const { crumbs, currentPage } = getBreadcrumbs(page?.title, [{label: 'Наши Услуги', url: '/services'}]);
 
 	if (!page) return <NotFound />
 
 	return (
 		<>
 			<HeroSection title={page?.title} description={page?.description} heroImage={page?.heroImage} />
-			<Breadcrumbs crumbs={crumbs as any} currentPage={page} />
+			<Breadcrumbs crumbs={crumbs as any} currentPage={currentPage} />
 			<AboutSection title={page?.title} description={page?.about} />
 			<BenefitsSection title={''} description={''} items={page?.benefits} />
 			<ProcessSection />

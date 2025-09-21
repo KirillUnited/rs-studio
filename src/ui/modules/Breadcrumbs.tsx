@@ -11,7 +11,6 @@ export default async function Breadcrumbs({
 	hideCurrent?: boolean
 	currentPage: Sanity.Page | Sanity.BlogPost
 }>): Promise<JSX.Element> {
-	console.log(currentPage)
 	return (
 		<nav className="section py-4 text-sm">
 			<ol

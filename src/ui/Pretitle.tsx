@@ -18,7 +18,7 @@ export default function Pretitle({
 			variant="bordered"
 			size='sm'
 		>
-			{stegaClean(children)}
+			{children}
 		</Button>
 	)
 }
