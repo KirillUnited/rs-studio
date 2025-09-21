@@ -35,6 +35,12 @@ export default defineType({
 			group: 'info',
 		}),
 		defineField({
+			name: 'contactInfo',
+			title: 'Контактная информация',
+			type: 'contactInfo',
+			group: 'info',
+		}),
+		defineField({
 			name: 'copyright',
 			type: 'array',
 			of: [

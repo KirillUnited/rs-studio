@@ -17,7 +17,7 @@ interface FAQSectionProps {
 	}
 }
 
-export default function FAQSection({ faqList, intro, pretitle, description, ctas }: Partial<FAQSectionProps>): JSX.Element | null {
+export default function FAQSection({ faqList, intro, pretitle='FAQ`s', description, ctas }: Partial<FAQSectionProps>): JSX.Element | null {
 	if (!faqList) return null;
 
 	return (

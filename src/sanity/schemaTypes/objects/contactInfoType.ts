@@ -6,7 +6,7 @@ import { defineField, defineType } from "sanity";
 
 export const contactInfoType = defineType({
     name: "contactInfo",
-    title: "Contact Information",
+    title: "Контактная информация",
     type: "object",
     icon: GrContactInfo,
     fields: [
