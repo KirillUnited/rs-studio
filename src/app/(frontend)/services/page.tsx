@@ -5,6 +5,7 @@ import { BsArrowUpRight } from 'react-icons/bs'
 import Link from 'next/link'
 import Pretitle from '@/ui/Pretitle'
 import Breadcrumbs from '@/ui/modules/Breadcrumbs'
+import { getBreadcrumbs } from '@/lib/crumbs'
 
 export const generateMetadata = () => {
 	const url = `https://rs-service.by/services`;
@@ -48,31 +49,12 @@ export const generateMetadata = () => {
 };
 
 export default function ServicesPage(): JSX.Element {
-	const crumbs = [
-		{
-			internal: {
-				slug: {
-					current: 'index',
-					_type: 'slug',
-				},
-			},
-			label: 'Главная',
-			type:
-				'internal',
-			_key:
-				'692634eb5e13',
-			_type:
-				'link',
-		},
-	];
-	const currentPage: any = {
-		title: 'Наши услуги'
-	}
+	const {crumbs, currentPage} = getBreadcrumbs('Наши услуги', []);
 
 	return (
 		<>
 			{/* Hero Section */}
-			<section className="relative py-20 after:bg-content1 after:absolute after:inset-0 after:opacity-50 bg-cover bg-center bg-no-repeat"
+			<section className="relative py-20 after:bg-content1 after:absolute after:inset-0 after:opacity-70 bg-cover bg-center bg-no-repeat"
 				style={{
 					backgroundImage: 'url(/images/service-placeholder.png)',
 				}}

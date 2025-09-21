@@ -2,6 +2,8 @@ import { CTABlock } from '@/components/ui'
 import { JSX } from 'react'
 import { urlFor } from '@/sanity/lib/image'
 import Image from 'next/image'
+import Pretitle from '@/ui/Pretitle'
+import { GrBusinessService } from 'react-icons/gr'
 
 interface HeroSectionProps {
 	title: string,
@@ -37,6 +39,10 @@ export default function HeroSection({
 
 			<div className="relative z-10 container py-20 lg:text-center">
 				<div className="max-w-4xl mx-auto animate-fade-in-up">
+					<Pretitle className='mb-3'>
+						<GrBusinessService className='text-secondary' size={16}/>
+						Услуга
+					</Pretitle>
 					<h1 className="text-5xl md:text-7xl font-bold text-white mb-6 text-balance break-words">
 						{title}{' '}
 						<span className="text-brand-gradient">LeTech Технологии</span>
@@ -61,7 +67,7 @@ export default function HeroSection({
 						</div>
 						<div className="bg-white/10 backdrop-blur-sm rounded-lg py-6 px-3 border border-white/20">
 							<div className="text-3xl font-bold text-automotive-gold mb-2">100%</div>
-							<div className="text-sm">удовлетворенность результатом</div>
+							<div className="text-sm">Удовлетворенность результатом</div>
 						</div>
 					</div>
 				</div>

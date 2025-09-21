@@ -7,6 +7,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { BsArrowLeft } from "react-icons/bs";
 import Breadcrumbs from '@/ui/modules/Breadcrumbs'
+import { getBreadcrumbs } from '@/lib/crumbs'
 
 export const metadata: Metadata = {
 	title: "Проекты | RS Service",
@@ -39,26 +40,7 @@ export const metadata: Metadata = {
 
 export default async function ProjectsPage() {
 	const projects = await fetchSanityLive({ query: PROJECT_LIST_QUERY });
-	const crumbs = [
-		{
-			internal: {
-				slug: {
-					current: 'index',
-					_type: 'slug',
-				},
-			},
-			label: 'Главная',
-			type:
-				'internal',
-			_key:
-				'692634eb5e13',
-			_type:
-				'link',
-		},
-	];
-	const currentPage: any = {
-		title: 'Наши проекты'
-	}
+	const {crumbs, currentPage} = getBreadcrumbs('Наши проекты', []);
 
 	if (!projects) {
 		return (
@@ -79,9 +61,12 @@ export default async function ProjectsPage() {
 	return (
 		<>
 			{/* Header */}
-			<section className="bg-ink py-12">
+			<section className="relative py-12 after:bg-content1 after:absolute after:inset-0 after:opacity-70 bg-cover bg-center bg-no-repeat"
+							 style={{
+								 backgroundImage: 'url(/images/service-placeholder.png)',
+							 }}>
 				<div className="container">
-					<div className="md:text-center flex flex-col items-start md:items-center">
+					<div className="md:text-center flex flex-col items-start md:items-center relative z-10">
 						<Button
 							size="sm"
 							variant="ghost"

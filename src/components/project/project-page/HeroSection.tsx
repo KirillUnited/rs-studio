@@ -1,5 +1,6 @@
 import { Card, CardBody } from '@heroui/react'
 import Pretitle from '@/ui/Pretitle'
+import { AiFillProject } from 'react-icons/ai'
 
 export interface HeroStatProps {
 	label: string;
@@ -25,6 +26,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ title, subtitleHighlig
 			<div className="container relative z-10">
 				<div className="max-w-4xl">
 					<Pretitle className='mb-3'>
+						<AiFillProject className='text-secondary' size={16} />
 						Проект
 					</Pretitle>
 					<h1 className="text-4xl md:text-6xl mb-8 leading-none">

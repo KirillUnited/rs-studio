@@ -14,6 +14,7 @@ import { FaServicestack } from 'react-icons/fa'
 import { PiSteeringWheel } from 'react-icons/pi'
 import { JSX } from 'react'
 import Breadcrumbs from '@/ui/modules/Breadcrumbs'
+import { getBreadcrumbs } from '@/lib/crumbs'
 
 // Example mock data (replace with Sanity later)
 const stats: Stat[] = [
@@ -134,33 +135,7 @@ export default async function ProjectPage(props: {
 	const project = await fetchSanityLive({ query: PROJECT_QUERY, params: { slug } })
 	const heroImage = urlFor(project?.image).width(1200).height(630).format('webp').url()
 	const description = project?.description
-	const crumbs = [
-		{
-			internal: {
-				slug: {
-					current: 'index',
-					_type: 'slug',
-				},
-			},
-			label: 'Главная',
-			type:
-				'internal',
-			_key:
-				'692634eb5e13',
-			_type:
-				'link',
-		},
-		{
-			external: '/projects',
-			label: 'Наши Работы',
-			type:
-				'external',
-			_key:
-				'234234',
-			_type:
-				'link',
-		},
-	]
+	const { crumbs, currentPage } = getBreadcrumbs(project.title, [{label: 'Наши Работы', url: '/projects'}]);
 
 	if (!project) return <NotFound />
 
@@ -168,7 +143,7 @@ export default async function ProjectPage(props: {
 		<>
 			<HeroSection title="Ремонт и восстановление" subtitleHighlight="кожаного салона" stats={stats}
 									 heroImage={heroImage} />
-			<Breadcrumbs crumbs={crumbs as any} currentPage={project} />
+			<Breadcrumbs crumbs={crumbs as any} currentPage={currentPage} />
 			<DescriptionSection description={description} />
 			<StepsSection steps={steps} />
 			<ResultsSection beforeImages={beforeImages} afterImages={afterImages} />
