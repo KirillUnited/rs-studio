@@ -4,7 +4,23 @@ import { BsMailbox, BsPhone } from 'react-icons/bs'
 import { CgLock } from 'react-icons/cg'
 import { FaMapPin } from 'react-icons/fa'
 import { getSite } from '@/sanity/lib/queries'
-
+export interface ContactListProps {
+	contactInfo: {
+		phones: Array<{
+			_key: string;
+			number: string;
+		}>;
+		emails: Array<{
+			_key: string;
+			email: string;
+		}>;
+		address: Array<{
+			_key: string;
+			location: string;
+		}>;
+		workingHours: string;
+	}
+}
 const ContactList = async () => {
 	const { contactInfo } = await getSite()
 
@@ -12,21 +28,21 @@ const ContactList = async () => {
 
 	return (
 		<ul className="flex flex-col gap-2">
-			{contactInfo.phones && contactInfo.phones.map((phone) => (
+			{contactInfo.phones && contactInfo.phones.map((phone: ContactListProps['contactInfo']['phones'][0]) => (
 				<li key={phone._key} className="flex items-center space-x-4">
 					<BsPhone className="h-5 w-5 text-primary-600" />
 					<Link href={`tel:${phone?.number}`}
-								className="text-foreground-700 font-semibold hover:underline hover:text-primary transition-colors">{phone?.number}</Link>
+						className="text-foreground-700 font-semibold hover:underline hover:text-primary transition-colors">{phone?.number}</Link>
 				</li>
 			))}
-			{contactInfo.emails && contactInfo.emails.map((email) => (
+			{contactInfo.emails && contactInfo.emails.map((email: ContactListProps['contactInfo']['emails'][0]) => (
 				<li key={email._key} className="flex items-center space-x-4">
 					<BsMailbox className="h-5 w-5 text-primary-600" />
 					<Link href={`mailto:${email.email}`}
-								className="text-foreground-700 font-semibold hover:underline hover:text-primary transition-colors">{email.email}</Link>
+						className="text-foreground-700 font-semibold hover:underline hover:text-primary transition-colors">{email.email}</Link>
 				</li>
 			))}
-			{contactInfo.address && contactInfo.address.map((address) => (
+			{contactInfo.address && contactInfo.address.map((address: ContactListProps['contactInfo']['address'][0]) => (
 				<li key={address._key} className="flex items-center space-x-4">
 					<FaMapPin className="h-5 w-5 text-primary-600" />
 					<span className="text-foreground-700 font-semibold">{address.location}</span>
@@ -35,7 +51,7 @@ const ContactList = async () => {
 			{contactInfo.workingHours && (
 				<li className="flex items-center space-x-4">
 					<CgLock className="h-5 w-5 text-primary-600" />
-					<span className="text-foreground-700 font-semibold">Пн-Пт: 8:00 - 18:00</span>
+					<span className="text-foreground-700 font-semibold">{contactInfo.workingHours}</span>
 				</li>
 			)}
 		</ul>
