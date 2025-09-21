@@ -37,8 +37,6 @@ export default async function Footer() {
 
 						<ContactList />
 
-						<Social className="mb-auto -ml-2" />
-
 						<LanguageSwitcher className="mt-4 max-w-max" />
 					</div>
 

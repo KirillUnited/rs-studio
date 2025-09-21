@@ -11,6 +11,28 @@ interface CTABlockProps extends HTMLAttributes<HTMLDivElement> {
 	useContactAnchor?: boolean
 }
 
+export const CTAButton = () => {
+	const [isOpen, setIsOpen] = useState(false);
+	const openDialog = () => setIsOpen(true);
+
+	return (
+		<>
+			<Button
+				onPress={openDialog}
+				className="group brand-gradient font-medium"
+				radius="full"
+				size='lg'
+			>
+				<Icon className="group-hover:-translate-x-1 transition-transform" icon="bi:calendar-event"
+							width={18} />
+				Заказать
+			</Button>
+
+			<ModalDialog isOpen={isOpen} onClose={() => setIsOpen(false)} />
+		</>
+	)
+}
+
 export default function CTABlock({ className, useContactAnchor }: CTABlockProps): JSX.Element {
 	const [isOpen, setIsOpen] = useState(false)
 	const openDialog = () => setIsOpen(true)

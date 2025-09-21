@@ -25,6 +25,7 @@ import link from './objects/link'
 import linkList from './objects/link.list'
 import metadata from './objects/metadata'
 import moduleOptions from './objects/module-options'
+import { contactInfoType } from './objects/contactInfoType'
 
 // modules
 import accordionList from './modules/accordion-list'
@@ -85,6 +86,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
 	linkList,
 	metadata,
 	moduleOptions,
+	contactInfoType,
 
 	// modules
 	accordionList,

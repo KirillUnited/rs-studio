@@ -1,4 +1,5 @@
-import { Card, CardBody } from "@heroui/react";
+import { Card, CardBody } from '@heroui/react'
+import Pretitle from '@/ui/Pretitle'
 
 export interface HeroStatProps {
 	label: string;
@@ -23,13 +24,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ title, subtitleHighlig
 			<div className="absolute inset-0 bg-black/70 opacity-90"></div>
 			<div className="container relative z-10">
 				<div className="max-w-4xl">
+					<Pretitle className='mb-3'>
+						Проект
+					</Pretitle>
 					<h1 className="text-4xl md:text-6xl mb-8 leading-none">
 						{title} <span className="text-brand-gradient font-bold">{subtitleHighlight}</span>
 					</h1>
 
 					<div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
 						{stats.map((stat, index) => {
-							const Icon = stat.icon;
+							const Icon = stat.icon
 							return (
 								<Card key={index} className="bg-white/10 backdrop-blur-sm border-white/20">
 									<CardBody className="md:p-4">
@@ -38,11 +42,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ title, subtitleHighlig
 										<div className="md:text-2xl font-bold text-white">{stat.value}</div>
 									</CardBody>
 								</Card>
-							);
+							)
 						})}
 					</div>
 				</div>
 			</div>
 		</section>
-	);
-};
+	)
+}

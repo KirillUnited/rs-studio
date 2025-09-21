@@ -1,12 +1,13 @@
 import { getSite } from '@/sanity/lib/queries'
 import CTA from '@/ui/CTA'
 import { stegaClean } from 'next-sanity'
+import Social from '@/ui/Social'
 
 export default async function Menu() {
 	const { footerMenu } = await getSite()
 
 	return (
-		<nav className="flex flex-wrap items-start gap-x-12 gap-y-6 max-sm:flex-col">
+		<nav className="flex flex-wrap items-start justify-between gap-6 max-sm:flex-col">
 			{footerMenu?.items?.map((item, key) => {
 				switch (item._type) {
 					case 'link':
@@ -14,7 +15,7 @@ export default async function Menu() {
 
 					case 'link.list':
 						return (
-							<div className="space-y-2 text-start" key={key}>
+							<div className="space-y-2 text-start basis-[30%]" key={key}>
 								<div className="technical text-canvas/50 text-xs">
 									<CTA link={item.link}>
 										{stegaClean(item.link?.label) || item.link?.internal?.title}
@@ -38,6 +39,8 @@ export default async function Menu() {
 						return null
 				}
 			})}
+
+			<Social className="basis-[30%]" />
 		</nav>
 	)
 }

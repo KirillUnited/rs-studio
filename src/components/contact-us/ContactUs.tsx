@@ -1,10 +1,7 @@
 import Pretitle from "@/ui/Pretitle"
 import { Alert, Card, CardBody, CardHeader } from '@heroui/react'
-import { BsCheckCircle, BsMailbox, BsPhone } from "react-icons/bs"
-import { CgLock } from "react-icons/cg"
-import { FaMapPin } from "react-icons/fa"
+import { BsCheckCircle } from "react-icons/bs"
 import { OrderForm } from '@/components/forms'
-import Link from 'next/link'
 import { cn } from "@/lib/utils"
 import { ContactList } from "./ui"
 

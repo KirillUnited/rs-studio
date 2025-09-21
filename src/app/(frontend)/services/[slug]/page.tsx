@@ -7,6 +7,8 @@ import { CTASection } from '@/components/service'
 import { FAQSection } from '@/components/ui'
 import { ContactUs } from '@/components/contact-us'
 import ProjectsSection from '@/components/service/service-page/ProjectsSection'
+import Breadcrumbs from '@/ui/modules/Breadcrumbs'
+import NotFound from '@/app/(frontend)/not-found'
 
 export async function generateMetadata(props: {
 	params: Promise<{ slug: string }>;
@@ -41,7 +43,7 @@ export async function generateMetadata(props: {
 			description: page?.seo?.metaDescription,
 			images: [page?.seo?.ogImage
 				? urlFor(page?.seo?.ogImage).quality(100).url()
-				: `${process.env.NEXT_PUBLIC_SITE_URL}/images/og-image.png`]
+				: `${process.env.NEXT_PUBLIC_SITE_URL}/images/og-image.png`],
 		},
 		alternates: {
 			canonical: `/services/${slug === 'index' ? '' : slug}`,
@@ -58,16 +60,47 @@ export default async function ServicePage(props: {
 		query: SERVICE_PAGE_QUERY,
 		params: { slug },
 	});
+	const crumbs = [
+		{
+			internal: {
+				slug: {
+					current: 'index',
+					_type: 'slug',
+				},
+			},
+			label: 'Главная',
+			type:
+				'internal',
+			_key:
+				'692634eb5e13',
+			_type:
+				'link',
+		},
+		{
+			external: '/services',
+			label: 'Наши Услуги',
+			type:
+				'external',
+			_key:
+				'234234',
+			_type:
+				'link',
+		},
+	];
+
+	if (!page) return <NotFound />
 
 	return (
 		<>
 			<HeroSection title={page?.title} description={page?.description} heroImage={page?.heroImage} />
+			<Breadcrumbs crumbs={crumbs as any} currentPage={page} />
 			<AboutSection title={page?.title} description={page?.about} />
 			<BenefitsSection title={''} description={''} items={page?.benefits} />
 			<ProcessSection />
 			<ProjectsSection title={''} description={''} projects={page?.relatedProjects} />
-			<CTASection className='mb-20' useContactAnchor />
-			<FAQSection faqList={page?.faqs?.faqList} pretitle={page?.faqs?.pretitle} intro={page?.faqs?.intro} description={page?.faqs?.description} ctas={page?.faqs?.ctas} />
+			<CTASection className="mb-20" useContactAnchor />
+			<FAQSection faqList={page?.faqs?.faqList} pretitle={page?.faqs?.pretitle} intro={page?.faqs?.intro}
+									description={page?.faqs?.description} ctas={page?.faqs?.ctas} />
 			<ContactUs />
 		</>
 	)

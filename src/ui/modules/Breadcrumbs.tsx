@@ -3,14 +3,15 @@ import CTA from '@/ui/CTA'
 import { stegaClean } from 'next-sanity'
 
 export default async function Breadcrumbs({
-	crumbs,
-	hideCurrent,
-	currentPage,
-}: Partial<{
+																						crumbs,
+																						hideCurrent,
+																						currentPage,
+																					}: Partial<{
 	crumbs: Sanity.Link[]
 	hideCurrent?: boolean
 	currentPage: Sanity.Page | Sanity.BlogPost
 }>): Promise<JSX.Element> {
+	console.log(currentPage)
 	return (
 		<nav className="section py-4 text-sm">
 			<ol
@@ -18,17 +19,20 @@ export default async function Breadcrumbs({
 				itemScope
 				itemType="https://schema.org/BreadcrumbList"
 			>
-				{crumbs?.map((crumb, key) => (
-					<Fragment key={key}>
-						<Crumb link={crumb} position={key + 1} />
+				{crumbs?.map((crumb, key) => {
+						return (
+							<Fragment key={key}>
+								<Crumb link={crumb} position={key + 1} />
 
-						{(key < crumbs.length - 1 || !hideCurrent) && (
-							<li className="text-foreground" role="presentation">
-								/
-							</li>
-						)}
-					</Fragment>
-				))}
+								{(key < crumbs.length - 1 || !hideCurrent) && (
+									<li className="text-foreground" role="presentation">
+										/
+									</li>
+								)}
+							</Fragment>
+						)
+					},
+				)}
 
 				<Crumb position={(crumbs?.length || 0) + 2} hidden={hideCurrent}>
 					{currentPage?.title || currentPage?.metadata.title}
@@ -39,11 +43,11 @@ export default async function Breadcrumbs({
 }
 
 function Crumb({
-	link,
-	position,
-	children,
-	hidden,
-}: {
+								 link,
+								 position,
+								 children,
+								 hidden,
+							 }: {
 	link?: Omit<Sanity.Link, '_type'>
 	position: number
 	hide?: boolean

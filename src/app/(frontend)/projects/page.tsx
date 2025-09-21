@@ -6,6 +6,7 @@ import { Button } from "@heroui/react";
 import { Metadata } from "next";
 import Link from "next/link";
 import { BsArrowLeft } from "react-icons/bs";
+import Breadcrumbs from '@/ui/modules/Breadcrumbs'
 
 export const metadata: Metadata = {
 	title: "Проекты | RS Service",
@@ -38,6 +39,26 @@ export const metadata: Metadata = {
 
 export default async function ProjectsPage() {
 	const projects = await fetchSanityLive({ query: PROJECT_LIST_QUERY });
+	const crumbs = [
+		{
+			internal: {
+				slug: {
+					current: 'index',
+					_type: 'slug',
+				},
+			},
+			label: 'Главная',
+			type:
+				'internal',
+			_key:
+				'692634eb5e13',
+			_type:
+				'link',
+		},
+	];
+	const currentPage: any = {
+		title: 'Наши проекты'
+	}
 
 	if (!projects) {
 		return (
@@ -82,6 +103,9 @@ export default async function ProjectsPage() {
 					</div>
 				</div>
 			</section>
+
+			<Breadcrumbs crumbs={crumbs as any} currentPage={currentPage} />
+
 			{/* All Projects */}
 			<AllProjects projects={projects} />
 
