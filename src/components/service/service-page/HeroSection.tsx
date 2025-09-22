@@ -38,9 +38,9 @@ export default function HeroSection({
 			</div>
 
 			<div className="relative z-10 container py-20 lg:text-center">
-				<div className="max-w-4xl mx-auto animate-fade-in-up">
+				<div className="max-w-6xl mx-auto animate-fade-in-up">
 					<Pretitle className='mb-3'>
-						<GrBusinessService className='text-secondary' size={16}/>
+						<GrBusinessService className='text-secondary' size={16} />
 						Услуга
 					</Pretitle>
 					<h1 className="text-5xl md:text-7xl font-bold text-white mb-6 text-balance break-words">

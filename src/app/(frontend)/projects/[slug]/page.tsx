@@ -71,7 +71,7 @@ export interface CallToActionSectionProps {
 const CallToActionSection: React.FC<CallToActionSectionProps> = () => (
 	<section className="py-20 bg-content1">
 		<div className="container">
-			<div className="bg-secondary/50 rounded-large px-8 py-12">
+			<div className="bg-gradient-to-r from-[#F871A0] to-[#9353D3] rounded-large px-8 py-12">
 				<h2 className="text-3xl md:text-4xl font-bold mb-6">Нужен похожий ремонт?</h2>
 				<p className="text-sm md:text-base mb-8 max-w-4xl text-balance">
 					Закажите профессиональное восстановление салона вашего автомобиля. Используем только проверенные материалы и
@@ -83,7 +83,7 @@ const CallToActionSection: React.FC<CallToActionSectionProps> = () => (
 						Заказать ремонт
 					</Button>
 					<Button className="text-foreground group" radius="full" as={Link} href="/services" variant="bordered"
-									color="primary">
+						color="primary">
 						Все услуги
 						<FaServicestack className="group-hover:scale-110 transition-transform" size={20} />
 					</Button>
@@ -135,14 +135,14 @@ export default async function ProjectPage(props: {
 	const project = await fetchSanityLive({ query: PROJECT_QUERY, params: { slug } })
 	const heroImage = urlFor(project?.image).width(1200).height(630).format('webp').url()
 	const description = project?.description
-	const { crumbs, currentPage } = getBreadcrumbs(project.title, [{label: 'Наши Работы', url: '/projects'}]);
+	const { crumbs, currentPage } = getBreadcrumbs(project.title, [{ label: 'Наши Работы', url: '/projects' }]);
 
 	if (!project) return <NotFound />
 
 	return (
 		<>
 			<HeroSection title="Ремонт и восстановление" subtitleHighlight="кожаного салона" stats={stats}
-									 heroImage={heroImage} />
+				heroImage={heroImage} />
 			<Breadcrumbs crumbs={crumbs as any} currentPage={currentPage} />
 			<DescriptionSection description={description} />
 			<StepsSection steps={steps} />

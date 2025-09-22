@@ -21,24 +21,24 @@ export default async function RootLayout({
 	return (
 		<Root>
 			{/* ✅ GTM + GA4 */}
-			<GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID!} />
-			<GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
+			{/* <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID!} /> */}
+			{/* <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} /> */}
 			<body className={cn('bg-background text-foreground antialiased flex flex-col min-h-screen dark',
 				fontSans.variable,
 			)}>
 				<HeroUIProvider>
-					<NuqsAdapter>
-						<SkipToContent />
-						{/*<Announcement />*/}
-						<Banner />
-						<Header />
-						<main id="main-content" role="main" className="flex-1">
-							{children}
-						</main>
-						<Footer />
+					{/* <NuqsAdapter> */}
+					{/* <SkipToContent /> */}
+					{/*<Announcement />*/}
+					<Banner />
+					<Header />
+					<main id="main-content" role="main" className="flex-1">
+						{children}
+					</main>
+					<Footer />
 
-						<VisualEditingControls />
-					</NuqsAdapter>
+					<VisualEditingControls />
+					{/* </NuqsAdapter> */}
 				</HeroUIProvider>
 				<Script
 					id="json-ld-car-service"

@@ -1,6 +1,5 @@
 import { getSite } from '@/sanity/lib/queries'
 import Navigation from './Navigation'
-import Social from '@/ui/Social'
 import LanguageSwitcher from '@/ui/LanguageSwitcher'
 import { PortableText } from 'next-sanity'
 import Link from 'next/link'
@@ -8,7 +7,7 @@ import { Img } from '@/ui/Img'
 import { ContactList } from '@/components/contact-us/ui'
 
 export default async function Footer() {
-	const { title, blurb, logo, copyright } = await getSite()
+	const { title, blurb, logo, copyright, contactInfo } = await getSite()
 
 	const logoImage = logo?.image?.light || logo?.image?.default
 
@@ -35,7 +34,7 @@ export default async function Footer() {
 							</div>
 						)}
 
-						<ContactList />
+						<ContactList contactInfo={contactInfo} />
 
 						<LanguageSwitcher className="mt-4 max-w-max" />
 					</div>
