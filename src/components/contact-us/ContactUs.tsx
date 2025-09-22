@@ -4,8 +4,11 @@ import { BsCheckCircle } from "react-icons/bs"
 import { OrderForm } from '@/components/forms'
 import { cn } from "@/lib/utils"
 import { ContactList } from "./ui"
+import { getSite } from "@/sanity/lib/queries"
 
-export default function ContactUs({ className }: { className?: string }) {
+export default async function ContactUs({ className }: { className?: string }) {
+	const { contactInfo } = await getSite();
+
 	return (
 		<section id="contact" className={cn('py-20 bg-background', className)}>
 			<div className="container">
@@ -21,7 +24,7 @@ export default function ContactUs({ className }: { className?: string }) {
 					<div className="space-y-8">
 						<div className="flex flex-col gap-2">
 							<h3 className="text-foreground-500">Контактные данные</h3>
-							<ContactList />
+							<ContactList contactInfo={contactInfo} />
 						</div>
 
 						<div>

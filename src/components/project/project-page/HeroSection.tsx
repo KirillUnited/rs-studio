@@ -24,7 +24,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ title, subtitleHighlig
 			></div>
 			<div className="absolute inset-0 bg-black/70 opacity-90"></div>
 			<div className="container relative z-10">
-				<div className="max-w-4xl">
+				<div className="max-w-6xl">
 					<Pretitle className='mb-3'>
 						<AiFillProject className='text-secondary' size={16} />
 						Проект

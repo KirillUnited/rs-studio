@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { LinkProps } from '@heroui/react'
 
 export default async function Header() {
-	const { title, logo, ctas, headerMenu } = await getSite();
+	const { title, logo, ctas, headerMenu, contactInfo } = await getSite();
 	const logoImage = {
 		name: logo?.name,
 		image: {
@@ -36,6 +36,7 @@ export default async function Header() {
 			logo={logoImage}
 			title={title}
 			menuItems={menuItems}
+			contactInfo={contactInfo}
 		/>
 	)
 }

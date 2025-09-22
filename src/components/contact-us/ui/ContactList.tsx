@@ -3,7 +3,6 @@ import React from 'react'
 import { BsMailbox, BsPhone } from 'react-icons/bs'
 import { CgLock } from 'react-icons/cg'
 import { FaMapPin } from 'react-icons/fa'
-import { getSite } from '@/sanity/lib/queries'
 export interface ContactListProps {
 	contactInfo: {
 		phones: Array<{
@@ -21,8 +20,7 @@ export interface ContactListProps {
 		workingHours: string;
 	}
 }
-const ContactList = async () => {
-	const { contactInfo } = await getSite()
+const ContactList = ({ contactInfo }: ContactListProps) => {
 
 	if (!contactInfo) return null;
 

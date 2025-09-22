@@ -22,6 +22,7 @@ import Image from 'next/image'
 import { urlFor } from '@/sanity/lib/image'
 import { ModalDialog } from '@/components/modal-dialog'
 import { ContactList } from '../contact-us/ui'
+import { ContactListProps } from '../contact-us/ui/ContactList'
 
 const getMenuItemLink = (item: { internal?: { metadata: { slug: { current: string } } }, external?: { slug: string } }) => {
 	if (item?.internal?.metadata?.slug?.current === 'index') return '/';
@@ -30,8 +31,8 @@ const getMenuItemLink = (item: { internal?: { metadata: { slug: { current: strin
 	return '#';
 }
 
-const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
-	({ classNames = {}, logo, title, menuItems, ...props }, ref) => {
+const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps & ContactListProps>(
+	({ classNames = {}, logo, title, menuItems, contactInfo, ...props }, ref) => {
 		const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 		const [isModalOpen, setIsModalOpen] = React.useState(false);
 		const logoImage = logo?.image?.dark || logo?.image?.default;
@@ -77,14 +78,14 @@ const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 								const link = getMenuItemLink(item);
 
 								return (
-								<NavbarItem key={index}>
-									<Link className="text-foreground"
-												href={link}
-												size="sm">
-										{item?.internal?.metadata?.slug?.current === 'index' ? 'Главная' : item?.internal?.metadata?.title || item?.external?.title}
-									</Link>
-								</NavbarItem>
-							)
+									<NavbarItem key={index}>
+										<Link className="text-foreground"
+											href={link}
+											size="sm">
+											{item?.internal?.metadata?.slug?.current === 'index' ? 'Главная' : item?.internal?.metadata?.title || item?.external?.title}
+										</Link>
+									</NavbarItem>
+								)
 							})
 						}
 					</NavbarContent>
@@ -125,19 +126,20 @@ const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps>(
 							const link = getMenuItemLink(item);
 
 							return (
-							<NavbarMenuItem key={index}>
-								<Link className="mb-2 w-full text-default-500"
-									href={link}
-									size="md">
-									{item?.internal?.metadata?.slug?.current === 'index' ? 'Главная' : item?.internal?.metadata?.title || item?.external?.title}
-								</Link>
-								{index < menuItems.length - 1 && <Divider className="opacity-50" />}
-							</NavbarMenuItem>
-						)})}
+								<NavbarMenuItem key={index}>
+									<Link className="mb-2 w-full text-default-500"
+										href={link}
+										size="md">
+										{item?.internal?.metadata?.slug?.current === 'index' ? 'Главная' : item?.internal?.metadata?.title || item?.external?.title}
+									</Link>
+									{index < menuItems.length - 1 && <Divider className="opacity-50" />}
+								</NavbarMenuItem>
+							)
+						})}
 
 						<div className='flex flex-col gap-4 mt-auto'>
 							<Divider />
-							<ContactList />
+							<ContactList contactInfo={contactInfo} />
 						</div>
 					</NavbarMenu>
 				</div>
