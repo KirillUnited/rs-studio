@@ -1,4 +1,4 @@
-import { AboutSection, HeroSection, BenefitsSection, ProcessSection } from '@/components/service/service-page'
+import { AboutSection, HeroSection, BenefitsSection, ProcessSection, PriceSection } from '@/components/service/service-page'
 import { urlFor } from '@/sanity/lib/image'
 import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { SERVICE_PAGE_QUERY } from '@/components/service/lib/queries'
@@ -61,9 +61,11 @@ export default async function ServicePage(props: {
 		query: SERVICE_PAGE_QUERY,
 		params: { slug },
 	});
-	const { crumbs, currentPage } = getBreadcrumbs(page?.title, [{label: 'Наши Услуги', url: '/services'}]);
+	const { crumbs, currentPage } = getBreadcrumbs(page?.title, [{ label: 'Наши Услуги', url: '/services' }]);
 
 	if (!page) return <NotFound />
+
+	console.log(page)
 
 	return (
 		<>
@@ -71,11 +73,12 @@ export default async function ServicePage(props: {
 			<Breadcrumbs crumbs={crumbs as any} currentPage={currentPage} />
 			<AboutSection title={page?.title} description={page?.about} />
 			<BenefitsSection title={''} description={''} items={page?.benefits} />
+			<PriceSection data={page?.price} />
 			<ProcessSection />
 			<ProjectsSection title={''} description={''} projects={page?.relatedProjects} />
 			<CTASection className="mb-20" useContactAnchor />
 			<FAQSection faqList={page?.faqs?.faqList} pretitle={page?.faqs?.pretitle} intro={page?.faqs?.intro}
-									description={page?.faqs?.description} ctas={page?.faqs?.ctas} />
+				description={page?.faqs?.description} ctas={page?.faqs?.ctas} />
 			<ContactUs />
 		</>
 	)
