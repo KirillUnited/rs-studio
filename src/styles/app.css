@@ -67,6 +67,12 @@
 		scroll-behavior: smooth;
 	}
 
+	body {
+		background-image: url('/images/background.webp'), linear-gradient(183deg, #000b16 100%, #00132a 46%, #00060c 1%, #000 0%);
+    background-size: 100vw;
+    background-repeat: no-repeat;
+	}
+
 	body:has(dialog[open]) {
 		overflow: hidden;
 	}

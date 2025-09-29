@@ -13,7 +13,7 @@ export default function ProjectsSection({
 	if (!projects) return null;
 
 	return (
-		<section className="py-20 bg-background">
+		<section className="py-20">
 			<div className="container">
 				<div className="mb-12">
 					<h2 className="text-4xl md:text-5xl font-bold mb-4">

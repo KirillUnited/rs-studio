@@ -31,7 +31,7 @@ const processSteps = [
 
 export default function ProcessSection() {
 	return (
-		<section className="py-20 bg-content1">
+		<section className="py-20">
 			<div className="container">
 				<div className="mb-12">
 					<h2 className="text-4xl md:text-5xl font-bold mb-4 capitalize">

@@ -69,7 +69,7 @@ export interface CallToActionSectionProps {
 
 // ------------------- Components -------------------
 const CallToActionSection: React.FC<CallToActionSectionProps> = () => (
-	<section className="py-20 bg-content1">
+	<section className="py-20">
 		<div className="container">
 			<div className="bg-gradient-to-r from-[#F871A0] to-[#9353D3] rounded-large px-8 py-12">
 				<h2 className="text-3xl md:text-4xl font-bold mb-6">Нужен похожий ремонт?</h2>

@@ -23,7 +23,7 @@ export default async function RootLayout({
 			{/* ✅ GTM + GA4 */}
 			{/* <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID!} /> */}
 			{/* <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} /> */}
-			<body className={cn('bg-background text-foreground antialiased flex flex-col min-h-screen dark',
+			<body className={cn('text-foreground antialiased flex flex-col min-h-screen dark',
 				fontSans.variable,
 			)}>
 				<HeroUIProvider>

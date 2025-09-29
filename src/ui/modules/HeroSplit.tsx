@@ -1,11 +1,9 @@
 import { PortableText } from 'next-sanity'
 import Pretitle from '@/ui/Pretitle'
-import CTAList from '@/ui/CTAList'
 import Asset from './Asset'
 import CustomHTML from './CustomHTML'
 import Reputation from '@/ui/Reputation'
 import { cn } from '@/lib/utils'
-import { FaAward } from 'react-icons/fa'
 import { CTABlock } from '@/components/ui'
 
 export default function HeroSplit({
@@ -26,7 +24,7 @@ export default function HeroSplit({
 	const asset = assets?.[0]
 
 	return (
-		<section className='section-container bg-content1 overflow-hidden'>
+		<section className='section-container overflow-hidden'>
 			<div className='container'>
 				<div className='grid items-center gap-8 md:grid-cols-2 md:gap-x-12'>
 					<figure
