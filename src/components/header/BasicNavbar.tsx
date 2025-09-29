@@ -42,7 +42,7 @@ const BasicNavbar = React.forwardRef<HTMLElement, BasicNavbarProps & ContactList
 				ref={ref}
 				{...props}
 				classNames={{
-					base: cn('border-default-100 bg-background', {
+					base: cn('border-default-100 bg-transparent', {
 						'bg-default-200/50 dark:bg-default-100/50': isMenuOpen,
 					}),
 					wrapper: 'w-full justify-center',

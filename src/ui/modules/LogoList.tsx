@@ -28,7 +28,7 @@ export default async function LogoList({
 		}))
 
 	return (
-		<section className="bg-content1">
+		<section>
 			{/*{(pretitle || intro) && (*/}
 			{/*	<header className="richtext mx-auto max-w-screen-sm text-center text-balance">*/}
 			{/*		<Pretitle>{pretitle}</Pretitle>*/}
