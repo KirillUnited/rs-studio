@@ -65,8 +65,6 @@ export default async function ServicePage(props: {
 
 	if (!page) return <NotFound />
 
-	console.log(page)
-
 	return (
 		<>
 			<HeroSection title={page?.title} description={page?.description} heroImage={page?.heroImage} />
