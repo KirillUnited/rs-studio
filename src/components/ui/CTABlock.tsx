@@ -11,7 +11,7 @@ interface CTABlockProps extends HTMLAttributes<HTMLDivElement> {
 	useContactAnchor?: boolean
 }
 
-export const CTAButton = () => {
+export const CTAButton = ({ label = 'Заказать' }: { label?: string }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const openDialog = () => setIsOpen(true);
 
@@ -24,8 +24,8 @@ export const CTAButton = () => {
 				size='lg'
 			>
 				<Icon className="group-hover:-translate-x-1 transition-transform" icon="bi:calendar-event"
-							width={18} />
-				Заказать
+					width={18} />
+				{label}
 			</Button>
 
 			<ModalDialog isOpen={isOpen} onClose={() => setIsOpen(false)} />

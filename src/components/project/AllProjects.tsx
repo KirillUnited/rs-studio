@@ -17,7 +17,7 @@ const AllProjects = ({ projects = [] }: { projects: ProjectProps[] }) => {
 	return (
 		<>
 			{/* Filter Section */}
-			<section className="py-8 bg-background border-b border-b-content2">
+			<section className="py-8 border-b border-b-content2">
 				<div className="container mx-auto px-4">
 					<div className="flex flex-col md:flex-row items-start justify-between gap-4">
 						<div className="flex items-center space-x-2">
@@ -41,7 +41,7 @@ const AllProjects = ({ projects = [] }: { projects: ProjectProps[] }) => {
 			</section>
 
 			{/* All Projects */}
-			<section className="py-16 from-background to-content2 bg-gradient-to-b">
+			<section className="py-16">
 				<div className="container mx-auto px-4">
 					<div className="md:text-center mb-12">
 						<h2 className="text-3xl md:text-4xl font-bold text-automotive-navy mb-4">

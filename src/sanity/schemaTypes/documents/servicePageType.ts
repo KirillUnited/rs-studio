@@ -50,6 +50,25 @@ export const servicePageType = defineType({
 			group: 'content'
 		}),
 		defineField({
+			name: 'price',
+			title: 'Цена работ',
+			type: 'array',
+			group: 'content',
+			of: [
+				{
+					name: 'priceItem',
+					title: 'Цена',
+					type: 'object',
+					fields: [
+						{ name: 'title', title: 'Вид работы', type: 'string' },
+						{ name: 'description', title: 'Описание', type: 'text' },
+						{ name: 'value', title: 'Цена', type: 'number' },
+						{ name: 'estimate', title: 'Сроки', type: 'string' }
+					]
+				}
+			]
+		}),
+		defineField({
 			name: 'benefits',
 			title: 'Преимущества',
 			type: 'array',

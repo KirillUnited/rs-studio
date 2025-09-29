@@ -11,7 +11,7 @@ export default async function InstagramSection() {
 	}
 
 	return (
-		<section className="section-container bg-content1 text-center relative overflow-hidden">
+		<section className="section-container text-center relative overflow-hidden">
 			<div className="container">
 				<header className="richtext mb-8 md:mb-16 max-w-2xl mx-auto">
 					<Pretitle>Мы в Instagram</Pretitle>

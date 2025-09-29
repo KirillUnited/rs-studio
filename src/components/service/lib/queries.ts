@@ -6,6 +6,7 @@ export const SERVICE_PAGE_QUERY = groq`
     description,
     heroImage{asset->{url, metadata}},
     about,
+		price,
     benefits[]{
       title,
       text,

@@ -3,8 +3,6 @@ import { cn } from '@/lib/utils'
 import { getSite } from '@/sanity/lib/queries'
 import React from 'react'
 import { BasicNavbar } from '@/components/header/index'
-import Link from 'next/link'
-import { LinkProps } from '@heroui/react'
 
 export default async function Header() {
 	const { title, logo, ctas, headerMenu, contactInfo } = await getSite();

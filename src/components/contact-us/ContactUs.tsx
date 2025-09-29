@@ -10,7 +10,7 @@ export default async function ContactUs({ className }: { className?: string }) {
 	const { contactInfo } = await getSite();
 
 	return (
-		<section id="contact" className={cn('py-20 bg-background', className)}>
+		<section id="contact" className={cn('py-20', className)}>
 			<div className="container">
 				<div className="flex flex-col gap-2 items-start mb-8 max-w-2xl">
 					<Pretitle>Свяжитесь с нами</Pretitle>

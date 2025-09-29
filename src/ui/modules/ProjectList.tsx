@@ -8,16 +8,16 @@ import { CTASection } from '@/components/service'
 import { SectionHeader } from '@/components/section'
 
 export default async function ProjectList({
-																						pretitle,
-																						intro,
-																						description,
-																						projects,
-																						ctas,
-																						layout,
-																						columns = 3,
-																						visualSeparation,
-																						...props
-																					}: Partial<{
+	pretitle,
+	intro,
+	description,
+	projects,
+	ctas,
+	layout,
+	columns = 3,
+	visualSeparation,
+	...props
+}: Partial<{
 	pretitle: string
 	intro: any
 	description: string
@@ -32,10 +32,10 @@ export default async function ProjectList({
 
 	return (
 		<>
-			<section className="py-16 bg-content1" {...moduleProps(props)}>
+			<section className="py-16" {...moduleProps(props)}>
 				<div className="container">
 					<SectionHeader pretitle={pretitle} title={intro}
-												 description={description} />
+						description={description} />
 
 					{/* Before/After Showcase */}
 					<ProjectShowcase />
