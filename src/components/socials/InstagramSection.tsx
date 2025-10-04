@@ -1,6 +1,7 @@
 import Pretitle from "@/ui/Pretitle";
 import Link from "next/link";
 import { getSite } from "@/sanity/lib/queries";
+import InstagramFeed from "./InstagramFeed";
 
 export default async function InstagramSection() {
 	const { social } = await getSite();
@@ -20,7 +21,7 @@ export default async function InstagramSection() {
 					</h2>
 				</header>
 			</div>
-			{/* <InstagramFeed /> */}
+			<InstagramFeed />
 		</section>
 	);
 }
