@@ -1,7 +1,9 @@
+'use client';
+
 import React from "react";
 import { useActionState } from "react";
 import { recallSchema, submitRecallForm, RecallFormData } from "./recallFormAction";
-import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "shadcn/ui";
+import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 
 export function ReCallForm() {
   const [state, formAction] = useActionState(submitRecallForm, { status: "idle", errors: {} });

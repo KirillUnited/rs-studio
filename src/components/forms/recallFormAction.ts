@@ -1,3 +1,5 @@
+"use server";
+
 import { z } from "zod";
 
 // Belarus phone regex: +375 (XX) XXX-XX-XX or 80 (XX) XXX-XX-XX
@@ -16,7 +18,6 @@ export type RecallFormData = z.infer<typeof recallSchema>;
 
 // Server Action
 export async function submitRecallForm(prevState: any, formData: FormData) {
-  "use server";
   try {
     const data = {
       name: formData.get("name"),
