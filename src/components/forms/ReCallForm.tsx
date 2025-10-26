@@ -6,6 +6,7 @@ import { recallSchema } from "./schemas";
 import { FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { useForm, FormProvider } from "react-hook-form";
 import { Button, Checkbox, Input } from '@heroui/react'
+import Link from 'next/link'
 
 export function ReCallForm() {
   const [state, formAction, isPending] = useActionState(submitRecallForm, { status: "idle", errors: {} }) as any;
@@ -19,15 +20,17 @@ export function ReCallForm() {
       agreement: false,
     } as any,
   } as any);
+
   const handleSubmit = async (formData: FormData) => {
     await formAction(formData);
+    console.log('Form data', formData);
   };
 
   return (
     // cast methods as any to avoid JSX prop typing issues with FormProvider
     // @ts-ignore - react-hook-form FormProvider requires useForm return props; casted above to any for this workspace
     <FormProvider {...form}>
-      <form action={handleSubmit} className="space-y-6" noValidate>
+      <form action={handleSubmit} className="space-y-5" noValidate>
         <FormField
           control={form.control}
           name="name"
@@ -36,14 +39,16 @@ export function ReCallForm() {
             <FormItem>
               <FormControl>
                 <Input
-                  label="Name"
+                  label="Имя"
                   id="recall-name"
-                  {...field}
                   type="text"
                   required
                   aria-invalid={!!state.errors?.name}
                   aria-describedby="recall-name-error"
-                  className="input"
+                  placeholder={"Ваше имя"}
+                  labelPlacement={"outside"}
+                  radius={'lg'}
+                  {...field}
                 />
               </FormControl>
               <FormMessage id="recall-name-error">
@@ -61,15 +66,17 @@ export function ReCallForm() {
             <FormItem>
               <FormControl>
                 <Input
-                  label={"Phone"}
+                  label={"Телефон"}
                   id="recall-phone"
-                  {...field}
                   type="tel"
                   required
                   pattern="^(\\+375|80)(\\s?\(?\d{2}\)?\s?)[\d\s-]{7,}$"
                   aria-invalid={!!state.errors?.phone}
                   aria-describedby="recall-phone-error"
-                  className="input"
+                  placeholder={'+375 (XX) XXX-XX-XX'}
+                  labelPlacement={"outside"}
+                  radius={'lg'}
+                  {...field}
                 />
               </FormControl>
               <FormMessage id="recall-phone-error">
@@ -87,17 +94,16 @@ export function ReCallForm() {
             <FormItem>
               <FormControl>
                 <Checkbox
+                  radius={'lg'}
                   id="recall-agreement"
-                  name={field.name}
                   type="checkbox"
-                  checked={!!field.value}
-                  onChange={(e) => field.onChange(e.target.checked)}
                   required
+                  value={field.value}
                   aria-invalid={!!state.errors?.agreement}
                   aria-describedby="recall-agreement-error"
-                  className="text-sm"
+                  {...field}
                 >
-                  <span className={'text-sm'}>I agree with the privacy policy</span>
+                  <span className={'text-sm'}>Согласие на <Link href={'/'}>обработку персональных данных</Link></span>
                 </Checkbox>
               </FormControl>
               <FormMessage id="recall-agreement-error">
@@ -114,12 +120,13 @@ export function ReCallForm() {
           <div className="text-success">Thank you! We will contact you soon.</div>
         )}
         <Button
-          className={"w-full brand-gradient group rounded-large"}
+          className={"w-full brand-gradient group"}
           color="primary"
           type="submit"
           isDisabled={isPending}
           isLoading={isPending}
           aria-busy={isPending}
+          radius={'lg'}
         >
           {isPending ? 'Отправка...' : 'Заказать звонок'}
         </Button>
