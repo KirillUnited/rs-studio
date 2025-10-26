@@ -1,20 +1,15 @@
 'use client';
 import React from "react";
 import { useActionState } from "react";
-import { recallSchema, submitRecallForm } from "./recallFormAction";
+import { submitRecallForm } from "./recallFormAction";
+import { recallSchema } from "./schemas";
 import { FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { useForm, FormProvider } from "react-hook-form";
 import { Button, Checkbox, Input } from '@heroui/react'
 import { Loader2Icon } from 'lucide-react'
 
-type RecallFormData = {
-  name: string;
-  phone: string;
-  agreement: boolean;
-};
-
 export function ReCallForm() {
-  const [state, formAction] = useActionState(submitRecallForm, { status: "idle", errors: {} }) as any;
+  const [state, formAction, isPending] = useActionState(submitRecallForm, { status: "idle", errors: {} }) as any;
 
   // initialize react-hook-form so FormProvider has a valid context
   const form = useForm<recallSchema>({
@@ -25,12 +20,15 @@ export function ReCallForm() {
       agreement: false,
     } as any,
   } as any);
+  const handleSubmit = async (formData: FormData) => {
+    await formAction(formData);
+  };
 
   return (
     // cast methods as any to avoid JSX prop typing issues with FormProvider
     // @ts-ignore - react-hook-form FormProvider requires useForm return props; casted above to any for this workspace
     <FormProvider {...form}>
-      <form action={async formData => await formAction(formData)} className="space-y-6" noValidate>
+      <form action={handleSubmit} className="space-y-6" noValidate>
         <FormField
           control={form.control}
           name="name"
@@ -120,11 +118,11 @@ export function ReCallForm() {
           className={"w-full brand-gradient group rounded-large"}
           color="primary"
           type="submit"
-          disabled={state.status === 'pending'}
-          aria-busy={state.status === 'pending'}
-          startContent={state.status === 'pending' ? <Loader2Icon className="mr-2 h-4 w-4 animate-spin" /> : undefined}
+          isDisabled={isPending}
+          isLoading={isPending}
+          aria-busy={isPending}
         >
-          {state.status === 'pending' ? 'Отправка...' : 'Заказать звонок'}
+          {isPending ? 'Отправка...' : 'Заказать звонок'}
         </Button>
       </form>
     </FormProvider>
