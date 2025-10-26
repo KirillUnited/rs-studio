@@ -4,7 +4,7 @@ import { useActionState } from "react";
 import { submitRecallForm } from "./recallFormAction";
 import { recallSchema } from "./schemas";
 import { FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
-import { useForm, FormProvider } from "react-hook-form";
+import { useForm, FormProvider, Control } from "react-hook-form";
 import { addToast, Button, Checkbox, Input } from '@heroui/react'
 import Link from 'next/link'
 
@@ -12,7 +12,7 @@ export function ReCallForm() {
   const [state, formAction, isPending] = useActionState(submitRecallForm, { status: "idle", errors: {} }) as any;
 
   // initialize react-hook-form so FormProvider has a valid context
-  const form = useForm<recallSchema>({
+  const form = useForm<typeof recallSchema>({
     // cast to any to satisfy this workspace's type expectations
     defaultValues: {
       name: "",
@@ -47,7 +47,7 @@ export function ReCallForm() {
           <div className="text-success">Спасибо! Мы свяжемся с вами в ближайшее время.</div>
         )}
         <FormField
-          control={form.control}
+          control={form.control as any}
           name="name"
           defaultValue=""
           render={({ field }) => (
@@ -74,7 +74,7 @@ export function ReCallForm() {
         />
 
         <FormField
-          control={form.control}
+          control={form.control as any}
           name="phone"
           defaultValue=""
           render={({ field }) => (
@@ -102,7 +102,7 @@ export function ReCallForm() {
         />
 
         <FormField
-          control={form.control}
+          control={form.control as any}
           name="agreement"
           defaultValue={false}
           render={({ field }) => (
@@ -113,7 +113,6 @@ export function ReCallForm() {
                   id="recall-agreement"
                   type="checkbox"
                   required
-                  value={field.value}
                   aria-invalid={!!state.errors?.agreement}
                   aria-describedby="recall-agreement-error"
                   {...field}

@@ -17,9 +17,9 @@ export async function submitRecallForm(prevState: any, formData: FormData) {
         errors: parsed.error.flatten().fieldErrors,
       };
     }
-    // TODO: handle successful submission (e.g., send email, save to db)
-    console.log("Recall form submitted:", parsed.data);
-    await sendOrderMessage(data)
+
+    await sendOrderMessage(data);
+
     return { status: "success" };
   } catch (error) {
     return {
