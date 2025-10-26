@@ -1,6 +1,7 @@
-import type { NextConfig } from 'next'
-
-export default {
+/**
+ * @type {import('next').NextConfig}
+ */
+const nextConfig = {
 	images: {
 		dangerouslyAllowSVG: true,
 		remotePatterns: [
@@ -13,41 +14,7 @@ export default {
 				hostname: 'avatars.githubusercontent.com',
 			},
 		],
-	},
+	}
+};
 
-	// async redirects() {
-	// 	return await client.fetch(groq`*[_type == 'redirect']{
-	// 		source,
-	// 		'destination': select(
-	// 			destination.type == 'internal' =>
-	// 				select(
-	// 					destination.internal->._type == 'blog.post' => '/${BLOG_DIR}/',
-	// 					'/'
-	// 				) + destination.internal->.metadata.slug.current,
-	// 			destination.external
-	// 		),
-	// 		permanent
-	// 	}`)
-	// },
-	//
-	// async rewrites() {
-	// 	if (!supportedLanguages?.length) return []
-	//
-	// 	return [
-	// 		{
-	// 			source: `/:lang/${BLOG_DIR}/:slug`,
-	// 			destination: `/${BLOG_DIR}/:lang/:slug`,
-	// 		},
-	// 	]
-	// },
-
-	env: {
-		SC_DISABLE_SPEEDY: 'false',
-	},
-
-	// logging: {
-	// 	fetches: {
-	// 		fullUrl: true,
-	// 	},
-	// },
-} satisfies NextConfig
+export default nextConfig;
