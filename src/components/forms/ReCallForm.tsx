@@ -30,7 +30,7 @@ export function ReCallForm() {
     // cast methods as any to avoid JSX prop typing issues with FormProvider
     // @ts-ignore - react-hook-form FormProvider requires useForm return props; casted above to any for this workspace
     <FormProvider {...form}>
-      <form action={formAction} className="space-y-6" noValidate>
+      <form action={async formData => await formAction(formData)} className="space-y-6" noValidate>
         <FormField
           control={form.control}
           name="name"
