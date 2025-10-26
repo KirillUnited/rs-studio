@@ -6,7 +6,6 @@ import { recallSchema } from "./schemas";
 import { FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { useForm, FormProvider } from "react-hook-form";
 import { Button, Checkbox, Input } from '@heroui/react'
-import { Loader2Icon } from 'lucide-react'
 
 export function ReCallForm() {
   const [state, formAction, isPending] = useActionState(submitRecallForm, { status: "idle", errors: {} }) as any;
