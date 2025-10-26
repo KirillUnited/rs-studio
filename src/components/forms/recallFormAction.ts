@@ -1,5 +1,6 @@
 "use server";
 import { recallSchema, type RecallFormData } from "./schemas";
+import { sendOrderMessage } from '@/lib/messenger'
 
 // Server Action
 export async function submitRecallForm(prevState: any, formData: FormData) {
@@ -18,6 +19,7 @@ export async function submitRecallForm(prevState: any, formData: FormData) {
     }
     // TODO: handle successful submission (e.g., send email, save to db)
     console.log("Recall form submitted:", parsed.data);
+    await sendOrderMessage(data)
     return { status: "success" };
   } catch (error) {
     return {

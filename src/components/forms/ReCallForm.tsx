@@ -5,7 +5,7 @@ import { submitRecallForm } from "./recallFormAction";
 import { recallSchema } from "./schemas";
 import { FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { useForm, FormProvider } from "react-hook-form";
-import { Button, Checkbox, Input } from '@heroui/react'
+import { addToast, Button, Checkbox, Input } from '@heroui/react'
 import Link from 'next/link'
 
 export function ReCallForm() {
@@ -21,9 +21,21 @@ export function ReCallForm() {
     } as any,
   } as any);
 
+  // Add this effect to show toast and reset form on success
+  React.useEffect(() => {
+    if (state.status === 'success') {
+      addToast({
+        title: 'Успешно отправлено',
+        description: 'Спасибо! Мы свяжемся с вами в ближайшее время.',
+        color: 'success',
+      });
+      form.reset();
+    }
+  }, [state.status, form.reset]);
+
   const handleSubmit = async (formData: FormData) => {
-    await formAction(formData);
-    console.log('Form data', formData);
+    const result = await formAction(formData);
+    console.log(result);
   };
 
   return (
@@ -31,6 +43,9 @@ export function ReCallForm() {
     // @ts-ignore - react-hook-form FormProvider requires useForm return props; casted above to any for this workspace
     <FormProvider {...form}>
       <form action={handleSubmit} className="space-y-5" noValidate>
+        {state.status === 'success' && (
+          <div className="text-success">Спасибо! Мы свяжемся с вами в ближайшее время.</div>
+        )}
         <FormField
           control={form.control}
           name="name"
@@ -51,7 +66,7 @@ export function ReCallForm() {
                   {...field}
                 />
               </FormControl>
-              <FormMessage id="recall-name-error">
+              <FormMessage className={'text-danger text-sm'} id="recall-name-error">
                 {state.errors?.name?.[0]}
               </FormMessage>
             </FormItem>
@@ -79,7 +94,7 @@ export function ReCallForm() {
                   {...field}
                 />
               </FormControl>
-              <FormMessage id="recall-phone-error">
+              <FormMessage className={'text-danger text-sm'} id="recall-phone-error">
                 {state.errors?.phone?.[0]}
               </FormMessage>
             </FormItem>
@@ -106,7 +121,7 @@ export function ReCallForm() {
                   <span className={'text-sm'}>Согласие на <Link href={'/'}>обработку персональных данных</Link></span>
                 </Checkbox>
               </FormControl>
-              <FormMessage id="recall-agreement-error">
+              <FormMessage className={'text-danger text-sm'} id="recall-agreement-error">
                 {state.errors?.agreement?.[0]}
               </FormMessage>
             </FormItem>
@@ -114,10 +129,7 @@ export function ReCallForm() {
         />
 
         {state.errors?.form && (
-          <div className="text-destructive">{state.errors.form[0]}</div>
-        )}
-        {state.status === 'success' && (
-          <div className="text-success">Thank you! We will contact you soon.</div>
+          <div className="text-danger">{state.errors.form[0]}</div>
         )}
         <Button
           className={"w-full brand-gradient group"}

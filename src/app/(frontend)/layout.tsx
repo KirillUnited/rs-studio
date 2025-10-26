@@ -8,7 +8,7 @@ import VisualEditingControls from '@/ui/VisualEditingControls'
 import '@/styles/app.css'
 import { cn } from '@/lib/utils'
 import { fontSans } from '@/lib/fonts'
-import { HeroUIProvider } from '@heroui/react'
+import { HeroUIProvider, ToastProvider } from '@heroui/react'
 import { Banner } from '@/components/banner'
 import Script from 'next/script'
 import { jsonLd } from '@/lib/json-ld'
@@ -30,6 +30,7 @@ export default async function RootLayout({
 					{/* <NuqsAdapter> */}
 					{/* <SkipToContent /> */}
 					{/*<Announcement />*/}
+					<ToastProvider position="top-center" />
 					<Banner />
 					<Header />
 					<main id="main-content" role="main" className="flex-1">
