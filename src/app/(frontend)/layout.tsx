@@ -30,7 +30,7 @@ export default async function RootLayout({
 					{/* <NuqsAdapter> */}
 					{/* <SkipToContent /> */}
 					{/*<Announcement />*/}
-					<ToastProvider position="top-center" />
+					<ToastProvider placement='top-center' />
 					<Banner />
 					<Header />
 					<main id="main-content" role="main" className="flex-1">
