@@ -1,6 +1,9 @@
 import type { NextConfig } from 'next'
 
 export default {
+	experimental: {
+		serverActions: true,
+	},
 	images: {
 		dangerouslyAllowSVG: true,
 		remotePatterns: [

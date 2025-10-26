@@ -9,8 +9,8 @@ export const recallSchema = z.object({
     .string()
     .regex(/^(\+375|80)(\s?\(?\d{2}\)?\s?)[\d\s-]{7,}$/,
       "Enter a valid Belarus phone number"),
-  agreement: z.literal(true, {
-    errorMap: () => ({ message: "You must agree with the privacy policy" }),
+  agreement: z.boolean().refine(async (val) => val === true, {
+    message: "You must agree to the terms",
   }),
 });
 
@@ -32,6 +32,7 @@ export async function submitRecallForm(prevState: any, formData: FormData) {
       };
     }
     // TODO: handle successful submission (e.g., send email, save to db)
+    console.log("Recall form submitted:", parsed.data);
     return { status: "success" };
   } catch (error) {
     return {
