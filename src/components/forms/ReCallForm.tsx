@@ -72,7 +72,6 @@ export function ReCallForm() {
 									isRequired
 									errorMessage={state.errors?.name?.[0]}
 									isInvalid={!!state.errors?.name}
-									isInvalidMessage={state.errors?.name?.[0]}
 									aria-invalid={!!state.errors?.name}
 									aria-describedby="recall-name-error"
 									placeholder={'Ваше имя'}
@@ -98,7 +97,6 @@ export function ReCallForm() {
 									type="tel"
 									required
 									isInvalid={!!state.errors?.phone}
-									isInvalidMessage={state.errors?.phone?.[0]}
 									errorMessage={state.errors?.phone?.[0]}
 									isRequired
 									pattern="^(\\+375|80)(\\s?\(?\d{2}\)?\s?)[\d\s-]{7,}$"
