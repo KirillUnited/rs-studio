@@ -13,6 +13,7 @@ import {
 import { useForm, FormProvider, Control } from 'react-hook-form'
 import { addToast, Button, Checkbox, Input } from '@heroui/react'
 import Link from 'next/link'
+import PhoneInput from '@/components/forms/ui/PhoneInput'
 
 export function ReCallForm() {
 	const [state, formAction, isPending] = useActionState(submitRecallForm, {
@@ -92,22 +93,41 @@ export function ReCallForm() {
 					render={({ field }) => (
 						<FormItem>
 							<FormControl>
-								<Input
+								{/*<Input*/}
+								{/*	label={'Телефон'}*/}
+								{/*	id="recall-phone"*/}
+								{/*	type="tel"*/}
+								{/*	required*/}
+								{/*	isInvalid={!!state.errors?.phone}*/}
+								{/*	isInvalidMessage={state.errors?.phone?.[0]}*/}
+								{/*	errorMessage={state.errors?.phone?.[0]}*/}
+								{/*	isRequired*/}
+								{/*	pattern="^(\\+375|80)(\\s?\(?\d{2}\)?\s?)[\d\s-]{7,}$"*/}
+								{/*	aria-invalid={!!state.errors?.phone}*/}
+								{/*	aria-describedby="recall-phone-error"*/}
+								{/*	placeholder={'+375 (XX) XXX-XX-XX'}*/}
+								{/*	labelPlacement={'outside'}*/}
+								{/*	radius={'lg'}*/}
+								{/*	{...field}*/}
+								{/*/>*/}
+								<PhoneInput
 									label={'Телефон'}
 									id="recall-phone"
-									type="tel"
 									required
-									isInvalid={!!state.errors?.phone}
-									isInvalidMessage={state.errors?.phone?.[0]}
-									errorMessage={state.errors?.phone?.[0]}
 									isRequired
-									pattern="^(\\+375|80)(\\s?\(?\d{2}\)?\s?)[\d\s-]{7,}$"
+									isInvalid={!!state.errors?.phone}
+									errorMessage={state.errors?.phone?.[0]}
 									aria-invalid={!!state.errors?.phone}
 									aria-describedby="recall-phone-error"
-									placeholder={'+375 (XX) XXX-XX-XX'}
-									labelPlacement={'outside'}
-									radius={'lg'}
-									{...field}
+									placeholder="+375 (XX) XXX-XX-XX"
+									labelPlacement="outside"
+									radius="lg"
+									defaultCountry="BY"
+									value={field.value}
+									onChange={(value, { isValid }) => {
+										field.onChange(value)
+										// You can use the `isValid` flag for additional validation if needed
+									}}
 								/>
 							</FormControl>
 						</FormItem>
