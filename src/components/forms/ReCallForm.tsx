@@ -73,7 +73,6 @@ export function ReCallForm() {
 									isRequired
 									errorMessage={state.errors?.name?.[0]}
 									isInvalid={!!state.errors?.name}
-									isInvalidMessage={state.errors?.name?.[0]}
 									aria-invalid={!!state.errors?.name}
 									aria-describedby="recall-name-error"
 									placeholder={'Ваше имя'}
