@@ -7,7 +7,7 @@ export async function submitRecallForm(prevState: any, formData: FormData) {
 	try {
 		const data = {
 			name: formData.get('name'),
-			phone: formData.get('phone'),
+			phone: formData.get('phone') as string,
 			agreement: formData.get('agreement') === 'true',
 		}
 		const parsed = recallSchema.safeParse(data)
