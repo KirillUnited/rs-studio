@@ -1,6 +1,7 @@
 'use client';
 import { Modal, ModalBody, ModalContent, ModalHeader } from '@heroui/react'
 import { ReCallForm } from '@/components/forms'
+import { LabelKey, RU_LABELS } from '@/components/forms/constants';
 
 export interface ModalDialogProps {
 	isOpen?: boolean;
@@ -13,8 +14,8 @@ export default function ModalDialog({ isOpen, onClose }: ModalDialogProps) {
 			<ModalContent>
 				<>
 					<ModalHeader className="flex flex-col gap-2">
-						<h2 className="text-xl font-bold">Оформить заказ</h2>
-						<p className="text-sm text-muted-foreground">Оставьте заявку и мы свяжемся с вами в ближайшее время</p>
+						<h2 className="text-xl font-bold text-balance">{RU_LABELS[LabelKey.ORDER_MODAL_TITLE]}</h2>
+						<p className="text-sm text-muted-foreground text-balance">{RU_LABELS[LabelKey.ORDER_MODAL_SUBTITLE]}</p>
 					</ModalHeader>
 					<ModalBody>
 						<ReCallForm />
