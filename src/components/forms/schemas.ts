@@ -6,7 +6,7 @@ export const recallSchema = z.object({
   phone: z
     .string()
     .regex(
-      /^(\+375|80)(\s?\(?\d{2}\)?\s?)[\d\s-]{7,}$/,
+      /^\+375\s?(17|25|29|33|44)\s?\d{3}\s?\d{2}\s?\d{2}$/,
       "Введите корректный номер телефона"
     ),
   agreement: z.boolean().refine((val) => val === true, {

@@ -92,25 +92,7 @@ export function ReCallForm() {
 							render={({ field }) => (
 								<FormItem>
 									<FormControl>
-										{/*<Input*/}
-										{/*	label={'Телефон'}*/}
-										{/*	id="recall-phone"*/}
-										{/*	type="tel"*/}
-										{/*	required*/}
-										{/*	isInvalid={!!state.errors?.phone}*/}
-										{/*	isInvalidMessage={state.errors?.phone?.[0]}*/}
-										{/*	errorMessage={state.errors?.phone?.[0]}*/}
-										{/*	isRequired*/}
-										{/*	pattern="^(\\+375|80)(\\s?\(?\d{2}\)?\s?)[\d\s-]{7,}$"*/}
-										{/*	aria-invalid={!!state.errors?.phone}*/}
-										{/*	aria-describedby="recall-phone-error"*/}
-										{/*	placeholder={'+375 (XX) XXX-XX-XX'}*/}
-										{/*	labelPlacement={'outside'}*/}
-										{/*	radius={'lg'}*/}
-										{/*	{...field}*/}
-										{/*/>*/}
 										<PhoneInput
-											name={`phone`}
 											label={'Телефон'}
 											id="recall-phone"
 											required
@@ -119,15 +101,11 @@ export function ReCallForm() {
 											errorMessage={state.errors?.phone?.[0]}
 											aria-invalid={!!state.errors?.phone}
 											aria-describedby="recall-phone-error"
-											placeholder="+375 (29) 123-45-67"
+											placeholder="+375 29 123 45 67"
 											labelPlacement="outside"
 											radius="lg"
 											defaultCountry="BY"
-											value={field.value}
-											onChange={(value, { isValid }) => {
-												field.onChange(value)
-												// You can use the `isValid` flag for additional validation if needed
-											}}
+											{...field}
 										/>
 									</FormControl>
 								</FormItem>
