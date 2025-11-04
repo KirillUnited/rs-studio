@@ -23,7 +23,7 @@ export interface FeaturedServiceCardProps
 	}>
 }
 
-const features = [
+const features: string[] = [
 	// 'Удаляет грязь и налет',
 	// 'Восстанавливает естественные масла',
 	// 'Защищает от будущих повреждений',
