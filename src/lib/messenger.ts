@@ -9,7 +9,7 @@ export async function sendOrderMessage(data: any): Promise<any> {
     const {
         name,
         phone,
-        email,
+        email = '',
         comment,
     } = data;
     const message = `

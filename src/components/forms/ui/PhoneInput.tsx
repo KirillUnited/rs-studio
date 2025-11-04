@@ -1,14 +1,11 @@
 import React from 'react'
-import {
-	formatIncompletePhoneNumber,
-	parsePhoneNumberFromString,
-} from 'libphonenumber-js'
 import { Input, InputProps } from '@heroui/react'
+import { withMask } from 'use-mask-input'
+import { PHONE_REGEX } from '../constants'
 
 interface PhoneInputProps
 	extends Omit<InputProps, 'onChange' | 'value' | 'defaultValue'> {
 	value?: string
-	defaultCountry?: string
 	onChange: (
 		value: string,
 		info: { countryCode?: string; isValid: boolean },
@@ -16,39 +13,19 @@ interface PhoneInputProps
 }
 
 const PhoneInput = React.forwardRef<HTMLInputElement, PhoneInputProps>(
-	({ value = '', defaultCountry = 'BY', onChange, ...props }, ref) => {
-		const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-			const input = e.target.value
-			const phoneNumber = parsePhoneNumberFromString(
-				input,
-				defaultCountry as any,
-			)
-
-			// Format the input while typing
-			const formattedValue = formatIncompletePhoneNumber(
-				input,
-				defaultCountry as any,
-			)
-
-			onChange(formattedValue, {
-				countryCode: phoneNumber?.country,
-				isValid: phoneNumber ? phoneNumber.isValid() : false,
-			})
-		}
-
-		// Format the initial value
-		const formattedValue = value
-			? formatIncompletePhoneNumber(value, defaultCountry as any)
-			: ''
+	({ value = '', onChange, ...props }, ref) => {
+		const refWithMask = withMask('+375\\ (99) 999 99 99', {
+			prefix: '+375',
+			inputmode: 'tel',
+			regex: PHONE_REGEX.toString(),
+		});
 
 		return (
 			<Input
-				{...props}
-				ref={ref}
+				ref={refWithMask}
 				type="tel"
 				inputMode="tel"
-				value={formattedValue}
-				onChange={handleChange}
+				{...props}
 			/>
 		)
 	},

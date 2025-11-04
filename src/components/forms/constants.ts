@@ -24,3 +24,5 @@ export const EN_LABELS: LabelMap = {
 	[LabelKey.ORDER_MODAL_BUTTON]: "Order a Call",
 	[LabelKey.ORDER_MODAL_SUCCESS]: "Thank you! We’ll contact you soon.",
 };
+
+export const PHONE_REGEX = /^\+375\s?\((29|33|44|25)\)\s?\d{3}\s?\d{2}\s?\d{2}$/;
