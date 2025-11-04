@@ -101,10 +101,9 @@ export function ReCallForm() {
 											errorMessage={state.errors?.phone?.[0]}
 											aria-invalid={!!state.errors?.phone}
 											aria-describedby="recall-phone-error"
-											placeholder="+375 29 123 45 67"
+											placeholder="+375 (29) 123 45 67"
 											labelPlacement="outside"
 											radius="lg"
-											defaultCountry="BY"
 											{...field}
 										/>
 									</FormControl>
@@ -130,15 +129,15 @@ export function ReCallForm() {
 												{...field}
 											>
 												<span className={'text-sm'}>Согласие на </span>
+												<Link
+													target="_blank"
+													tabIndex={1}
+													href={'/'}
+													className="hover:text-primary-focus relative z-10 text-sm font-medium underline underline-offset-2"
+												>
+													обработку персональных данных
+												</Link>
 											</Checkbox>
-											<Link
-												target="_blank"
-												tabIndex={1}
-												href={'/'}
-												className="underline underline-offset-2"
-											>
-												обработку персональных данных
-											</Link>
 										</div>
 									</FormControl>
 									<FormMessage
@@ -163,11 +162,12 @@ export function ReCallForm() {
 							aria-busy={isPending}
 							radius={'lg'}
 						>
-							{isPending ? 'Отправка...' : RU_LABELS[LabelKey.ORDER_MODAL_BUTTON]}
+							{isPending
+								? 'Отправка...'
+								: RU_LABELS[LabelKey.ORDER_MODAL_BUTTON]}
 						</Button>
 					</>
 				)}
-
 			</form>
 		</FormProvider>
 	)
