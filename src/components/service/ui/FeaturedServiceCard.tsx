@@ -43,7 +43,6 @@ export default function FeaturedServiceCard({
 }: FeaturedServiceCardProps): JSX.Element {
 	const [isOpen, setIsOpen] = useState(false)
 	const openDialog = () => setIsOpen(true)
-	console.log(card)
 
 	return (
 		<Card className="border-content2 border-1">

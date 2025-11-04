@@ -101,10 +101,9 @@ export function ReCallForm() {
 											errorMessage={state.errors?.phone?.[0]}
 											aria-invalid={!!state.errors?.phone}
 											aria-describedby="recall-phone-error"
-											placeholder="+375 29 123 45 67"
+											placeholder="+375 (29) 123 45 67"
 											labelPlacement="outside"
 											radius="lg"
-											defaultCountry="BY"
 											{...field}
 										/>
 									</FormControl>
