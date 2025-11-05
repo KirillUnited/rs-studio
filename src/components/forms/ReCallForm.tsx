@@ -1,8 +1,7 @@
 'use client'
-import React from 'react'
-import { useActionState } from 'react'
+import { startTransition, useActionState, useEffect } from 'react'
 import { submitRecallForm } from './recallFormAction'
-import { recallSchema } from './schemas'
+import { type FormState, type RecallFormData, recallSchema } from './schemas'
 import {
 	FormField,
 	FormItem,
@@ -10,30 +9,37 @@ import {
 	FormMessage,
 } from '@/components/ui/form'
 import { useForm, FormProvider } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { addToast, Button, Checkbox, Input } from '@heroui/react'
 import Link from 'next/link'
-import PhoneInput from '@/components/forms/ui/PhoneInput'
+import PhoneInput, { usePhoneInput } from '@/components/forms/ui/PhoneInput'
 import { LabelKey, RU_LABELS } from '@/components/forms/constants'
 import { Alert } from '@/components/forms'
 
-export function ReCallForm() {
+interface ReCallFormProps {
+	onSubmitSuccess?: () => void
+}
+
+export function ReCallForm({ onSubmitSuccess }: ReCallFormProps) {
 	const [state, formAction, isPending] = useActionState(submitRecallForm, {
 		status: 'idle',
 		errors: {},
-	}) as any
+	}) as [FormState, (formData: FormData) => Promise<any>, boolean]
 
 	// initialize react-hook-form so FormProvider has a valid context
-	const form = useForm<typeof recallSchema>({
-		// cast to any to satisfy this workspace's type expectations
+	const form = useForm<RecallFormData>({
+		resolver: zodResolver(recallSchema),
 		defaultValues: {
 			name: '',
 			phone: '',
 			agreement: false,
-		} as any,
-	} as any)
+		},
+	} as any) // cast as any to avoid JSX prop typing issues with FormProvider
+
+	const { registerPhone } = usePhoneInput(form.control)
 
 	// Add this effect to show toast and reset form on success
-	React.useEffect(() => {
+	useEffect(() => {
 		if (state.status === 'success') {
 			addToast({
 				title: 'Успешно отправлено',
@@ -41,19 +47,33 @@ export function ReCallForm() {
 				color: 'success',
 			})
 			form.reset()
+			if (onSubmitSuccess) {
+				onSubmitSuccess()
+			}
 		}
 	}, [state.status, form.reset])
 
-	const handleSubmit = async (formData: FormData) => {
-		const result = await formAction(formData)
-		console.log(result)
+	const onSubmit = async (values: RecallFormData) => {
+		const formData = new FormData()
+
+		formData.set('name', values.name)
+		formData.set('phone', values.phone)
+		formData.set('agreement', String(values.agreement))
+
+		startTransition(async () => {
+			await formAction(formData)
+		})
 	}
 
 	return (
 		// cast methods as any to avoid JSX prop typing issues with FormProvider
 		// @ts-ignore - react-hook-form FormProvider requires useForm return props; casted above to any for this workspace
 		<FormProvider {...form}>
-			<form action={handleSubmit} className="space-y-5" noValidate>
+			<form
+				onSubmit={form.handleSubmit(onSubmit)}
+				className="space-y-5"
+				noValidate
+			>
 				{state.status === 'success' ? (
 					<Alert />
 				) : (
@@ -61,7 +81,6 @@ export function ReCallForm() {
 						<FormField
 							control={form.control as any}
 							name="name"
-							defaultValue=""
 							render={({ field }) => (
 								<FormItem>
 									<FormControl>
@@ -81,6 +100,10 @@ export function ReCallForm() {
 											{...field}
 										/>
 									</FormControl>
+									<FormMessage
+										className="text-danger text-xs"
+										id="recall-name-error"
+									/>
 								</FormItem>
 							)}
 						/>
@@ -88,7 +111,6 @@ export function ReCallForm() {
 						<FormField
 							control={form.control as any}
 							name="phone"
-							defaultValue=""
 							render={({ field }) => (
 								<FormItem>
 									<FormControl>
@@ -105,8 +127,13 @@ export function ReCallForm() {
 											labelPlacement="outside"
 											radius="lg"
 											{...field}
+											{...registerPhone('phone')}
 										/>
 									</FormControl>
+									<FormMessage
+										className="text-danger text-xs"
+										id="recall-phone-error"
+									/>
 								</FormItem>
 							)}
 						/>

@@ -8,7 +8,7 @@ export const recallSchema = z.object({
 		.string()
 		.regex(
 			PHONE_REGEX,
-			'Введите корректный номер телефона',
+			'Введите корректный номер телефона (например: +375 (29) 123-45-67)',
 		),
 	agreement: z.boolean().refine((val) => val === true, {
 		message: 'Необходимо согласие на обработку персональных данных',
@@ -16,3 +16,9 @@ export const recallSchema = z.object({
 })
 
 export type RecallFormData = z.infer<typeof recallSchema>
+
+export type FormState = {
+	status: 'idle' | 'success' | 'error'
+	errors?: Record<string, string[]>
+	message?: string
+}
