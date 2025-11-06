@@ -147,6 +147,7 @@ export function ReCallForm({ onSubmitSuccess }: ReCallFormProps) {
 									<FormControl>
 										<div className="flex items-center gap-2 text-sm">
 											<Checkbox
+												className='leading-none'
 												radius={'lg'}
 												id="recall-agreement"
 												type="checkbox"
@@ -155,12 +156,12 @@ export function ReCallForm({ onSubmitSuccess }: ReCallFormProps) {
 												aria-describedby="recall-agreement-error"
 												{...field}
 											>
-												<span className={'text-sm'}>Согласие на </span>
+												<span className={'text-sm'}>Согласие на{' '}</span>
 												<Link
 													target="_blank"
 													tabIndex={1}
 													href={'/'}
-													className="hover:text-primary-focus relative z-10 text-sm font-medium underline underline-offset-2"
+													className="hover:text-primary-focus relative z-10 text-sm underline underline-offset-2 leading-none"
 												>
 													обработку персональных данных
 												</Link>

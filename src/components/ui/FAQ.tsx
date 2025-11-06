@@ -1,8 +1,9 @@
 'use client'
 import { Accordion, AccordionItem, Card } from '@heroui/react'
-import { JSX } from 'react'
+import { JSX, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { SectionHeader } from '@/components/section'
+import Loading from '@/ui/Loading'
 
 interface FAQSectionProps {
 	pretitle: string
@@ -17,7 +18,15 @@ interface FAQSectionProps {
 	}
 }
 
-export default function FAQSection({ faqList, intro, pretitle='FAQ`s', description, ctas }: Partial<FAQSectionProps>): JSX.Element | null {
+export default function FAQSection({ faqList, intro, pretitle = 'FAQ`s', description, ctas }: Partial<FAQSectionProps>): JSX.Element | null {
+	const [isMounted, setIsMounted] = useState(false);
+
+	useEffect(() => {
+		setIsMounted(true);
+	}, []);
+
+	if (!isMounted) return <Loading className='my-20 justify-center' />;
+
 	if (!faqList) return null;
 
 	return (
